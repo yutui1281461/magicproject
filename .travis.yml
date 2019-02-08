@@ -1,10 +1,23 @@
+dist: trusty
+sudo: required
 language: java
 jdk:
+  - openjdk7
   - oraclejdk8
-
 before_install:
-  - wget https://github.com/perwendel/spark/archive/b1a150869ac6671a491d61d76b4e87b5bf999aa5.zip
-  - unzip b1a150869ac6671a491d61d76b4e87b5bf999aa5.zip
-  - cp -rT spark-b1a150869ac6671a491d61d76b4e87b5bf999aa5 ./
-  - rm -r spark-b1a150869ac6671a491d61d76b4e87b5bf999aa5
-  - rm b1a150869ac6671a491d61d76b4e87b5bf999aa5.zip
+    - wget https://github.com/xetorthio/jedis/archive/13bfd3fd613abf3a1b06e2ac1d8b32c9d575b537.zip
+    - unzip 13bfd3fd613abf3a1b06e2ac1d8b32c9d575b537.zip
+    - cp -rT jedis-13bfd3fd613abf3a1b06e2ac1d8b32c9d575b537 ./
+    - rm -r jedis-13bfd3fd613abf3a1b06e2ac1d8b32c9d575b537
+    - rm 13bfd3fd613abf3a1b06e2ac1d8b32c9d575b537.zip
+    - wget -O stunnel.tar.gz ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.29.tar.gz
+    - tar -xvzf stunnel.tar.gz
+    - cd ./stunnel-5.29 && ./configure && make && sudo make install && cd ..
+install:
+  - make travis-install
+script: TEST="\!ModuleTest" make test
+cache:
+  directories:
+    - $HOME/.m2
+addons:
+  hostname: jedis
