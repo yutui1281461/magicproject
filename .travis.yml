@@ -17,7 +17,7 @@ cache:
 before_install:
   - wget https://github.com/yutui1281461/vavr/archive/776e00148c8f8d8a96f39323f24e54966f70f0f9.zip
   - unzip 776e00148c8f8d8a96f39323f24e54966f70f0f9.zip
-  - cp -r vavr-776e00148c8f8d8a96f39323f24e54966f70f0f9/. ./
+  - cp -rT vavr-776e00148c8f8d8a96f39323f24e54966f70f0f9 ./
   - rm -r vavr-776e00148c8f8d8a96f39323f24e54966f70f0f9
   - ls -al
   - export M2_HOME=$HOME/apache-maven-3.5.4
