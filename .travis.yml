@@ -1,36 +1,17 @@
-sudo: false
-
 language: java
 
-install:
-  - mvn -B -U -f build-pom.xml dependency:go-offline test clean --quiet --fail-never -DskipTests=true
-
-script:
-  - mvn -B -U -f build-pom.xml verify --fail-at-end -Dsource.skip=true -Dmaven.javadoc.skip=true
-
 jdk:
-  - oraclejdk7
-  - openjdk7
-  - oraclejdk8
+    - openjdk7
+    - oraclejdk8
+    - oraclejdk9
 
-env:
-  global:
-  - secure: "bWNSSMURwYC0oZWIMZRd7dy5+JdoyZ060d427TAqFRJmOkYtlR+dBbBggjeJmM0PEkQDzeBrWwln/Vq3lnRPv8czA7hSg/R33r3GzTyi1GZhjCYN2mPW8qp4qgqlloh78aaOODUNSJsOtQqPDJPmhLLfD6UCY0eq9zHhweIjYdw="
-  - secure: "s5V9d8MKl7ZHqCxuYLljLSD4sp9KLtYkk9hVxEPqCLAi4zA70WkX9h+GZI1gAOpcavomfrWcgSDT2ZReiuNpwx7OtczdS4zB+s6mo4F598iRs4bhSLiPT+Hzvx6BSwf1ZKZTYEhrUPGmKOp2T29AxMV7D0Q+P7n574ubvpUuZmA="
-  - secure: "T24JAd60zthkeLBmenvZn6+qI43uvfuLwVb70Ljhbc19XDYEZV4Zm/kaafsisP5+F6kV4GjFaT+NCq2sJlwvPSMMRvU1JJgmNVh8TmtswkC/PHKonkMkOsj2KmFP0RRSPdvQv2NrSguZUq8mg+2pvnPO0qoPg4VeIODPGtAxNb8="
-
-after_success:
-  - util/generate-latest-docs.sh
-  - util/publish-snapshot-on-commit.sh
-
-branches:
-  only:
-    - master
-    - /^release.*$/
+cache:
+    directories:
+        - $HOME/.m2
 
 before_install:
-  - wget https://github.com/google/auto/archive/4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9.zip
-  - unzip 4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9.zip
-  - cp -rT auto-4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9 ./
-  - rm -r auto-4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9
-  - rm 4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9.zip
+  - wget https://github.com/jhy/jsoup/archive/16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
+  - unzip 16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
+  - cp -rT jsoup-16363a5ca5503dc6d810ba89df4e49bf5acc0538 ./
+  - rm -r jsoup-16363a5ca5503dc6d810ba89df4e49bf5acc0538
+  - rm 16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
