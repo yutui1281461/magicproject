@@ -1,15 +1,10 @@
 language: java
 jdk:
   - oraclejdk8
+
 before_install:
-  - wget https://github.com/alibaba/fastjson/archive/7d716d42b04702ce6641115c4be58af8d4365ce9.zip
-  - unzip 7d716d42b04702ce6641115c4be58af8d4365ce9.zip
-  - cp -rT fastjson-7d716d42b04702ce6641115c4be58af8d4365ce9 ./
-  - rm -r fastjson-7d716d42b04702ce6641115c4be58af8d4365ce9
-  - rm 7d716d42b04702ce6641115c4be58af8d4365ce9.zip
-  - pip install --user codecov
-after_success:
-  - codecov
-branches:
-  except:
-    - appveyor
+  - wget https://github.com/perwendel/spark/archive/d8a54cbc99c14faf4648c425923f7da2859d8a33.zip
+  - unzip d8a54cbc99c14faf4648c425923f7da2859d8a33.zip
+  - cp -rT spark-d8a54cbc99c14faf4648c425923f7da2859d8a33 ./
+  - rm -r spark-d8a54cbc99c14faf4648c425923f7da2859d8a33
+  - rm d8a54cbc99c14faf4648c425923f7da2859d8a33.zip
