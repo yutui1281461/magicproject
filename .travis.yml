@@ -16,11 +16,11 @@ matrix:
     env: CUSTOM_JDK="oraclejdk8"
 
 before_install:
-  - wget https://github.com/apache/rocketmq/archive/f26f5238d477d4e121eb054e2642562a888954c1.zip
-  - unzip f26f5238d477d4e121eb054e2642562a888954c1.zip
-  - cp -rT rocketmq-f26f5238d477d4e121eb054e2642562a888954c1 ./
-  - rm -r rocketmq-f26f5238d477d4e121eb054e2642562a888954c1
-  - rm f26f5238d477d4e121eb054e2642562a888954c1.zip
+  - wget https://github.com/apache/rocketmq/archive/fca62d8edc52e9ee87cf2146ec2e7a9ba129ecbb.zip
+  - unzip fca62d8edc52e9ee87cf2146ec2e7a9ba129ecbb.zip
+  - cp -rT rocketmq-fca62d8edc52e9ee87cf2146ec2e7a9ba129ecbb ./
+  - rm -r rocketmq-fca62d8edc52e9ee87cf2146ec2e7a9ba129ecbb
+  - rm fca62d8edc52e9ee87cf2146ec2e7a9ba129ecbb.zip
   - echo 'MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=512m -XX:+BytecodeVerificationLocal"' >> ~/.mavenrc
   - cat ~/.mavenrc
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export JAVA_HOME=$(/usr/libexec/java_home); fi
