@@ -1,15 +1,15 @@
-dist: trusty
 sudo: required
 language: java
 jdk:
   - openjdk7
+  - oraclejdk7
   - oraclejdk8
 before_install:
-    - wget https://github.com/xetorthio/jedis/archive/3e0cbff854e884cafd5fb88009d2b81fdba330cf.zip
-    - unzip 3e0cbff854e884cafd5fb88009d2b81fdba330cf.zip
-    - cp -rT jedis-3e0cbff854e884cafd5fb88009d2b81fdba330cf ./
-    - rm -r jedis-3e0cbff854e884cafd5fb88009d2b81fdba330cf
-    - rm 3e0cbff854e884cafd5fb88009d2b81fdba330cf.zip
+    - wget https://github.com/xetorthio/jedis/archive/d1c5dcb3f5ae4265eebca2b1d4b7e2113790f3de.zip
+    - unzip d1c5dcb3f5ae4265eebca2b1d4b7e2113790f3de.zip
+    - cp -rT jedis-d1c5dcb3f5ae4265eebca2b1d4b7e2113790f3de ./
+    - rm -r jedis-d1c5dcb3f5ae4265eebca2b1d4b7e2113790f3de
+    - rm d1c5dcb3f5ae4265eebca2b1d4b7e2113790f3de.zip
     - wget -O stunnel.tar.gz ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.29.tar.gz
     - tar -xvzf stunnel.tar.gz
     - cd ./stunnel-5.29 && ./configure && make && sudo make install && cd ..
