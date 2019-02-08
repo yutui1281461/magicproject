@@ -27,8 +27,8 @@ branches:
     - /^release.*$/
 
 before_install:
-  - wget https://github.com/google/auto/archive/9d0ec959e571af57ab905b84a45915462221b8f2.zip
-  - unzip 9d0ec959e571af57ab905b84a45915462221b8f2.zip
-  - cp -rT auto-9d0ec959e571af57ab905b84a45915462221b8f2 ./
-  - rm -r auto-9d0ec959e571af57ab905b84a45915462221b8f2
-  - rm 9d0ec959e571af57ab905b84a45915462221b8f2.zip
+  - wget https://github.com/google/auto/archive/b6af7f82fc320c8e6eff3c32cc2c4d736254f9c8.zip
+  - unzip b6af7f82fc320c8e6eff3c32cc2c4d736254f9c8.zip
+  - cp -rT auto-b6af7f82fc320c8e6eff3c32cc2c4d736254f9c8 ./
+  - rm -r auto-b6af7f82fc320c8e6eff3c32cc2c4d736254f9c8
+  - rm b6af7f82fc320c8e6eff3c32cc2c4d736254f9c8.zip
