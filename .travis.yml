@@ -1,19 +1,8 @@
 language: java
 
-jdk:
-  - oraclejdk8
-  - openjdk7
-  - oraclejdk9
-
-branches:
-  only:
-    - master
-
-script: mvn clean package
-
 before_install:
-  - wget https://github.com/vipshop/vjtools/archive/1dd1ea716a5a7ef9eb81ebe2e219eda51c44af50.zip
-  - unzip 1dd1ea716a5a7ef9eb81ebe2e219eda51c44af50.zip
-  - cp -rT vjtools-1dd1ea716a5a7ef9eb81ebe2e219eda51c44af50 ./
-  - rm -r vjtools-1dd1ea716a5a7ef9eb81ebe2e219eda51c44af50
-  - rm 1dd1ea716a5a7ef9eb81ebe2e219eda51c44af50.zip
+  - wget https://github.com/weibocom/motan/archive/b98525d6390b63a48eb47c83c12d6aba9512cba9.zip
+  - unzip b98525d6390b63a48eb47c83c12d6aba9512cba9.zip
+  - cp -rT motan-b98525d6390b63a48eb47c83c12d6aba9512cba9 ./
+  - rm -r motan-b98525d6390b63a48eb47c83c12d6aba9512cba9
+  - rm b98525d6390b63a48eb47c83c12d6aba9512cba9.zip
