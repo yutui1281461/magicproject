@@ -1,16 +1,14 @@
 language: java
+script: "mvn verify"
 jdk:
-  - oraclejdk8
-  #- oraclejdk7
-  #- openjdk7
-before_script:
-    - echo "MAVEN_OPTS='-Xmx1024m -XX:MaxPermSize=256m'" > ~/.mavenrc
-after_success:
-  - mvn clean cobertura:cobertura coveralls:report
+  - openjdk8
+cache:
+  directories:
+    - "$HOME/.m2"
 
 before_install:
-  - wget https://github.com/elasticjob/elastic-job-lite/archive/8fc61fd9b24fcce203492d0cfc295edbd502f5ea.zip
-  - unzip 8fc61fd9b24fcce203492d0cfc295edbd502f5ea.zip
-  - cp -rT elastic-job-lite-8fc61fd9b24fcce203492d0cfc295edbd502f5ea ./
-  - rm -r elastic-job-lite-8fc61fd9b24fcce203492d0cfc295edbd502f5ea
-  - rm 8fc61fd9b24fcce203492d0cfc295edbd502f5ea.zip
+  - wget https://github.com/joelittlejohn/jsonschema2pojo/archive/bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
+  - unzip bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
+  - cp -rT jsonschema2pojo-bcc7ce327d186ffe98eabad04c8496e09ce216e0 ./
+  - rm -r jsonschema2pojo-bcc7ce327d186ffe98eabad04c8496e09ce216e0
+  - rm bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
