@@ -1,15 +1,15 @@
 language: java
-sudo: false
-
 jdk:
   - oraclejdk8
-
-script:
-  - mvn clean install -B
-
 before_install:
-  - wget https://github.com/rest-assured/rest-assured/archive/08029cc6f04ccce9f3d8417fef805eb8d8784c6b.zip
-  - unzip 08029cc6f04ccce9f3d8417fef805eb8d8784c6b.zip
-  - cp -rT rest-assured-08029cc6f04ccce9f3d8417fef805eb8d8784c6b ./
-  - rm -r rest-assured-08029cc6f04ccce9f3d8417fef805eb8d8784c6b
-  - rm 08029cc6f04ccce9f3d8417fef805eb8d8784c6b.zip
+  - wget https://github.com/alibaba/fastjson/archive/48da3d4d6ba7c3eb854e64f5c175dcb95ed39400.zip
+  - unzip 48da3d4d6ba7c3eb854e64f5c175dcb95ed39400.zip
+  - cp -rT fastjson-48da3d4d6ba7c3eb854e64f5c175dcb95ed39400 ./
+  - rm -r fastjson-48da3d4d6ba7c3eb854e64f5c175dcb95ed39400
+  - rm 48da3d4d6ba7c3eb854e64f5c175dcb95ed39400.zip
+  - pip install --user codecov
+after_success:
+  - codecov
+branches:
+  except:
+    - appveyor
