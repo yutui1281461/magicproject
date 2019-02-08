@@ -12,8 +12,8 @@ branches:
 script: mvn clean package
 
 before_install:
-  - wget https://github.com/vipshop/vjtools/archive/4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
-  - unzip 4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
-  - cp -rT vjtools-4c4b0f0cacacc51390f006ab61f80e1ff820eaba ./
-  - rm -r vjtools-4c4b0f0cacacc51390f006ab61f80e1ff820eaba
-  - rm 4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
+  - wget https://github.com/vipshop/vjtools/archive/335cdee8717898c2def41ee30ffcd3cc08b0cf83.zip
+  - unzip 335cdee8717898c2def41ee30ffcd3cc08b0cf83.zip
+  - cp -rT vjtools-335cdee8717898c2def41ee30ffcd3cc08b0cf83 ./
+  - rm -r vjtools-335cdee8717898c2def41ee30ffcd3cc08b0cf83
+  - rm 335cdee8717898c2def41ee30ffcd3cc08b0cf83.zip
