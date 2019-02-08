@@ -43,8 +43,8 @@ after_success:
   - util/generate-latest-docs.sh
 
 before_install:
-  - wget https://github.com/google/error-prone/archive/81caabd3d6e341d8af30184221b198e239869d1f.zip
-  - unzip 81caabd3d6e341d8af30184221b198e239869d1f.zip
-  - cp -rT error-prone-81caabd3d6e341d8af30184221b198e239869d1f ./
-  - rm -r error-prone-81caabd3d6e341d8af30184221b198e239869d1f
-  - rm 81caabd3d6e341d8af30184221b198e239869d1f.zip
+  - wget https://github.com/google/error-prone/archive/4baae0d8c9e34e70ab3f7970e0677a15842c14d1.zip
+  - unzip 4baae0d8c9e34e70ab3f7970e0677a15842c14d1.zip
+  - cp -rT error-prone-4baae0d8c9e34e70ab3f7970e0677a15842c14d1 ./
+  - rm -r error-prone-4baae0d8c9e34e70ab3f7970e0677a15842c14d1
+  - rm 4baae0d8c9e34e70ab3f7970e0677a15842c14d1.zip
