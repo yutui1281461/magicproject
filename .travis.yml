@@ -9,6 +9,8 @@ script:
   - mvn -B -U -f build-pom.xml verify --fail-at-end -Dsource.skip=true -Dmaven.javadoc.skip=true
 
 jdk:
+  - oraclejdk7
+  - openjdk7
   - oraclejdk8
 
 env:
@@ -27,8 +29,8 @@ branches:
     - /^release.*$/
 
 before_install:
-  - wget https://github.com/google/auto/archive/d0bd7b22111f5693583d8dafde16c2dbcf85bc33.zip
-  - unzip d0bd7b22111f5693583d8dafde16c2dbcf85bc33.zip
-  - cp -rT auto-d0bd7b22111f5693583d8dafde16c2dbcf85bc33 ./
-  - rm -r auto-d0bd7b22111f5693583d8dafde16c2dbcf85bc33
-  - rm d0bd7b22111f5693583d8dafde16c2dbcf85bc33.zip
+  - wget https://github.com/google/auto/archive/4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9.zip
+  - unzip 4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9.zip
+  - cp -rT auto-4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9 ./
+  - rm -r auto-4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9
+  - rm 4f8cdf50f7cb03ddbbaa9412eb32d4b8950c64e9.zip
