@@ -1,37 +1,16 @@
 language: java
-
 jdk:
   - oraclejdk8
-
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer # Updates JDK 8 to the latest available.
-
+  #- oraclejdk7
+  #- openjdk7
+before_script:
+    - echo "MAVEN_OPTS='-Xmx1024m -XX:MaxPermSize=256m'" > ~/.mavenrc
 after_success:
-  - .buildscript/deploy_snapshot.sh
-
-env:
-  global:
-    - secure: "TM2N/yo3azbA7+J6WG0W1RmK4vvS7b4JzvJP8NcXpoZCQw2Je1nQqmKS3F/04/DEUf8+SKVh2thKEeUxLN8knCO0OQLxeKIFj9PLvtgHnV8beB+pPxUdpEvMlB6ISeDsOZ098zoax28zfMwR7+uMeGe2VbtTSpwtqt4jkWx3ooA="
-    - secure: "A5flBI/PCmmxuHjqG73CIXqHYg8X1GWloA3jv0zrhCAuK5m3nAvt7JY2qom22ttEY9JI32dlArxhusrKib18gKNgZbxzoN5PydkG6T0uuGZw+uZM6jPiTlvkC0F4ikL6lg1dBap4BoakDMwAPfb11UpETamBGKOWdopLqw6T6w0="
-
-branches:
-  except:
-    - gh-pages
-
-notifications:
-  email: false
-
-sudo: false
-
-cache:
-  directories:
-    - $HOME/.m2
+  - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/square/moshi/archive/8e5d441e2cedf3d14a0988537cd31edfa86b99fd.zip
-  - unzip 8e5d441e2cedf3d14a0988537cd31edfa86b99fd.zip
-  - cp -rT moshi-8e5d441e2cedf3d14a0988537cd31edfa86b99fd ./
-  - rm -r moshi-8e5d441e2cedf3d14a0988537cd31edfa86b99fd
-  - rm 8e5d441e2cedf3d14a0988537cd31edfa86b99fd.zip
+  - wget https://github.com/elasticjob/elastic-job-lite/archive/8fc61fd9b24fcce203492d0cfc295edbd502f5ea.zip
+  - unzip 8fc61fd9b24fcce203492d0cfc295edbd502f5ea.zip
+  - cp -rT elastic-job-lite-8fc61fd9b24fcce203492d0cfc295edbd502f5ea ./
+  - rm -r elastic-job-lite-8fc61fd9b24fcce203492d0cfc295edbd502f5ea
+  - rm 8fc61fd9b24fcce203492d0cfc295edbd502f5ea.zip
