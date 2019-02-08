@@ -1,17 +1,18 @@
 language: java
 
 jdk:
+    - openjdk6
     - openjdk7
+    - oraclejdk7
     - oraclejdk8
-    - oraclejdk9
 
 cache:
     directories:
         - $HOME/.m2
 
 before_install:
-  - wget https://github.com/jhy/jsoup/archive/16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
-  - unzip 16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
-  - cp -rT jsoup-16363a5ca5503dc6d810ba89df4e49bf5acc0538 ./
-  - rm -r jsoup-16363a5ca5503dc6d810ba89df4e49bf5acc0538
-  - rm 16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
+  - wget https://github.com/jhy/jsoup/archive/f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2.zip
+  - unzip f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2.zip
+  - cp -rT jsoup-f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2 ./
+  - rm -r jsoup-f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2
+  - rm f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2.zip
