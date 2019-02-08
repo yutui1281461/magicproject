@@ -1,8 +1,8 @@
 language: java
 
 before_install:
-  - wget https://github.com/weibocom/motan/archive/fd85604db3f5aae8fea156659c555e41469a546d.zip
-  - unzip fd85604db3f5aae8fea156659c555e41469a546d.zip
-  - cp -rT motan-fd85604db3f5aae8fea156659c555e41469a546d ./
-  - rm -r motan-fd85604db3f5aae8fea156659c555e41469a546d
-  - rm fd85604db3f5aae8fea156659c555e41469a546d.zip
+  - wget https://github.com/weibocom/motan/archive/d3523a1b38e2a87b42c9f483f45ad78a5facaf24.zip
+  - unzip d3523a1b38e2a87b42c9f483f45ad78a5facaf24.zip
+  - cp -rT motan-d3523a1b38e2a87b42c9f483f45ad78a5facaf24 ./
+  - rm -r motan-d3523a1b38e2a87b42c9f483f45ad78a5facaf24
+  - rm d3523a1b38e2a87b42c9f483f45ad78a5facaf24.zip
