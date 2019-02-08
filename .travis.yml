@@ -3,8 +3,8 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - wget https://github.com/perwendel/spark/archive/931016ef1c1a57e56727f02f908567f0a521dbb5.zip
-  - unzip 931016ef1c1a57e56727f02f908567f0a521dbb5.zip
-  - cp -rT spark-931016ef1c1a57e56727f02f908567f0a521dbb5 ./
-  - rm -r spark-931016ef1c1a57e56727f02f908567f0a521dbb5
-  - rm 931016ef1c1a57e56727f02f908567f0a521dbb5.zip
+  - wget https://github.com/perwendel/spark/archive/043812dcf1885f158cf7ccc85f99e531cb22e61f.zip
+  - unzip 043812dcf1885f158cf7ccc85f99e531cb22e61f.zip
+  - cp -rT spark-043812dcf1885f158cf7ccc85f99e531cb22e61f ./
+  - rm -r spark-043812dcf1885f158cf7ccc85f99e531cb22e61f
+  - rm 043812dcf1885f158cf7ccc85f99e531cb22e61f.zip
