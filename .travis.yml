@@ -7,8 +7,8 @@ cache:
     - "$HOME/.m2"
 
 before_install:
-  - wget https://github.com/joelittlejohn/jsonschema2pojo/archive/bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
-  - unzip bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
-  - cp -rT jsonschema2pojo-bcc7ce327d186ffe98eabad04c8496e09ce216e0 ./
-  - rm -r jsonschema2pojo-bcc7ce327d186ffe98eabad04c8496e09ce216e0
-  - rm bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
+  - wget https://github.com/joelittlejohn/jsonschema2pojo/archive/87865f641401a923945c18e76ee633e241affe67.zip
+  - unzip 87865f641401a923945c18e76ee633e241affe67.zip
+  - cp -rT jsonschema2pojo-87865f641401a923945c18e76ee633e241affe67 ./
+  - rm -r jsonschema2pojo-87865f641401a923945c18e76ee633e241affe67
+  - rm 87865f641401a923945c18e76ee633e241affe67.zip
