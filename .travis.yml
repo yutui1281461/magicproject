@@ -1,35 +1,19 @@
-notifications:
-  email:
-    recipients:
-      - dev@rocketmq.apache.org
-  on_success: change
-  on_failure: always
-
 language: java
 
-matrix:
-  include:
-  # On OSX, run with default JDK only.
-  # - os: osx
-  # On Linux, run with specific JDKs only.
-  - os: linux
-    env: CUSTOM_JDK="oraclejdk8"
+jdk:
+  - oraclejdk8
+  - openjdk7
+  - oraclejdk9
+
+branches:
+  only:
+    - master
+
+script: mvn clean package
 
 before_install:
-  - wget https://github.com/apache/rocketmq/archive/64f1e369e695a6a1fb5d17551e03f61eab60b89b.zip
-  - unzip 64f1e369e695a6a1fb5d17551e03f61eab60b89b.zip
-  - cp -rT rocketmq-64f1e369e695a6a1fb5d17551e03f61eab60b89b ./
-  - rm -r rocketmq-64f1e369e695a6a1fb5d17551e03f61eab60b89b
-  - rm 64f1e369e695a6a1fb5d17551e03f61eab60b89b.zip
-  - echo 'MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=512m -XX:+BytecodeVerificationLocal"' >> ~/.mavenrc
-  - cat ~/.mavenrc
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export JAVA_HOME=$(/usr/libexec/java_home); fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then jdk_switcher use "$CUSTOM_JDK"; fi
-
-script:
-  - travis_retry mvn -B clean apache-rat:check
-  - travis_retry mvn -B package jacoco:report coveralls:report
-
-after_success:
-  - mvn clean install -Pit-test
-  - mvn sonar:sonar -Psonar-apache
+  - wget https://github.com/vipshop/vjtools/archive/4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
+  - unzip 4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
+  - cp -rT vjtools-4c4b0f0cacacc51390f006ab61f80e1ff820eaba ./
+  - rm -r vjtools-4c4b0f0cacacc51390f006ab61f80e1ff820eaba
+  - rm 4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
