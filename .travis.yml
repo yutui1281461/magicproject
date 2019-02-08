@@ -12,11 +12,11 @@ before_script:
   - echo "MAVEN_OPTS='-Xms1024m -Xmx3072m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=384m'" > ~/.mavenrc
   
 before_install:
-  - wget https://github.com/ctripcorp/apollo/archive/a61e35671931fc591eb6cd2dc42a1110d7ba2854.zip
-  - unzip a61e35671931fc591eb6cd2dc42a1110d7ba2854.zip
-  - cp -rT apollo-a61e35671931fc591eb6cd2dc42a1110d7ba2854 ./
-  - rm -r apollo-a61e35671931fc591eb6cd2dc42a1110d7ba2854
-  - rm a61e35671931fc591eb6cd2dc42a1110d7ba2854.zip
+  - wget https://github.com/ctripcorp/apollo/archive/69a4addf1d52909ce1cb248704d106879cfc160d.zip
+  - unzip 69a4addf1d52909ce1cb248704d106879cfc160d.zip
+  - cp -rT apollo-69a4addf1d52909ce1cb248704d106879cfc160d ./
+  - rm -r apollo-69a4addf1d52909ce1cb248704d106879cfc160d
+  - rm 69a4addf1d52909ce1cb248704d106879cfc160d.zip
   - pip install --user codecov
 
 after_success:
