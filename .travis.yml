@@ -30,8 +30,8 @@ cache:
     - $HOME/.m2
 
 before_install:
-  - wget https://github.com/square/moshi/archive/8e5d441e2cedf3d14a0988537cd31edfa86b99fd.zip
-  - unzip 8e5d441e2cedf3d14a0988537cd31edfa86b99fd.zip
-  - cp -rT moshi-8e5d441e2cedf3d14a0988537cd31edfa86b99fd ./
-  - rm -r moshi-8e5d441e2cedf3d14a0988537cd31edfa86b99fd
-  - rm 8e5d441e2cedf3d14a0988537cd31edfa86b99fd.zip
+  - wget https://github.com/square/moshi/archive/fabce10fe970322f23a6a10030f9a02d3ce1cb5f.zip
+  - unzip fabce10fe970322f23a6a10030f9a02d3ce1cb5f.zip
+  - cp -rT moshi-fabce10fe970322f23a6a10030f9a02d3ce1cb5f ./
+  - rm -r moshi-fabce10fe970322f23a6a10030f9a02d3ce1cb5f
+  - rm fabce10fe970322f23a6a10030f9a02d3ce1cb5f.zip
