@@ -5,11 +5,11 @@ jdk:
   - openjdk7
   - oraclejdk8
 before_install:
-    - wget https://github.com/xetorthio/jedis/archive/467caf5d3d04e369b1457913e2830938c3e78e2e.zip
-    - unzip 467caf5d3d04e369b1457913e2830938c3e78e2e.zip
-    - cp -rT jedis-467caf5d3d04e369b1457913e2830938c3e78e2e ./
-    - rm -r jedis-467caf5d3d04e369b1457913e2830938c3e78e2e
-    - rm 467caf5d3d04e369b1457913e2830938c3e78e2e.zip
+    - wget https://github.com/xetorthio/jedis/archive/34737ce7175c016e65d189a1408dd41d1e988871.zip
+    - unzip 34737ce7175c016e65d189a1408dd41d1e988871.zip
+    - cp -rT jedis-34737ce7175c016e65d189a1408dd41d1e988871 ./
+    - rm -r jedis-34737ce7175c016e65d189a1408dd41d1e988871
+    - rm 34737ce7175c016e65d189a1408dd41d1e988871.zip
     - wget -O stunnel.tar.gz ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.29.tar.gz
     - tar -xvzf stunnel.tar.gz
     - cd ./stunnel-5.29 && ./configure && make && sudo make install && cd ..
