@@ -1,0 +1,25 @@
+language: java
+sudo: false # faster builds
+
+jdk:
+  - oraclejdk11
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2
+
+install: true
+
+script:
+  - travis_wait 30 ./mvnw clean install -DskipTests=false -Dcheckstyle.skip=false -Drat.skip=false -Dmaven.javadoc.skip=true
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+before_install:
+  - wget https://github.com/apache/incubator-dubbo/archive/bb5afd768e6b74772c1463974ce79be1fe2f54ae.zip
+  - unzip bb5afd768e6b74772c1463974ce79be1fe2f54ae.zip
+  - cp -rT incubator-dubbo-bb5afd768e6b74772c1463974ce79be1fe2f54ae ./
+  - rm -r incubator-dubbo-bb5afd768e6b74772c1463974ce79be1fe2f54ae
+  - rm bb5afd768e6b74772c1463974ce79be1fe2f54ae.zip
