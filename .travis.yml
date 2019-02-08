@@ -2,11 +2,11 @@ language: java
 jdk:
   - oraclejdk8
 before_install:
-  - wget https://github.com/alibaba/fastjson/archive/c6e9acb3915147ffdf4411e516a02e843032cf79.zip
-  - unzip c6e9acb3915147ffdf4411e516a02e843032cf79.zip
-  - cp -rT fastjson-c6e9acb3915147ffdf4411e516a02e843032cf79 ./
-  - rm -r fastjson-c6e9acb3915147ffdf4411e516a02e843032cf79
-  - rm c6e9acb3915147ffdf4411e516a02e843032cf79.zip
+  - wget https://github.com/alibaba/fastjson/archive/d2f713e456d882c016376c0558c7970c3b46588d.zip
+  - unzip d2f713e456d882c016376c0558c7970c3b46588d.zip
+  - cp -rT fastjson-d2f713e456d882c016376c0558c7970c3b46588d ./
+  - rm -r fastjson-d2f713e456d882c016376c0558c7970c3b46588d
+  - rm d2f713e456d882c016376c0558c7970c3b46588d.zip
   - pip install --user codecov
 after_success:
   - codecov
