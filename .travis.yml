@@ -1,16 +1,50 @@
 language: java
-jdk:
-  - oraclejdk8
-  #- oraclejdk7
-  #- openjdk7
-before_script:
-    - echo "MAVEN_OPTS='-Xmx1024m -XX:MaxPermSize=256m'" > ~/.mavenrc
+
+
+matrix:
+  allow_failures:
+    - jdk: oraclejdk9
+  include:
+# JDK 8
+    - jdk: oraclejdk8
+      env: JDK_RELEASE='8'
+# JDK 9
+    - jdk: oraclejdk9
+      env: JDK_RELEASE='9'
+
+# use travis-ci docker based infrastructure
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.m2
+
+notifications:
+  #email: error-prone-team@google.com
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/74d33a22fbfb1942920e
+    on_success: change  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+
+# Store encrypted credentials for gh-pages and sonatype:
+# travis encrypt -r google/error-prone GH_TOKEN=<github access token>
+# travis encrypt -r google/error-prone CI_DEPLOY_USERNAME=<sonatype username>
+# travis encrypt -r google/error-prone CI_DEPLOY_PASSWORD=<sonatype password>
+
+env:
+  global:
+    - secure: "kM6uLpPkYz/i5FTMAh0yUyhLrmJFDr643u49i9FHreg+L5n+DYUilbRPOfHhN802Wd9Pb1yGkFxbumuzo+ZjTjHmyjH5w5hsRvRrPVX3FRnMN5SMCnE95nBZJOyMrYHYnko+IXsENqqfPjTe5d/fUsMcwYcIPuqssaO+lvTv0Yw="
+    - secure: "VTl3ljwGf0KPbX5wW1+MgQuLwpfSppph/STiyUOQkISO5jDwBAfnvcBymn/oLESwQeLZ/D+GZtL/sooG2Kf6v8Fdn6Q6VhwfSxgLDJUME+A4rOBBnDExhpUz+OT0XugWHfQ/sYRaDRk1/c1axt3XB/cxlzPNIJKlzDoPZpfDyGM="
+    - secure: "FHXaeHYXmdGNYZLuSbAE7c5xmIhUT8/VzpnlkVmDgCPXgOGY7RzCpF4MVPIDm7f63bx/qZSu+d008gFHTI98UQLHMACjD1wuahk+0vqXVG1W3WwruqilTriYjW1gUkwa5zv5AaApq0dd5CO7li1DpNPgqOrU50ddJlb0BZ6wv1Q="
+
 after_success:
-  - mvn clean cobertura:cobertura coveralls:report
+  - util/publish-snapshot-on-commit.sh
+  - util/generate-latest-docs.sh
 
 before_install:
-  - wget https://github.com/elasticjob/elastic-job-lite/archive/377b4b15e5c00810b8cbf188e636ecfbc7f1b329.zip
-  - unzip 377b4b15e5c00810b8cbf188e636ecfbc7f1b329.zip
-  - cp -rT elastic-job-lite-377b4b15e5c00810b8cbf188e636ecfbc7f1b329 ./
-  - rm -r elastic-job-lite-377b4b15e5c00810b8cbf188e636ecfbc7f1b329
-  - rm 377b4b15e5c00810b8cbf188e636ecfbc7f1b329.zip
+  - wget https://github.com/google/error-prone/archive/9189dbe9ff1d4782487b0b13920f522c96ecc149.zip
+  - unzip 9189dbe9ff1d4782487b0b13920f522c96ecc149.zip
+  - cp -rT error-prone-9189dbe9ff1d4782487b0b13920f522c96ecc149 ./
+  - rm -r error-prone-9189dbe9ff1d4782487b0b13920f522c96ecc149
+  - rm 9189dbe9ff1d4782487b0b13920f522c96ecc149.zip
