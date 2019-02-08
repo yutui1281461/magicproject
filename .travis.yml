@@ -1,21 +1,23 @@
-sudo: false
+dist: trusty
+sudo: required
 language: java
 jdk:
-  - openjdk6
   - openjdk7
-  - oraclejdk7
   - oraclejdk8
-install: make travis-install
-script: make test
+before_install:
+    - wget https://github.com/xetorthio/jedis/archive/10da8676b86c8f50447604d6b7b51a96a4be6533.zip
+    - unzip 10da8676b86c8f50447604d6b7b51a96a4be6533.zip
+    - cp -rT jedis-10da8676b86c8f50447604d6b7b51a96a4be6533 ./
+    - rm -r jedis-10da8676b86c8f50447604d6b7b51a96a4be6533
+    - rm 10da8676b86c8f50447604d6b7b51a96a4be6533.zip
+    - wget -O stunnel.tar.gz ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.29.tar.gz
+    - tar -xvzf stunnel.tar.gz
+    - cd ./stunnel-5.29 && ./configure && make && sudo make install && cd ..
+install:
+  - make travis-install
+script: TEST="\!ModuleTest" make test
 cache:
   directories:
     - $HOME/.m2
 addons:
   hostname: jedis
-
-before_install:
-  - wget https://github.com/xetorthio/jedis/archive/5a9ad8a287b7924efb5071c58d365dbe1fba0951.zip
-  - unzip 5a9ad8a287b7924efb5071c58d365dbe1fba0951.zip
-  - cp -rT jedis-5a9ad8a287b7924efb5071c58d365dbe1fba0951 ./
-  - rm -r jedis-5a9ad8a287b7924efb5071c58d365dbe1fba0951
-  - rm 5a9ad8a287b7924efb5071c58d365dbe1fba0951.zip
