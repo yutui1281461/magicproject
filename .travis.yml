@@ -11,8 +11,8 @@ cache:
         - $HOME/.m2
 
 before_install:
-  - wget https://github.com/jhy/jsoup/archive/f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2.zip
-  - unzip f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2.zip
-  - cp -rT jsoup-f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2 ./
-  - rm -r jsoup-f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2
-  - rm f6e073dcad5b4f5acc18eae8c3084e4aed5bc4d2.zip
+  - wget https://github.com/jhy/jsoup/archive/1aadd582db545132366cfd796f197058ebcc6bf6.zip
+  - unzip 1aadd582db545132366cfd796f197058ebcc6bf6.zip
+  - cp -rT jsoup-1aadd582db545132366cfd796f197058ebcc6bf6 ./
+  - rm -r jsoup-1aadd582db545132366cfd796f197058ebcc6bf6
+  - rm 1aadd582db545132366cfd796f197058ebcc6bf6.zip
