@@ -18,8 +18,8 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 before_install:
-  - wget https://github.com/apache/incubator-dubbo/archive/e567ce49c1b3c8f6febd666117c77c89669b2761.zip
-  - unzip e567ce49c1b3c8f6febd666117c77c89669b2761.zip
-  - cp -rT incubator-dubbo-e567ce49c1b3c8f6febd666117c77c89669b2761 ./
-  - rm -r incubator-dubbo-e567ce49c1b3c8f6febd666117c77c89669b2761
-  - rm e567ce49c1b3c8f6febd666117c77c89669b2761.zip
+  - wget https://github.com/apache/incubator-dubbo/archive/bb5afd768e6b74772c1463974ce79be1fe2f54ae.zip
+  - unzip bb5afd768e6b74772c1463974ce79be1fe2f54ae.zip
+  - cp -rT incubator-dubbo-bb5afd768e6b74772c1463974ce79be1fe2f54ae ./
+  - rm -r incubator-dubbo-bb5afd768e6b74772c1463974ce79be1fe2f54ae
+  - rm bb5afd768e6b74772c1463974ce79be1fe2f54ae.zip
