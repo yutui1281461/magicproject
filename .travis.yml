@@ -1,12 +1,8 @@
 language: java
 
 jdk:
+  - oraclejdk7
   - oraclejdk8
-
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer # Updates JDK 8 to the latest available.
 
 after_success:
   - .buildscript/deploy_snapshot.sh
@@ -30,8 +26,8 @@ cache:
     - $HOME/.m2
 
 before_install:
-  - wget https://github.com/square/moshi/archive/fabce10fe970322f23a6a10030f9a02d3ce1cb5f.zip
-  - unzip fabce10fe970322f23a6a10030f9a02d3ce1cb5f.zip
-  - cp -rT moshi-fabce10fe970322f23a6a10030f9a02d3ce1cb5f ./
-  - rm -r moshi-fabce10fe970322f23a6a10030f9a02d3ce1cb5f
-  - rm fabce10fe970322f23a6a10030f9a02d3ce1cb5f.zip
+  - wget https://github.com/square/moshi/archive/ddec3be5754a429a301b8b571be1df99427c9904.zip
+  - unzip ddec3be5754a429a301b8b571be1df99427c9904.zip
+  - cp -rT moshi-ddec3be5754a429a301b8b571be1df99427c9904 ./
+  - rm -r moshi-ddec3be5754a429a301b8b571be1df99427c9904
+  - rm ddec3be5754a429a301b8b571be1df99427c9904.zip
