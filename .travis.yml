@@ -9,8 +9,8 @@ after_success:
   - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/elasticjob/elastic-job-lite/archive/7a3cd86d816d03592e1f3a08572fd29f78a39f90.zip
-  - unzip 7a3cd86d816d03592e1f3a08572fd29f78a39f90.zip
-  - cp -rT elastic-job-lite-7a3cd86d816d03592e1f3a08572fd29f78a39f90 ./
-  - rm -r elastic-job-lite-7a3cd86d816d03592e1f3a08572fd29f78a39f90
-  - rm 7a3cd86d816d03592e1f3a08572fd29f78a39f90.zip
+  - wget https://github.com/elasticjob/elastic-job-lite/archive/377b4b15e5c00810b8cbf188e636ecfbc7f1b329.zip
+  - unzip 377b4b15e5c00810b8cbf188e636ecfbc7f1b329.zip
+  - cp -rT elastic-job-lite-377b4b15e5c00810b8cbf188e636ecfbc7f1b329 ./
+  - rm -r elastic-job-lite-377b4b15e5c00810b8cbf188e636ecfbc7f1b329
+  - rm 377b4b15e5c00810b8cbf188e636ecfbc7f1b329.zip
