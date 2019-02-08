@@ -1,17 +1,19 @@
 language: java
 
 jdk:
-    - openjdk7
-    - oraclejdk8
-    - oraclejdk9
+  - oraclejdk8
+  - openjdk7
+  - oraclejdk9
 
-cache:
-    directories:
-        - $HOME/.m2
+branches:
+  only:
+    - master
+
+script: mvn clean package
 
 before_install:
-  - wget https://github.com/jhy/jsoup/archive/16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
-  - unzip 16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
-  - cp -rT jsoup-16363a5ca5503dc6d810ba89df4e49bf5acc0538 ./
-  - rm -r jsoup-16363a5ca5503dc6d810ba89df4e49bf5acc0538
-  - rm 16363a5ca5503dc6d810ba89df4e49bf5acc0538.zip
+  - wget https://github.com/vipshop/vjtools/archive/4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
+  - unzip 4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
+  - cp -rT vjtools-4c4b0f0cacacc51390f006ab61f80e1ff820eaba ./
+  - rm -r vjtools-4c4b0f0cacacc51390f006ab61f80e1ff820eaba
+  - rm 4c4b0f0cacacc51390f006ab61f80e1ff820eaba.zip
