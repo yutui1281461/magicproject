@@ -1,50 +1,14 @@
 language: java
-
-
-matrix:
-  allow_failures:
-    - jdk: oraclejdk9
-  include:
-# JDK 8
-    - jdk: oraclejdk8
-      env: JDK_RELEASE='8'
-# JDK 9
-    - jdk: oraclejdk9
-      env: JDK_RELEASE='9'
-
-# use travis-ci docker based infrastructure
-sudo: false
-
+script: "mvn verify"
+jdk:
+  - openjdk8
 cache:
   directories:
-    - $HOME/.m2
-
-notifications:
-  #email: error-prone-team@google.com
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/74d33a22fbfb1942920e
-    on_success: change  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-
-# Store encrypted credentials for gh-pages and sonatype:
-# travis encrypt -r google/error-prone GH_TOKEN=<github access token>
-# travis encrypt -r google/error-prone CI_DEPLOY_USERNAME=<sonatype username>
-# travis encrypt -r google/error-prone CI_DEPLOY_PASSWORD=<sonatype password>
-
-env:
-  global:
-    - secure: "kM6uLpPkYz/i5FTMAh0yUyhLrmJFDr643u49i9FHreg+L5n+DYUilbRPOfHhN802Wd9Pb1yGkFxbumuzo+ZjTjHmyjH5w5hsRvRrPVX3FRnMN5SMCnE95nBZJOyMrYHYnko+IXsENqqfPjTe5d/fUsMcwYcIPuqssaO+lvTv0Yw="
-    - secure: "VTl3ljwGf0KPbX5wW1+MgQuLwpfSppph/STiyUOQkISO5jDwBAfnvcBymn/oLESwQeLZ/D+GZtL/sooG2Kf6v8Fdn6Q6VhwfSxgLDJUME+A4rOBBnDExhpUz+OT0XugWHfQ/sYRaDRk1/c1axt3XB/cxlzPNIJKlzDoPZpfDyGM="
-    - secure: "FHXaeHYXmdGNYZLuSbAE7c5xmIhUT8/VzpnlkVmDgCPXgOGY7RzCpF4MVPIDm7f63bx/qZSu+d008gFHTI98UQLHMACjD1wuahk+0vqXVG1W3WwruqilTriYjW1gUkwa5zv5AaApq0dd5CO7li1DpNPgqOrU50ddJlb0BZ6wv1Q="
-
-after_success:
-  - util/publish-snapshot-on-commit.sh
-  - util/generate-latest-docs.sh
+    - "$HOME/.m2"
 
 before_install:
-  - wget https://github.com/google/error-prone/archive/87d83e733edab2246333a36cec7565a27306c8b7.zip
-  - unzip 87d83e733edab2246333a36cec7565a27306c8b7.zip
-  - cp -rT error-prone-87d83e733edab2246333a36cec7565a27306c8b7 ./
-  - rm -r error-prone-87d83e733edab2246333a36cec7565a27306c8b7
-  - rm 87d83e733edab2246333a36cec7565a27306c8b7.zip
+  - wget https://github.com/joelittlejohn/jsonschema2pojo/archive/bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
+  - unzip bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
+  - cp -rT jsonschema2pojo-bcc7ce327d186ffe98eabad04c8496e09ce216e0 ./
+  - rm -r jsonschema2pojo-bcc7ce327d186ffe98eabad04c8496e09ce216e0
+  - rm bcc7ce327d186ffe98eabad04c8496e09ce216e0.zip
