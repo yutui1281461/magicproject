@@ -2,11 +2,11 @@ language: java
 jdk:
   - oraclejdk8
 before_install:
-  - wget https://github.com/alibaba/druid/archive/5e7746db86884553a2f57c2a71a46bea6ee09352.zip
-  - unzip 5e7746db86884553a2f57c2a71a46bea6ee09352.zip
-  - cp -rT druid-5e7746db86884553a2f57c2a71a46bea6ee09352 ./
-  - rm -r druid-5e7746db86884553a2f57c2a71a46bea6ee09352
-  - rm 5e7746db86884553a2f57c2a71a46bea6ee09352.zip
+  - wget https://github.com/alibaba/druid/archive/3902b8c30a7af4e20c5d6ebd65e3f1798c4f5cae.zip
+  - unzip 3902b8c30a7af4e20c5d6ebd65e3f1798c4f5cae.zip
+  - cp -rT druid-3902b8c30a7af4e20c5d6ebd65e3f1798c4f5cae ./
+  - rm -r druid-3902b8c30a7af4e20c5d6ebd65e3f1798c4f5cae
+  - rm 3902b8c30a7af4e20c5d6ebd65e3f1798c4f5cae.zip
   - pip install --user codecov
 after_success:
   - codecov
