@@ -1,10 +1,35 @@
+sudo: false
+
 language: java
+
+install:
+  - mvn -B -U -f build-pom.xml dependency:go-offline test clean --quiet --fail-never -DskipTests=true
+
+script:
+  - mvn -B -U -f build-pom.xml verify --fail-at-end -Dsource.skip=true -Dmaven.javadoc.skip=true
+
 jdk:
+  - oraclejdk9
   - oraclejdk8
 
+env:
+  global:
+  - secure: "bWNSSMURwYC0oZWIMZRd7dy5+JdoyZ060d427TAqFRJmOkYtlR+dBbBggjeJmM0PEkQDzeBrWwln/Vq3lnRPv8czA7hSg/R33r3GzTyi1GZhjCYN2mPW8qp4qgqlloh78aaOODUNSJsOtQqPDJPmhLLfD6UCY0eq9zHhweIjYdw="
+  - secure: "s5V9d8MKl7ZHqCxuYLljLSD4sp9KLtYkk9hVxEPqCLAi4zA70WkX9h+GZI1gAOpcavomfrWcgSDT2ZReiuNpwx7OtczdS4zB+s6mo4F598iRs4bhSLiPT+Hzvx6BSwf1ZKZTYEhrUPGmKOp2T29AxMV7D0Q+P7n574ubvpUuZmA="
+  - secure: "T24JAd60zthkeLBmenvZn6+qI43uvfuLwVb70Ljhbc19XDYEZV4Zm/kaafsisP5+F6kV4GjFaT+NCq2sJlwvPSMMRvU1JJgmNVh8TmtswkC/PHKonkMkOsj2KmFP0RRSPdvQv2NrSguZUq8mg+2pvnPO0qoPg4VeIODPGtAxNb8="
+
+after_success:
+  - util/generate-latest-docs.sh
+  - util/publish-snapshot-on-commit.sh
+
+branches:
+  only:
+    - master
+    - /^release.*$/
+
 before_install:
-  - wget https://github.com/perwendel/spark/archive/9aa8c12671f030c9990b012a0e62921fbd6bc5af.zip
-  - unzip 9aa8c12671f030c9990b012a0e62921fbd6bc5af.zip
-  - cp -rT spark-9aa8c12671f030c9990b012a0e62921fbd6bc5af ./
-  - rm -r spark-9aa8c12671f030c9990b012a0e62921fbd6bc5af
-  - rm 9aa8c12671f030c9990b012a0e62921fbd6bc5af.zip
+  - wget https://github.com/google/auto/archive/c8617a7c10f02b33d5fc8a6ede24213bcdd7c55e.zip
+  - unzip c8617a7c10f02b33d5fc8a6ede24213bcdd7c55e.zip
+  - cp -rT auto-c8617a7c10f02b33d5fc8a6ede24213bcdd7c55e ./
+  - rm -r auto-c8617a7c10f02b33d5fc8a6ede24213bcdd7c55e
+  - rm c8617a7c10f02b33d5fc8a6ede24213bcdd7c55e.zip
