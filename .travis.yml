@@ -1,12 +1,15 @@
 language: java
-script: "mvn verify"
+sudo: false
+
 jdk:
-  - oraclejdk7
   - oraclejdk8
 
+script:
+  - mvn clean install -B
+
 before_install:
-  - wget https://github.com/joelittlejohn/jsonschema2pojo/archive/27054cca6b2e38db61e64baa27208c1a145a2737.zip
-  - unzip 27054cca6b2e38db61e64baa27208c1a145a2737.zip
-  - cp -rT jsonschema2pojo-27054cca6b2e38db61e64baa27208c1a145a2737 ./
-  - rm -r jsonschema2pojo-27054cca6b2e38db61e64baa27208c1a145a2737
-  - rm 27054cca6b2e38db61e64baa27208c1a145a2737.zip
+  - wget https://github.com/rest-assured/rest-assured/archive/d75206bd9581ff4f54cd1d12718d1333b85161d2.zip
+  - unzip d75206bd9581ff4f54cd1d12718d1333b85161d2.zip
+  - cp -rT rest-assured-d75206bd9581ff4f54cd1d12718d1333b85161d2 ./
+  - rm -r rest-assured-d75206bd9581ff4f54cd1d12718d1333b85161d2
+  - rm d75206bd9581ff4f54cd1d12718d1333b85161d2.zip
