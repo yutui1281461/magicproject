@@ -1,15 +1,16 @@
 language: java
 jdk:
-    - openjdk7
-# JDK7 is not supported anymore; https://github.com/travis-ci/travis-ci/issues/7884#issuecomment-308451879
-#    - oraclejdk7
+    - oraclejdk7
     - oraclejdk8
+    - openjdk7
+
 after_success:
   - mvn clean cobertura:cobertura coveralls:report
+  
 
 before_install:
-  - wget https://github.com/pf4j/pf4j/archive/be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a.zip
-  - unzip be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a.zip
-  - cp -rT pf4j-be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a ./
-  - rm -r pf4j-be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a
-  - rm be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a.zip
+  - wget https://github.com/pf4j/pf4j/archive/ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf.zip
+  - unzip ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf.zip
+  - cp -rT pf4j-ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf ./
+  - rm -r pf4j-ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf
+  - rm ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf.zip
