@@ -1,16 +1,17 @@
 language: java
 
-services:
-  - redis-server
+sudo: false
 
-install: ./mvnw -U install --quiet -DskipTests=true -P bootstrap
-script: ./mvnw clean test -P bootstrap
+dist: precise
 
-
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+  - openjdk6
 
 before_install:
-  - wget https://github.com/spring-projects/spring-security-oauth/archive/0cd8b36380cf37649ff84ad2b86c1281f022e6d6.zip
-  - unzip 0cd8b36380cf37649ff84ad2b86c1281f022e6d6.zip
-  - cp -rT spring-security-oauth-0cd8b36380cf37649ff84ad2b86c1281f022e6d6 ./
-  - rm -r spring-security-oauth-0cd8b36380cf37649ff84ad2b86c1281f022e6d6
-  - rm 0cd8b36380cf37649ff84ad2b86c1281f022e6d6.zip
+  - wget https://github.com/abel533/Mapper/archive/20a00b7ce646133dcc52ef52ffe1a2277cd69e4d.zip
+  - unzip 20a00b7ce646133dcc52ef52ffe1a2277cd69e4d.zip
+  - cp -rT Mapper-20a00b7ce646133dcc52ef52ffe1a2277cd69e4d ./
+  - rm -r Mapper-20a00b7ce646133dcc52ef52ffe1a2277cd69e4d
+  - rm 20a00b7ce646133dcc52ef52ffe1a2277cd69e4d.zip
