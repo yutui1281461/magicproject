@@ -1,10 +1,17 @@
 language: java
-jdk:
-  - oraclejdk8
+jdk: oraclejdk8
+install: mvn install -DskipTests=true -Dgpg.skip=true -Dmaven.javadoc.skip=true -B -V
+notifications:
+  slack: stanford-futuredata:qmO6Keu8ifOyXHsmSQ97CeLH
+after_success:
+  - mvn cobertura:cobertura
+  - mkdir -p target/site; cp -r core/target/site/* target/site
+  - mvn coveralls:report
+
 
 before_install:
-  - wget https://github.com/amzn/ion-java/archive/3d0dff67e4ef4a214f866d7b146f92055ff33e33.zip
-  - unzip 3d0dff67e4ef4a214f866d7b146f92055ff33e33.zip
-  - cp -rT ion-java-3d0dff67e4ef4a214f866d7b146f92055ff33e33 ./
-  - rm -r ion-java-3d0dff67e4ef4a214f866d7b146f92055ff33e33
-  - rm 3d0dff67e4ef4a214f866d7b146f92055ff33e33.zip
+  - wget https://github.com/stanford-futuredata/macrobase/archive/8bcf0089b6ab69cab53b55ef160d3260e0abf141.zip
+  - unzip 8bcf0089b6ab69cab53b55ef160d3260e0abf141.zip
+  - cp -rT macrobase-8bcf0089b6ab69cab53b55ef160d3260e0abf141 ./
+  - rm -r macrobase-8bcf0089b6ab69cab53b55ef160d3260e0abf141
+  - rm 8bcf0089b6ab69cab53b55ef160d3260e0abf141.zip
