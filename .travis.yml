@@ -5,11 +5,11 @@ jdk:
 services:
   - redis-server
 after_success:
-  - mvn cobertura:cobertura coveralls:report
+  - mvn cobertura:cobertura coveralls:cobertura
 
 before_install:
-  - wget https://github.com/gresrun/jesque/archive/56a7a8bed5b9c8cbb7fa608adf47abeeea858524.zip
-  - unzip 56a7a8bed5b9c8cbb7fa608adf47abeeea858524.zip
-  - cp -rT jesque-56a7a8bed5b9c8cbb7fa608adf47abeeea858524 ./
-  - rm -r jesque-56a7a8bed5b9c8cbb7fa608adf47abeeea858524
-  - rm 56a7a8bed5b9c8cbb7fa608adf47abeeea858524.zip
+  - wget https://github.com/gresrun/jesque/archive/535afeb8adf06f4dc4812d45da500b4afb94b26a.zip
+  - unzip 535afeb8adf06f4dc4812d45da500b4afb94b26a.zip
+  - cp -rT jesque-535afeb8adf06f4dc4812d45da500b4afb94b26a ./
+  - rm -r jesque-535afeb8adf06f4dc4812d45da500b4afb94b26a
+  - rm 535afeb8adf06f4dc4812d45da500b4afb94b26a.zip
