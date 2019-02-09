@@ -3,11 +3,11 @@ jdk:
 - oraclejdk8
 
 before_install:
-  - wget https://github.com/jtablesaw/tablesaw/archive/58f46ed870c0dbf4905083cae3bfae82206479bc.zip
-  - unzip 58f46ed870c0dbf4905083cae3bfae82206479bc.zip
-  - cp -rT tablesaw-58f46ed870c0dbf4905083cae3bfae82206479bc ./
-  - rm -r tablesaw-58f46ed870c0dbf4905083cae3bfae82206479bc
-  - rm 58f46ed870c0dbf4905083cae3bfae82206479bc.zip
+  - wget https://github.com/jtablesaw/tablesaw/archive/7df1e16b88a044f3a0550946158f11c6fd02bd77.zip
+  - unzip 7df1e16b88a044f3a0550946158f11c6fd02bd77.zip
+  - cp -rT tablesaw-7df1e16b88a044f3a0550946158f11c6fd02bd77 ./
+  - rm -r tablesaw-7df1e16b88a044f3a0550946158f11c6fd02bd77
+  - rm 7df1e16b88a044f3a0550946158f11c6fd02bd77.zip
   - sudo apt-get install jq
   - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
   - "export DISPLAY=:99.0"
@@ -15,4 +15,4 @@ before_install:
   - "sh -e /etc/init.d/xvfb start"
 install: mvn install -DskipTests -Dgpg.skip
 script: mvn -B verify
-after_success: java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter report --language Java --coverage-report aggregate/target/site/jacoco-aggregate/jacoco.xml
+after_success: java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter --language Java --coverageReport aggregate/target/site/jacoco-aggregate/jacoco.xml
