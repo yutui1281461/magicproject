@@ -1,20 +1,19 @@
-language: java
-sudo: false
-env:
-  global:
-  - SONATYPE_USERNAME=searchboxadmin
-  - secure: BBvuAZE4hahFMuOnxpyHtU3CETtXAj0KJ5vbN2WeiJXpnLt0Ct/IbwN2SFMc6iTEmJSzG6Zkk8zTrRajGNM+rPv74rAuYBXDmiBVwJVLX11kLr4Y+S+LNkik1wrUCZjEO6t1kcVq6syYv7rL9Tb+28enIDI+3qvTRNnrNTo86k8=
-  - secure: jE0ozTLvEvzCaul7opCQAoE8ttNiK+buxeOnsLrVGd1rC1QqfufQoj+pC5RBwgY1w/nN8fQRbi3EgxVZeZwZojQJH7lJIUkH/1iBYO2dqYF3coJQCGF2IQ7KyoRBsLJuO6vZgMR978itNfyBkhKupYzQwA+skrCkQynS6lqhGME=
-  - secure: kufSuaczK1N07iLL+9NmKAMHKYjtshbqPMbJLqZdAZOPgfKAaEat3dDq/EnryOCvIDZrlQeudn7G3fmIUY76hMdM2pc6vtrA15vSZ4o8RaG9zPPMhmQIQlnq4tdzvpNMlNVB3gFsXXSlBKy6D6jx7hkuffk0akOHp1Q++weP3fo=
+language:
+  - java
+  - node_js
+node_js:
+  - "0.10"
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 5 # give xvfb some time to start
+  - "npm install karma-cli karma-ng-scenario karma-jasmine karma-phantomjs-launcher --quiet --global"
+script:
+  - "mvn clean verify -Pkarma"
 
 before_install:
-- wget https://github.com/searchbox-io/Jest/archive/1a16cad15e067efbfa59c2d33819c207f13d1d6d.zip
-- unzip 1a16cad15e067efbfa59c2d33819c207f13d1d6d.zip
-- cp -rT Jest-1a16cad15e067efbfa59c2d33819c207f13d1d6d ./
-- rm -r Jest-1a16cad15e067efbfa59c2d33819c207f13d1d6d
-- rm 1a16cad15e067efbfa59c2d33819c207f13d1d6d.zip
-- if [ -z "$TRAVIS_SECURE_ENV_VARS" -o "$TRAVIS_SECURE_ENV_VARS" == "false" ]; then echo "Skipping decryption because secure environment variables are not present."; else openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in secring.gpg.enc -out local.secring.gpg -d; openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in pubring.gpg.enc -out local.pubring.gpg -d; fi;
-
-after_success:
-- mvn clean cobertura:cobertura coveralls:report
-- if [ -z "$TRAVIS_SECURE_ENV_VARS" -o "$TRAVIS_SECURE_ENV_VARS" == "false" ]; then echo "Skipping deployment because secure environment variables are not present."; else mvn clean deploy --settings settings.xml -DskipTests=true -B -Psign-artifacts; fi;
+  - wget https://github.com/scobal/seyren/archive/80325c71f140db94e70b365751c2bb02698d2801.zip
+  - unzip 80325c71f140db94e70b365751c2bb02698d2801.zip
+  - cp -rT seyren-80325c71f140db94e70b365751c2bb02698d2801 ./
+  - rm -r seyren-80325c71f140db94e70b365751c2bb02698d2801
+  - rm 80325c71f140db94e70b365751c2bb02698d2801.zip
