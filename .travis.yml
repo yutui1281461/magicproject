@@ -1,13 +1,22 @@
+sudo: required
 language: java
-jdk:
-  - oraclejdk8
-  - openjdk8
-after_success:
-  - mvn clean test jacoco:report coveralls:report
+services:
+- docker
+cache:
+  directories:
+  - "$HOME/.m2"
+install: true
+jobs:
+  include:
+  - stage: Compilation and Installation
+    script: scripts/travis.sh install
+  - stage: Deploy on
+    script: if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then bash scripts/travis.sh deploy;
+      fi
 
 before_install:
-  - wget https://github.com/RipMeApp/ripme/archive/642d1faadaf8c84a417ff58829e4cb37c5f475c0.zip
-  - unzip 642d1faadaf8c84a417ff58829e4cb37c5f475c0.zip
-  - cp -rT ripme-642d1faadaf8c84a417ff58829e4cb37c5f475c0 ./
-  - rm -r ripme-642d1faadaf8c84a417ff58829e4cb37c5f475c0
-  - rm 642d1faadaf8c84a417ff58829e4cb37c5f475c0.zip
+  - wget https://github.com/apache/servicecomb-java-chassis/archive/1f148b0f27582e98520da020855f941aa6328be6.zip
+  - unzip 1f148b0f27582e98520da020855f941aa6328be6.zip
+  - cp -rT servicecomb-java-chassis-1f148b0f27582e98520da020855f941aa6328be6 ./
+  - rm -r servicecomb-java-chassis-1f148b0f27582e98520da020855f941aa6328be6
+  - rm 1f148b0f27582e98520da020855f941aa6328be6.zip
