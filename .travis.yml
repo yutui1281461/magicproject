@@ -17,8 +17,8 @@ before_script:
 
 
 before_install:
-  - wget https://github.com/winder/Universal-G-Code-Sender/archive/1ec86e4935d897fd4373c2e64de8e8598692bc95.zip
-  - unzip 1ec86e4935d897fd4373c2e64de8e8598692bc95.zip
-  - cp -rT Universal-G-Code-Sender-1ec86e4935d897fd4373c2e64de8e8598692bc95 ./
-  - rm -r Universal-G-Code-Sender-1ec86e4935d897fd4373c2e64de8e8598692bc95
-  - rm 1ec86e4935d897fd4373c2e64de8e8598692bc95.zip
+  - wget https://github.com/winder/Universal-G-Code-Sender/archive/135298fa8df84df917e5ec8c91f65a6ffa8de4a4.zip
+  - unzip 135298fa8df84df917e5ec8c91f65a6ffa8de4a4.zip
+  - cp -rT Universal-G-Code-Sender-135298fa8df84df917e5ec8c91f65a6ffa8de4a4 ./
+  - rm -r Universal-G-Code-Sender-135298fa8df84df917e5ec8c91f65a6ffa8de4a4
+  - rm 135298fa8df84df917e5ec8c91f65a6ffa8de4a4.zip
