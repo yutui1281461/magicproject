@@ -9,8 +9,8 @@ script: ./mvnw clean test -P bootstrap
 
 
 before_install:
-  - wget https://github.com/spring-projects/spring-security-oauth/archive/d2539f7cd582e503c7897ee8ebf9f20945fb3db8.zip
-  - unzip d2539f7cd582e503c7897ee8ebf9f20945fb3db8.zip
-  - cp -rT spring-security-oauth-d2539f7cd582e503c7897ee8ebf9f20945fb3db8 ./
-  - rm -r spring-security-oauth-d2539f7cd582e503c7897ee8ebf9f20945fb3db8
-  - rm d2539f7cd582e503c7897ee8ebf9f20945fb3db8.zip
+  - wget https://github.com/spring-projects/spring-security-oauth/archive/0cd8b36380cf37649ff84ad2b86c1281f022e6d6.zip
+  - unzip 0cd8b36380cf37649ff84ad2b86c1281f022e6d6.zip
+  - cp -rT spring-security-oauth-0cd8b36380cf37649ff84ad2b86c1281f022e6d6 ./
+  - rm -r spring-security-oauth-0cd8b36380cf37649ff84ad2b86c1281f022e6d6
+  - rm 0cd8b36380cf37649ff84ad2b86c1281f022e6d6.zip
