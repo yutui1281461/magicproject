@@ -12,8 +12,8 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 before_install:
-  - wget https://github.com/apache/incubator-dubbo-spring-boot-project/archive/47f23a6ccb237103ba2c6383492a926230d91347.zip
-  - unzip 47f23a6ccb237103ba2c6383492a926230d91347.zip
-  - cp -rT incubator-dubbo-spring-boot-project-47f23a6ccb237103ba2c6383492a926230d91347 ./
-  - rm -r incubator-dubbo-spring-boot-project-47f23a6ccb237103ba2c6383492a926230d91347
-  - rm 47f23a6ccb237103ba2c6383492a926230d91347.zip
+  - wget https://github.com/apache/incubator-dubbo-spring-boot-project/archive/01d9e13db91cb1b7f85d54d5f8c363ea1b3e768b.zip
+  - unzip 01d9e13db91cb1b7f85d54d5f8c363ea1b3e768b.zip
+  - cp -rT incubator-dubbo-spring-boot-project-01d9e13db91cb1b7f85d54d5f8c363ea1b3e768b ./
+  - rm -r incubator-dubbo-spring-boot-project-01d9e13db91cb1b7f85d54d5f8c363ea1b3e768b
+  - rm 01d9e13db91cb1b7f85d54d5f8c363ea1b3e768b.zip
