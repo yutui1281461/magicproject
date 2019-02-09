@@ -44,8 +44,8 @@ cache:
   - $HOME/.m2
 
 before_install:
-  - wget https://github.com/ebean-orm/ebean/archive/567d46c02f33b7c6c9c7c091b6b51e5c1702b1c2.zip
-  - unzip 567d46c02f33b7c6c9c7c091b6b51e5c1702b1c2.zip
-  - cp -rT ebean-567d46c02f33b7c6c9c7c091b6b51e5c1702b1c2 ./
-  - rm -r ebean-567d46c02f33b7c6c9c7c091b6b51e5c1702b1c2
-  - rm 567d46c02f33b7c6c9c7c091b6b51e5c1702b1c2.zip
+  - wget https://github.com/ebean-orm/ebean/archive/0f75b6e40ab1e6a4da24ff6383f5195a0721b19e.zip
+  - unzip 0f75b6e40ab1e6a4da24ff6383f5195a0721b19e.zip
+  - cp -rT ebean-0f75b6e40ab1e6a4da24ff6383f5195a0721b19e ./
+  - rm -r ebean-0f75b6e40ab1e6a4da24ff6383f5195a0721b19e
+  - rm 0f75b6e40ab1e6a4da24ff6383f5195a0721b19e.zip
