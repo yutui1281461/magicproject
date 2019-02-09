@@ -3,11 +3,11 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - wget https://github.com/tcurdt/jdeb/archive/236c98e5e64a69a93bad5225d22472ed8911b593.zip
-  - unzip 236c98e5e64a69a93bad5225d22472ed8911b593.zip
-  - cp -rT jdeb-236c98e5e64a69a93bad5225d22472ed8911b593 ./
-  - rm -r jdeb-236c98e5e64a69a93bad5225d22472ed8911b593
-  - rm 236c98e5e64a69a93bad5225d22472ed8911b593.zip
+  - wget https://github.com/tcurdt/jdeb/archive/90efde37d876792d0b5ae94e43e924d029602322.zip
+  - unzip 90efde37d876792d0b5ae94e43e924d029602322.zip
+  - cp -rT jdeb-90efde37d876792d0b5ae94e43e924d029602322 ./
+  - rm -r jdeb-90efde37d876792d0b5ae94e43e924d029602322
+  - rm 90efde37d876792d0b5ae94e43e924d029602322.zip
   - sudo hostname "$(hostname | cut -c1-63)"
   - sed -e "s/^\\(127\\.0\\.0\\.1.*\\)/\\1 $(hostname | cut -c1-63)/" /etc/hosts | sudo tee /etc/hosts
   - cat /etc/hosts
