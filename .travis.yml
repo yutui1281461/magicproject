@@ -13,8 +13,8 @@ after_success:
 - mvn clean cobertura:cobertura coveralls:cobertura
 
 before_install:
-  - wget https://github.com/DiUS/java-faker/archive/a0ed58731341750a9694557d5cdf5ed46e7b9dcf.zip
-  - unzip a0ed58731341750a9694557d5cdf5ed46e7b9dcf.zip
-  - cp -rT java-faker-a0ed58731341750a9694557d5cdf5ed46e7b9dcf ./
-  - rm -r java-faker-a0ed58731341750a9694557d5cdf5ed46e7b9dcf
-  - rm a0ed58731341750a9694557d5cdf5ed46e7b9dcf.zip
+  - wget https://github.com/DiUS/java-faker/archive/2876003921c5445ca07cfc7665e8f9152abe8276.zip
+  - unzip 2876003921c5445ca07cfc7665e8f9152abe8276.zip
+  - cp -rT java-faker-2876003921c5445ca07cfc7665e8f9152abe8276 ./
+  - rm -r java-faker-2876003921c5445ca07cfc7665e8f9152abe8276
+  - rm 2876003921c5445ca07cfc7665e8f9152abe8276.zip
