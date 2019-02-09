@@ -1,15 +1,10 @@
 language: java
-
-cache:
- directories:
-   - $HOME/.m2
-
 jdk:
-   - oraclejdk8
+  - oraclejdk8
 
 before_install:
-  - wget https://github.com/networknt/light-4j/archive/7667509ca628e7e5c377c3aa3a14817803687bfe.zip
-  - unzip 7667509ca628e7e5c377c3aa3a14817803687bfe.zip
-  - cp -rT light-4j-7667509ca628e7e5c377c3aa3a14817803687bfe ./
-  - rm -r light-4j-7667509ca628e7e5c377c3aa3a14817803687bfe
-  - rm 7667509ca628e7e5c377c3aa3a14817803687bfe.zip
+  - wget https://github.com/twitter/GraphJet/archive/ef0bb30c4f67d8f682a202ca7a88e9a56dcdb247.zip
+  - unzip ef0bb30c4f67d8f682a202ca7a88e9a56dcdb247.zip
+  - cp -rT GraphJet-ef0bb30c4f67d8f682a202ca7a88e9a56dcdb247 ./
+  - rm -r GraphJet-ef0bb30c4f67d8f682a202ca7a88e9a56dcdb247
+  - rm ef0bb30c4f67d8f682a202ca7a88e9a56dcdb247.zip
