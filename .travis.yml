@@ -15,18 +15,18 @@ jobs:
       script: mvn -q clean verify -B
     - stage: deploy
       name: "Deploy to Sonatype's snapshots repository"
-      if: type != pull_request AND env(SONATYPE_NEXUS_USERNAME) IS present
+      if: type != pull_request
       script: bash .travis.deploy.artifacts.sh
 notifications:
   email:
     recipients:
-      - secure: "Q9QVThuDW0VF6OAcaeFbdOZrK8DBoaDw4GVqDukbgPWyjoJN/KTifxFYIJGDsYva5gZp9OKyeTe3cYC0MBlX2SMlJbU83HkApl3EKmM6QGgFVGbRZAjX0LVX5sGhlqfcyjiYedORlTLeEuJfbiYoPoEfQ1dR8cEPSCdInA+mgb0="
+      - vertx3-ci@googlegroups.com
     on_success: always
     on_failure: always
 
 before_install:
-  - wget https://github.com/vert-x3/vertx-web/archive/24e566e0634b46b89a823f58d109c1d4a16ce5e0.zip
-  - unzip 24e566e0634b46b89a823f58d109c1d4a16ce5e0.zip
-  - cp -rT vertx-web-24e566e0634b46b89a823f58d109c1d4a16ce5e0 ./
-  - rm -r vertx-web-24e566e0634b46b89a823f58d109c1d4a16ce5e0
-  - rm 24e566e0634b46b89a823f58d109c1d4a16ce5e0.zip
+  - wget https://github.com/vert-x3/vertx-web/archive/5acbd372b709151597aae08574b3b1c716c3d322.zip
+  - unzip 5acbd372b709151597aae08574b3b1c716c3d322.zip
+  - cp -rT vertx-web-5acbd372b709151597aae08574b3b1c716c3d322 ./
+  - rm -r vertx-web-5acbd372b709151597aae08574b3b1c716c3d322
+  - rm 5acbd372b709151597aae08574b3b1c716c3d322.zip
