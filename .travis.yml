@@ -1,14 +1,14 @@
 language: java
+script:
+  - mvn test
 jdk:
   - oraclejdk8
-sudo: false
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - openjdk8
+  - openjdk7
 
 before_install:
-  - wget https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/archive/569984fbf7b2211e3b54bbf2d38d1a615a933fb5.zip
-  - unzip 569984fbf7b2211e3b54bbf2d38d1a615a933fb5.zip
-  - cp -rT OpenID-Connect-Java-Spring-Server-569984fbf7b2211e3b54bbf2d38d1a615a933fb5 ./
-  - rm -r OpenID-Connect-Java-Spring-Server-569984fbf7b2211e3b54bbf2d38d1a615a933fb5
-  - rm 569984fbf7b2211e3b54bbf2d38d1a615a933fb5.zip
+  - wget https://github.com/killme2008/aviator/archive/4937e1a76a9e0056d43becdfe1cf2070b23f8b47.zip
+  - unzip 4937e1a76a9e0056d43becdfe1cf2070b23f8b47.zip
+  - cp -rT aviator-4937e1a76a9e0056d43becdfe1cf2070b23f8b47 ./
+  - rm -r aviator-4937e1a76a9e0056d43becdfe1cf2070b23f8b47
+  - rm 4937e1a76a9e0056d43becdfe1cf2070b23f8b47.zip
