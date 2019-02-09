@@ -3,11 +3,11 @@ jdk:
 - oraclejdk8
 
 before_install:
-  - wget https://github.com/jtablesaw/tablesaw/archive/7df1e16b88a044f3a0550946158f11c6fd02bd77.zip
-  - unzip 7df1e16b88a044f3a0550946158f11c6fd02bd77.zip
-  - cp -rT tablesaw-7df1e16b88a044f3a0550946158f11c6fd02bd77 ./
-  - rm -r tablesaw-7df1e16b88a044f3a0550946158f11c6fd02bd77
-  - rm 7df1e16b88a044f3a0550946158f11c6fd02bd77.zip
+  - wget https://github.com/jtablesaw/tablesaw/archive/4b59381dd345f4cb648f385f6bfca03c8088871c.zip
+  - unzip 4b59381dd345f4cb648f385f6bfca03c8088871c.zip
+  - cp -rT tablesaw-4b59381dd345f4cb648f385f6bfca03c8088871c ./
+  - rm -r tablesaw-4b59381dd345f4cb648f385f6bfca03c8088871c
+  - rm 4b59381dd345f4cb648f385f6bfca03c8088871c.zip
   - sudo apt-get install jq
   - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
   - "export DISPLAY=:99.0"
