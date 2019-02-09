@@ -20,8 +20,8 @@ script:
   - mvn clean install -B -V
 
 before_install:
-  - wget https://github.com/st-js/st-js/archive/c02e7ad381eca3a1bf0fc18e87dfa14767105667.zip
-  - unzip c02e7ad381eca3a1bf0fc18e87dfa14767105667.zip
-  - cp -rT st-js-c02e7ad381eca3a1bf0fc18e87dfa14767105667 ./
-  - rm -r st-js-c02e7ad381eca3a1bf0fc18e87dfa14767105667
-  - rm c02e7ad381eca3a1bf0fc18e87dfa14767105667.zip
+  - wget https://github.com/st-js/st-js/archive/d84037a7dda156e5b2a781e763be7034a1be9e6b.zip
+  - unzip d84037a7dda156e5b2a781e763be7034a1be9e6b.zip
+  - cp -rT st-js-d84037a7dda156e5b2a781e763be7034a1be9e6b ./
+  - rm -r st-js-d84037a7dda156e5b2a781e763be7034a1be9e6b
+  - rm d84037a7dda156e5b2a781e763be7034a1be9e6b.zip
