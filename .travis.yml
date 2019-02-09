@@ -7,8 +7,8 @@ jdk:
   - openjdk7
 
 before_install:
-  - wget https://github.com/killme2008/aviator/archive/4937e1a76a9e0056d43becdfe1cf2070b23f8b47.zip
-  - unzip 4937e1a76a9e0056d43becdfe1cf2070b23f8b47.zip
-  - cp -rT aviator-4937e1a76a9e0056d43becdfe1cf2070b23f8b47 ./
-  - rm -r aviator-4937e1a76a9e0056d43becdfe1cf2070b23f8b47
-  - rm 4937e1a76a9e0056d43becdfe1cf2070b23f8b47.zip
+  - wget https://github.com/killme2008/aviator/archive/02618e0a7554589ff4f70d6ae7d0dc5540e42704.zip
+  - unzip 02618e0a7554589ff4f70d6ae7d0dc5540e42704.zip
+  - cp -rT aviator-02618e0a7554589ff4f70d6ae7d0dc5540e42704 ./
+  - rm -r aviator-02618e0a7554589ff4f70d6ae7d0dc5540e42704
+  - rm 02618e0a7554589ff4f70d6ae7d0dc5540e42704.zip
