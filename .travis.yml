@@ -25,8 +25,8 @@ notifications:
     on_failure: always
 
 before_install:
-  - wget https://github.com/vert-x3/vertx-web/archive/5acbd372b709151597aae08574b3b1c716c3d322.zip
-  - unzip 5acbd372b709151597aae08574b3b1c716c3d322.zip
-  - cp -rT vertx-web-5acbd372b709151597aae08574b3b1c716c3d322 ./
-  - rm -r vertx-web-5acbd372b709151597aae08574b3b1c716c3d322
-  - rm 5acbd372b709151597aae08574b3b1c716c3d322.zip
+  - wget https://github.com/vert-x3/vertx-web/archive/b565bfacaea83d6bb96678ab77767e616d47b53e.zip
+  - unzip b565bfacaea83d6bb96678ab77767e616d47b53e.zip
+  - cp -rT vertx-web-b565bfacaea83d6bb96678ab77767e616d47b53e ./
+  - rm -r vertx-web-b565bfacaea83d6bb96678ab77767e616d47b53e
+  - rm b565bfacaea83d6bb96678ab77767e616d47b53e.zip
