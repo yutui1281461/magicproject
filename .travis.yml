@@ -1,39 +1,24 @@
-sudo: required
 language: java
-jdk:
-  - oraclejdk8
-
-git:
-  depth: 3
-
-addons:
-  postgresql: "9.4"
-
-services:
-  - postgresql
-
-before_script:
-  - ./.travis/setup_database
-
-env:
-  - EBEAN_DB=h2
-  - EBEAN_DB=pg
-
-install: true
-
-script:
-  - mvn clean test
-
-after_failure:
-  - ./.travis/print_surefire_reports
 
 cache:
   directories:
   - $HOME/.m2
 
+jdk:
+  - oraclejdk8
+
+after_success:
+  - codecov
+  - mvn package -pl ugs-core assembly:assembly
+  - mvn install
+
+before_script:
+  - pip install --user codecov
+
+
 before_install:
-  - wget https://github.com/ebean-orm/ebean/archive/7805f52aece846596433a4ea04f5361e6f7e0212.zip
-  - unzip 7805f52aece846596433a4ea04f5361e6f7e0212.zip
-  - cp -rT ebean-7805f52aece846596433a4ea04f5361e6f7e0212 ./
-  - rm -r ebean-7805f52aece846596433a4ea04f5361e6f7e0212
-  - rm 7805f52aece846596433a4ea04f5361e6f7e0212.zip
+  - wget https://github.com/winder/Universal-G-Code-Sender/archive/1ec86e4935d897fd4373c2e64de8e8598692bc95.zip
+  - unzip 1ec86e4935d897fd4373c2e64de8e8598692bc95.zip
+  - cp -rT Universal-G-Code-Sender-1ec86e4935d897fd4373c2e64de8e8598692bc95 ./
+  - rm -r Universal-G-Code-Sender-1ec86e4935d897fd4373c2e64de8e8598692bc95
+  - rm 1ec86e4935d897fd4373c2e64de8e8598692bc95.zip
