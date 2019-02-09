@@ -1,4 +1,3 @@
-dist: trusty
 sudo: required
 language: java
 jdk:
@@ -8,28 +7,17 @@ git:
   depth: 3
 
 addons:
-  postgresql: "9.6"
-#  apt:
-#    packages:
-#    - mysql-server-5.7
-#    - mysql-client-core-5.7
-#    - mysql-client-5.7
+  postgresql: "9.4"
 
 services:
-  - docker
   - postgresql
-  - mysql
 
 before_script:
   - ./.travis/setup_database
-  - mysql -u root -e 'CREATE DATABASE test_ebean;'
-  - mysql -u root -e "CREATE USER 'test_ebean'@'localhost' IDENTIFIED BY 'test';"
-  - mysql -u root -e "GRANT ALL ON test_ebean.* TO 'test_ebean'@'localhost';"
 
 env:
   - EBEAN_DB=h2
   - EBEAN_DB=pg
-#  - EBEAN_DB=mysql
 
 install: true
 
@@ -44,8 +32,8 @@ cache:
   - $HOME/.m2
 
 before_install:
-  - wget https://github.com/ebean-orm/ebean/archive/44070d802ee130a9e98d088962f4e2cc939e2b6b.zip
-  - unzip 44070d802ee130a9e98d088962f4e2cc939e2b6b.zip
-  - cp -rT ebean-44070d802ee130a9e98d088962f4e2cc939e2b6b ./
-  - rm -r ebean-44070d802ee130a9e98d088962f4e2cc939e2b6b
-  - rm 44070d802ee130a9e98d088962f4e2cc939e2b6b.zip
+  - wget https://github.com/ebean-orm/ebean/archive/1c7dd7f28c0058aa25a333c0599e13ea43e64c5c.zip
+  - unzip 1c7dd7f28c0058aa25a333c0599e13ea43e64c5c.zip
+  - cp -rT ebean-1c7dd7f28c0058aa25a333c0599e13ea43e64c5c ./
+  - rm -r ebean-1c7dd7f28c0058aa25a333c0599e13ea43e64c5c
+  - rm 1c7dd7f28c0058aa25a333c0599e13ea43e64c5c.zip
