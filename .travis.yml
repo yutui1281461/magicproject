@@ -1,13 +1,58 @@
 language: java
-jdk: oraclejdk8
-notifications:
-  slack: stanford-futuredata:qmO6Keu8ifOyXHsmSQ97CeLH
-after_success:
-  - mvn clean cobertura:cobertura coveralls:report
+cache:
+  directories:
+  - $HOME/.m2/repository
 
+env:
+  - MAVEN_CLI: '"clean install -pl debezium-connector-mysql -am -Passembly"'
+  - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly -Dversion.postgres.server=9.6-devel"'
+  - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly,postgres-10"'
+  - MAVEN_CLI: '"clean install -pl debezium-connector-mongodb -am -Passembly"'
+  - MAVEN_CLI: '"clean install -pl debezium-connector-mysql -am -Passembly,parser-antlr"'
+  - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly,wal2json-decoder -Dversion.postgres.server=9.6-devel"'
+  - MAVEN_CLI: '"clean install -pl debezium-connector-mongodb -am -Passembly -Dversion.mongo.server=3.2.19"'
+
+sudo: required
+
+jdk:
+  - oraclejdk8
+
+services:
+  - docker
+
+# First stop MySQL and PostgreSQL that run by default (see DBZ-163). Then check Docker status. Finally,
+# install Maven 3.3.9, since the Jolokia Maven plugin requires 3.2.1 or later but Travis current runs 3.1.x
 before_install:
-  - wget https://github.com/stanford-futuredata/macrobase/archive/bd2380ed378591aa5b9c96b8918055eb2165ed9d.zip
-  - unzip bd2380ed378591aa5b9c96b8918055eb2165ed9d.zip
-  - cp -rT macrobase-bd2380ed378591aa5b9c96b8918055eb2165ed9d ./
-  - rm -r macrobase-bd2380ed378591aa5b9c96b8918055eb2165ed9d
-  - rm bd2380ed378591aa5b9c96b8918055eb2165ed9d.zip
+  - wget https://github.com/debezium/debezium/archive/85d01535b98d10d9016f6e80c17055ddc4166101.zip
+  - unzip 85d01535b98d10d9016f6e80c17055ddc4166101.zip
+  - cp -rT debezium-85d01535b98d10d9016f6e80c17055ddc4166101 ./
+  - rm -r debezium-85d01535b98d10d9016f6e80c17055ddc4166101
+  - rm 85d01535b98d10d9016f6e80c17055ddc4166101.zip
+  - sudo service mysql-5.6 stop || sudo service mysql stop
+  - sudo /etc/init.d/postgresql stop
+  - docker -v
+  - docker ps -a
+  - wget https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
+  - unzip -qq apache-maven-3.3.9-bin.zip
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$M2_HOME/bin:$PATH
+  - mvn -version
+
+# By default Travis will install dependencies before it runs a build, and with Maven projects that
+# means running an install build without tests. We don't need to do this, and it actually causes problems.
+# So skip it...
+install: true
+
+after_install:
+  - docker ps -a
+
+script:
+  - "mvn $MAVEN_CLI"
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/44c51b6da8c2bec32645
+    on_success: always  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: never     # options: [always|never|change] default: always
