@@ -1,10 +1,13 @@
 language: java
 jdk:
   - oraclejdk8
+  - openjdk8
+after_success:
+  - mvn clean test jacoco:report coveralls:report
 
 before_install:
-  - wget https://github.com/twitter/GraphJet/archive/152063e7fa548c4279c13e760573e6409439b0dd.zip
-  - unzip 152063e7fa548c4279c13e760573e6409439b0dd.zip
-  - cp -rT GraphJet-152063e7fa548c4279c13e760573e6409439b0dd ./
-  - rm -r GraphJet-152063e7fa548c4279c13e760573e6409439b0dd
-  - rm 152063e7fa548c4279c13e760573e6409439b0dd.zip
+  - wget https://github.com/RipMeApp/ripme/archive/dc40f29d358cbfbb9be59946280273c87ad9a577.zip
+  - unzip dc40f29d358cbfbb9be59946280273c87ad9a577.zip
+  - cp -rT ripme-dc40f29d358cbfbb9be59946280273c87ad9a577 ./
+  - rm -r ripme-dc40f29d358cbfbb9be59946280273c87ad9a577
+  - rm dc40f29d358cbfbb9be59946280273c87ad9a577.zip
