@@ -6,11 +6,11 @@ jdk:
 # Codacy coverage reporter README at https://github.com/codacy/codacy-coverage-reporter documents a new method for fetching latest binary
 # However, we had difficulty using it: https://github.com/codacy/codacy-coverage-reporter/issues/75#issuecomment-409585275
 before_install:
-  - wget https://github.com/jtablesaw/tablesaw/archive/682898a70c10835d8d14d9acd79512ca618363ea.zip
-  - unzip 682898a70c10835d8d14d9acd79512ca618363ea.zip
-  - cp -rT tablesaw-682898a70c10835d8d14d9acd79512ca618363ea ./
-  - rm -r tablesaw-682898a70c10835d8d14d9acd79512ca618363ea
-  - rm 682898a70c10835d8d14d9acd79512ca618363ea.zip
+  - wget https://github.com/jtablesaw/tablesaw/archive/6e5fd73e397c43b38f5577958cdd5c1cd507c03d.zip
+  - unzip 6e5fd73e397c43b38f5577958cdd5c1cd507c03d.zip
+  - cp -rT tablesaw-6e5fd73e397c43b38f5577958cdd5c1cd507c03d ./
+  - rm -r tablesaw-6e5fd73e397c43b38f5577958cdd5c1cd507c03d
+  - rm 6e5fd73e397c43b38f5577958cdd5c1cd507c03d.zip
   - sudo apt-get install jq
   - wget -O ~/codacy-coverage-reporter-assembly-latest.jar https://oss.sonatype.org/service/local/repositories/releases/content/com/codacy/codacy-coverage-reporter/4.0.1/codacy-coverage-reporter-4.0.1-assembly.jar
   - "export DISPLAY=:99.0"
