@@ -6,8 +6,8 @@ after_success:
   - mvn clean test jacoco:report coveralls:report
 
 before_install:
-  - wget https://github.com/RipMeApp/ripme/archive/73f8a050a35686aebbd43cbd57b511e0f124d4b4.zip
-  - unzip 73f8a050a35686aebbd43cbd57b511e0f124d4b4.zip
-  - cp -rT ripme-73f8a050a35686aebbd43cbd57b511e0f124d4b4 ./
-  - rm -r ripme-73f8a050a35686aebbd43cbd57b511e0f124d4b4
-  - rm 73f8a050a35686aebbd43cbd57b511e0f124d4b4.zip
+  - wget https://github.com/RipMeApp/ripme/archive/642d1faadaf8c84a417ff58829e4cb37c5f475c0.zip
+  - unzip 642d1faadaf8c84a417ff58829e4cb37c5f475c0.zip
+  - cp -rT ripme-642d1faadaf8c84a417ff58829e4cb37c5f475c0 ./
+  - rm -r ripme-642d1faadaf8c84a417ff58829e4cb37c5f475c0
+  - rm 642d1faadaf8c84a417ff58829e4cb37c5f475c0.zip
