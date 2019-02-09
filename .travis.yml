@@ -6,16 +6,14 @@ jdk:
  - oraclejdk8
 # - openjdk8 does not appear to be an option as of 04/29/16
 
-group: deprecated-2017Q4  # Use the previous image version before the update(12/12/17) to avoid build issues on pull request tests.
-
 notifications:
   email:
     recipients:
       - ryan.izard@bigswitch.com
 
 before_install:
-  - wget https://github.com/floodlight/floodlight/archive/9201ab4a36c993d47e50eb3008a56f9eaaf6259d.zip
-  - unzip 9201ab4a36c993d47e50eb3008a56f9eaaf6259d.zip
-  - cp -rT floodlight-9201ab4a36c993d47e50eb3008a56f9eaaf6259d ./
-  - rm -r floodlight-9201ab4a36c993d47e50eb3008a56f9eaaf6259d
-  - rm 9201ab4a36c993d47e50eb3008a56f9eaaf6259d.zip
+  - wget https://github.com/floodlight/floodlight/archive/981f96af6a8890c50ac606725b3b7a7ae1f0eac9.zip
+  - unzip 981f96af6a8890c50ac606725b3b7a7ae1f0eac9.zip
+  - cp -rT floodlight-981f96af6a8890c50ac606725b3b7a7ae1f0eac9 ./
+  - rm -r floodlight-981f96af6a8890c50ac606725b3b7a7ae1f0eac9
+  - rm 981f96af6a8890c50ac606725b3b7a7ae1f0eac9.zip
