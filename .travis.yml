@@ -22,8 +22,8 @@ after_success:
   - mvn clean test -DrepoToken=${REPO_TOKEN} jacoco:report coveralls:jacoco
 
 before_install:
-  - wget https://github.com/redpen-cc/redpen/archive/52a1a78fd5cfac521109f33bb51b708613468c13.zip
-  - unzip 52a1a78fd5cfac521109f33bb51b708613468c13.zip
-  - cp -rT redpen-52a1a78fd5cfac521109f33bb51b708613468c13 ./
-  - rm -r redpen-52a1a78fd5cfac521109f33bb51b708613468c13
-  - rm 52a1a78fd5cfac521109f33bb51b708613468c13.zip
+  - wget https://github.com/redpen-cc/redpen/archive/ae51a006f9dcbb8730e59470d566e8b51431091b.zip
+  - unzip ae51a006f9dcbb8730e59470d566e8b51431091b.zip
+  - cp -rT redpen-ae51a006f9dcbb8730e59470d566e8b51431091b ./
+  - rm -r redpen-ae51a006f9dcbb8730e59470d566e8b51431091b
+  - rm ae51a006f9dcbb8730e59470d566e8b51431091b.zip
