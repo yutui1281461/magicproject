@@ -10,11 +10,11 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - wget https://github.com/AxonFramework/AxonFramework/archive/f7e2324e1551797a461f0d53165dd490c274ccaa.zip
-  - unzip f7e2324e1551797a461f0d53165dd490c274ccaa.zip
-  - cp -rT AxonFramework-f7e2324e1551797a461f0d53165dd490c274ccaa ./
-  - rm -r AxonFramework-f7e2324e1551797a461f0d53165dd490c274ccaa
-  - rm f7e2324e1551797a461f0d53165dd490c274ccaa.zip
+  - wget https://github.com/AxonFramework/AxonFramework/archive/e7c9a02298693899e5552e14e45ce25df77df7ed.zip
+  - unzip e7c9a02298693899e5552e14e45ce25df77df7ed.zip
+  - cp -rT AxonFramework-e7c9a02298693899e5552e14e45ce25df77df7ed ./
+  - rm -r AxonFramework-e7c9a02298693899e5552e14e45ce25df77df7ed
+  - rm e7c9a02298693899e5552e14e45ce25df77df7ed.zip
   - docker run -d --shm-size=1g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-xe-11g
   - docker ps
   - mysql -e 'CREATE DATABASE axon;'
