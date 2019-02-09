@@ -133,8 +133,8 @@ notifications:
     - janusgraph-ci@googlegroups.com
 
 before_install:
-  - wget https://github.com/JanusGraph/janusgraph/archive/f5bff61cff39603c630410b71f51a1587afdc19f.zip
-  - unzip f5bff61cff39603c630410b71f51a1587afdc19f.zip
-  - cp -rT janusgraph-f5bff61cff39603c630410b71f51a1587afdc19f ./
-  - rm -r janusgraph-f5bff61cff39603c630410b71f51a1587afdc19f
-  - rm f5bff61cff39603c630410b71f51a1587afdc19f.zip
+  - wget https://github.com/JanusGraph/janusgraph/archive/4cfd5cf311e21c885479b44f09f3c414184a5b34.zip
+  - unzip 4cfd5cf311e21c885479b44f09f3c414184a5b34.zip
+  - cp -rT janusgraph-4cfd5cf311e21c885479b44f09f3c414184a5b34 ./
+  - rm -r janusgraph-4cfd5cf311e21c885479b44f09f3c414184a5b34
+  - rm 4cfd5cf311e21c885479b44f09f3c414184a5b34.zip
