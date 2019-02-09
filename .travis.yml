@@ -7,8 +7,8 @@ jdk:
   - oraclejdk8
 
 before_install:
-  - wget https://github.com/socketio/socket.io-client-java/archive/11ca94c4011d78ad401fdfd250f616dc45a22b69.zip
-  - unzip 11ca94c4011d78ad401fdfd250f616dc45a22b69.zip
-  - cp -rT socket.io-client-java-11ca94c4011d78ad401fdfd250f616dc45a22b69 ./
-  - rm -r socket.io-client-java-11ca94c4011d78ad401fdfd250f616dc45a22b69
-  - rm 11ca94c4011d78ad401fdfd250f616dc45a22b69.zip
+  - wget https://github.com/socketio/socket.io-client-java/archive/c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37.zip
+  - unzip c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37.zip
+  - cp -rT socket.io-client-java-c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37 ./
+  - rm -r socket.io-client-java-c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37
+  - rm c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37.zip
