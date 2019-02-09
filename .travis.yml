@@ -7,8 +7,8 @@ jdk:
   - oraclejdk9
 
 before_install:
-  - wget https://github.com/lukas-krecan/JsonUnit/archive/9128537786fae0798083f07e29c907e79bb6bdc0.zip
-  - unzip 9128537786fae0798083f07e29c907e79bb6bdc0.zip
-  - cp -rT JsonUnit-9128537786fae0798083f07e29c907e79bb6bdc0 ./
-  - rm -r JsonUnit-9128537786fae0798083f07e29c907e79bb6bdc0
-  - rm 9128537786fae0798083f07e29c907e79bb6bdc0.zip
+  - wget https://github.com/lukas-krecan/JsonUnit/archive/2f7fb3f8172903307f5fe46e86ec8378fb362a8a.zip
+  - unzip 2f7fb3f8172903307f5fe46e86ec8378fb362a8a.zip
+  - cp -rT JsonUnit-2f7fb3f8172903307f5fe46e86ec8378fb362a8a ./
+  - rm -r JsonUnit-2f7fb3f8172903307f5fe46e86ec8378fb362a8a
+  - rm 2f7fb3f8172903307f5fe46e86ec8378fb362a8a.zip
