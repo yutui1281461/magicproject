@@ -1,14 +1,15 @@
 language: java
 jdk:
   - openjdk7
+  - oraclejdk7
   - oraclejdk8
   
 after_success:
   - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/JSQLParser/JSqlParser/archive/7ea1e376bc4d2447aee66f7096e0e8efe2746964.zip
-  - unzip 7ea1e376bc4d2447aee66f7096e0e8efe2746964.zip
-  - cp -rT JSqlParser-7ea1e376bc4d2447aee66f7096e0e8efe2746964 ./
-  - rm -r JSqlParser-7ea1e376bc4d2447aee66f7096e0e8efe2746964
-  - rm 7ea1e376bc4d2447aee66f7096e0e8efe2746964.zip
+  - wget https://github.com/JSQLParser/JSqlParser/archive/e956035a20c0ba8e1f076aede8aecf959d52155d.zip
+  - unzip e956035a20c0ba8e1f076aede8aecf959d52155d.zip
+  - cp -rT JSqlParser-e956035a20c0ba8e1f076aede8aecf959d52155d ./
+  - rm -r JSqlParser-e956035a20c0ba8e1f076aede8aecf959d52155d
+  - rm e956035a20c0ba8e1f076aede8aecf959d52155d.zip
