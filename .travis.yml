@@ -3,12 +3,11 @@ jdk:
     - oraclejdk8
     - openjdk7
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -t 89f70bf5-4d6b-4759-8da0-dfab7881fd3e
+script: mvn clean package
 
 before_install:
-  - wget https://github.com/apache/incubator-dubbo-spring-boot-project/archive/f35f6832e6b9751111e02c0246bc13a30ba8659b.zip
-  - unzip f35f6832e6b9751111e02c0246bc13a30ba8659b.zip
-  - cp -rT incubator-dubbo-spring-boot-project-f35f6832e6b9751111e02c0246bc13a30ba8659b ./
-  - rm -r incubator-dubbo-spring-boot-project-f35f6832e6b9751111e02c0246bc13a30ba8659b
-  - rm f35f6832e6b9751111e02c0246bc13a30ba8659b.zip
+  - wget https://github.com/apache/incubator-dubbo-spring-boot-project/archive/00ca3dbb3e4a2aaf4bc9537a8202e39a61612890.zip
+  - unzip 00ca3dbb3e4a2aaf4bc9537a8202e39a61612890.zip
+  - cp -rT incubator-dubbo-spring-boot-project-00ca3dbb3e4a2aaf4bc9537a8202e39a61612890 ./
+  - rm -r incubator-dubbo-spring-boot-project-00ca3dbb3e4a2aaf4bc9537a8202e39a61612890
+  - rm 00ca3dbb3e4a2aaf4bc9537a8202e39a61612890.zip
