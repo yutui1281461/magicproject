@@ -7,8 +7,8 @@ after_success:
   - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/JSQLParser/JSqlParser/archive/3f27f760b5ef0d93d58d37193781c90b77f5c719.zip
-  - unzip 3f27f760b5ef0d93d58d37193781c90b77f5c719.zip
-  - cp -rT JSqlParser-3f27f760b5ef0d93d58d37193781c90b77f5c719 ./
-  - rm -r JSqlParser-3f27f760b5ef0d93d58d37193781c90b77f5c719
-  - rm 3f27f760b5ef0d93d58d37193781c90b77f5c719.zip
+  - wget https://github.com/JSQLParser/JSqlParser/archive/29e29f929c4f5710a3197c194ff0e8b221642d51.zip
+  - unzip 29e29f929c4f5710a3197c194ff0e8b221642d51.zip
+  - cp -rT JSqlParser-29e29f929c4f5710a3197c194ff0e8b221642d51 ./
+  - rm -r JSqlParser-29e29f929c4f5710a3197c194ff0e8b221642d51
+  - rm 29e29f929c4f5710a3197c194ff0e8b221642d51.zip
