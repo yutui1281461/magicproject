@@ -1,11 +1,52 @@
 language: java
-jdk:
-    - oraclejdk8
-sudo: true
+
+sudo: false
+
+dist: trusty
+
+group: edge
+
+env:
+  - MAVEN_SKIP_RC=true
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.m2/wrapper'
+
+matrix:
+  include:
+    - jdk: oraclejdk8
+# Java 9 (openjdk-9.0.1 fails with java.security.InvalidAlgorithmParameterException: the trustAnchors parameter must be non-empty)
+    - jdk: oraclejdk9
+      env: JDK_RELEASE='Oracle JDK 9'
+# Java 10
+    - env: JDK_RELEASE='Oracle JDK 10'
+      install: . ./src/test/bash/install-jdk.sh -F 10 -L BCL
+# Java 11
+    - env: JDK_RELEASE='Oracle JDK 11'
+      install: . ./src/test/bash/install-jdk.sh -F 11 -L BCL
+  allow_failures:
+    - env: JDK_RELEASE='Oracle JDK 11'
 
 before_install:
-  - wget https://github.com/flaxsearch/luwak/archive/01a3d0c8d3ae5c29ce9e6fb0b793627e892bdd25.zip
-  - unzip 01a3d0c8d3ae5c29ce9e6fb0b793627e892bdd25.zip
-  - cp -rT luwak-01a3d0c8d3ae5c29ce9e6fb0b793627e892bdd25 ./
-  - rm -r luwak-01a3d0c8d3ae5c29ce9e6fb0b793627e892bdd25
-  - rm 01a3d0c8d3ae5c29ce9e6fb0b793627e892bdd25.zip
+  - wget https://github.com/mp911de/logstash-gelf/archive/a8833724e4209abd2144690ffc90a2fb7ad470f6.zip
+  - unzip a8833724e4209abd2144690ffc90a2fb7ad470f6.zip
+  - cp -rT logstash-gelf-a8833724e4209abd2144690ffc90a2fb7ad470f6 ./
+  - rm -r logstash-gelf-a8833724e4209abd2144690ffc90a2fb7ad470f6
+  - rm a8833724e4209abd2144690ffc90a2fb7ad470f6.zip
+  - src/test/bash/create_certificates.sh
+
+install: make travis-install
+script: make test
+
+after_success:
+  - test "${JDK_RELEASE}" = "Oracle JDK 9" && bash <(curl -s https://codecov.io/bash) || true
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/2f7029afba496c449d7d
+    on_success: change  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: false     # default: false
