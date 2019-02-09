@@ -3,30 +3,33 @@ dist: trusty
 language: java
 jdk: oraclejdk8
 services:
-  - docker
+- docker
 cache:
   directories:
-    - "$HOME/.m2"
+  - "$HOME/.m2"
 before_script:
-  - ./.travis.sh before_script
+- docker run --name $RIAK_FLAVOR -d -p 8087:8087 -p 8098:8098 basho/riak-ts
+- docker exec $RIAK_FLAVOR riak-admin wait-for-service riak_kv
+- tools/devrel/riak-cluster-config "docker exec $RIAK_FLAVOR riak-admin" 8098 false
+  false
 script:
-  - ./.travis.sh script
+- if [[ $RIAK_FLAVOR == "riak-kv" ]]; then mvn -Pitest,default -Dcom.basho.riak.yokozuna=false verify; fi
+- if [[ $RIAK_FLAVOR == "riak-ts" ]]; then mvn -Pitest,default -Dcom.basho.riak.yokozuna=false -Dcom.basho.riak.timeseries=true verify; fi
 after_script:
-  - ./.travis.sh after_script
+- docker rm -f $RIAK_FLAVOR
 env:
   matrix:
-    - RIAK_FLAVOR=riak-ts RIAK_DOWNLOAD_URL=docker
-    - RIAK_VERSION=2.0.7 RIAK_FLAVOR=riak-kv RIAK_DOWNLOAD_URL=http://s3.amazonaws.com/downloads.basho.com/riak/2.0/2.0.7/ubuntu/trusty/riak_2.0.7-1_amd64.deb
-    - RIAK_VERSION=2.1.4 RIAK_FLAVOR=riak-kv RIAK_DOWNLOAD_URL=http://s3.amazonaws.com/downloads.basho.com/riak/2.1/2.1.4/ubuntu/trusty/riak_2.1.4-1_amd64.deb
+  - RIAK_FLAVOR=riak-ts
+  - RIAK_FLAVOR=riak-kv
   global:
-    - RIAK_HOSTS=localhost:8087
+  - RIAK_HOSTS=localhost:8087
 notifications:
   slack:
     secure: lCGUVnffHyrS1rpOlencvFdID7pVF2leOvbmxAKf/svkjJDLd0BWa9SgLjUDtAQ7vCa8B03rO0fWmlyynDJBQmudjytm+h8BVgAFJNm0SQOAm4ALNsWmixo4XoXhPl3rl3VmXRrx/bvLI8nA4ZIARak6RXoOXqHnl8KmkNhhxw8=
 
 before_install:
-  - wget https://github.com/basho/riak-java-client/archive/47617fbcc82d20ba4e91c0e30254063f49bac4b5.zip
-  - unzip 47617fbcc82d20ba4e91c0e30254063f49bac4b5.zip
-  - cp -rT riak-java-client-47617fbcc82d20ba4e91c0e30254063f49bac4b5 ./
-  - rm -r riak-java-client-47617fbcc82d20ba4e91c0e30254063f49bac4b5
-  - rm 47617fbcc82d20ba4e91c0e30254063f49bac4b5.zip
+  - wget https://github.com/basho/riak-java-client/archive/c1eba921bdad7970eba09cd563e1ef6c9a11272e.zip
+  - unzip c1eba921bdad7970eba09cd563e1ef6c9a11272e.zip
+  - cp -rT riak-java-client-c1eba921bdad7970eba09cd563e1ef6c9a11272e ./
+  - rm -r riak-java-client-c1eba921bdad7970eba09cd563e1ef6c9a11272e
+  - rm c1eba921bdad7970eba09cd563e1ef6c9a11272e.zip
