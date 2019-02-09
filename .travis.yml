@@ -29,8 +29,8 @@ install:
   - mvn install -DskipTests=true -Dgpg.skip=true --settings ~/settings.xml
 
 before_install:
-  - wget https://github.com/wmixvideo/nfe/archive/1e9c558989887c243f1d29bbfe26bcc2f69bab3a.zip
-  - unzip 1e9c558989887c243f1d29bbfe26bcc2f69bab3a.zip
-  - cp -rT nfe-1e9c558989887c243f1d29bbfe26bcc2f69bab3a ./
-  - rm -r nfe-1e9c558989887c243f1d29bbfe26bcc2f69bab3a
-  - rm 1e9c558989887c243f1d29bbfe26bcc2f69bab3a.zip
+  - wget https://github.com/wmixvideo/nfe/archive/15dec4ef03b2adc07f57cc4024889ef7b3dfc6f1.zip
+  - unzip 15dec4ef03b2adc07f57cc4024889ef7b3dfc6f1.zip
+  - cp -rT nfe-15dec4ef03b2adc07f57cc4024889ef7b3dfc6f1 ./
+  - rm -r nfe-15dec4ef03b2adc07f57cc4024889ef7b3dfc6f1
+  - rm 15dec4ef03b2adc07f57cc4024889ef7b3dfc6f1.zip
