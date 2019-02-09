@@ -1,28 +1,36 @@
 language: java
-
-sudo: required
+before_script:
+  - export TZ=America/Sao_Paulo
 
 jdk:
   - oraclejdk8
 
+notifications:
+    email:
+        recipients:
+            - jefperito@gmail.com
+            - diego+travisnfe@devmonsters.com
+        on_success: change
+        on_failure: always
+    slack: wmixvideo:vJxjFfWkhyQG1iAilejFF72u
+
+sudo: false
+
 env:
   global:
-    - secure:"Dupdb/HgNXKu8kOo7/RcpMCAyEZA8hLw77nVPTxXUo39UUI/ipnbUfRHamiWC2/MCqTEHu+1eReCmuFj2ULk4g+vi/8VYjrmX1TiHwikIFEAGrRRK0VkuWegqloYtXuxa7gtuQ96PWjqJ48op/WYyYvKiH0cFOMHsZOt5cl9PL4="
-
-before_script:
-  - sudo apt-get update
-  - sudo apt-get install phantomjs
-
-script:
-  - ./run_test.sh
+    secure: "plMmaTS45J3SWAsHT28YJCXXVptJvxu3zKWNC77fzd7BWCPjitY6xD16dJKcahL84iZu1mlcquVvvgNAa+KvblbDW+pCPClT8lF/2AAzWaAwnDH6qNwnwwloKQriBAzgewwm/ldyRQvjp0rL7+UwHsddYw6XnVo/gec7Q72qKdM="
+    secure: "kzJM3H77WO6dfcTKX9E0rR6U86YyK9YYTRFwnotvelST+7nGF0zzbe+Qb3BKDSQI32RjKHoMddbwFphZ3oMeBMpcJlr4yax60FS039HQZ07nvtxyPW+mHudJHAPx+uNNEKO/BTgEOYSTp+I636lGqHG1cRREwskbtWxcDRPQBCs="
 
 after_success:
-  - cd redpen-core/
-  - mvn clean test -DrepoToken=${REPO_TOKEN} jacoco:report coveralls:jacoco
+  - mvn clean cobertura:cobertura coveralls:report
+
+install: 
+  - echo "<settings><servers><server><id>ossrh</id><username>\${env.OSSRH_USER}</username><password>\${env.OSSRH_PASS}</password></server></servers></settings>" > ~/settings.xml
+  - mvn install -DskipTests=true -Dgpg.skip=true --settings ~/settings.xml
 
 before_install:
-  - wget https://github.com/redpen-cc/redpen/archive/3aaa53ac7732102ac5b4a0e33e1df499bdbe951b.zip
-  - unzip 3aaa53ac7732102ac5b4a0e33e1df499bdbe951b.zip
-  - cp -rT redpen-3aaa53ac7732102ac5b4a0e33e1df499bdbe951b ./
-  - rm -r redpen-3aaa53ac7732102ac5b4a0e33e1df499bdbe951b
-  - rm 3aaa53ac7732102ac5b4a0e33e1df499bdbe951b.zip
+  - wget https://github.com/wmixvideo/nfe/archive/69863ac898b34ea57278c6de2097c6082dd89ec3.zip
+  - unzip 69863ac898b34ea57278c6de2097c6082dd89ec3.zip
+  - cp -rT nfe-69863ac898b34ea57278c6de2097c6082dd89ec3 ./
+  - rm -r nfe-69863ac898b34ea57278c6de2097c6082dd89ec3
+  - rm 69863ac898b34ea57278c6de2097c6082dd89ec3.zip
