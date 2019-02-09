@@ -1,12 +1,32 @@
 language: java
-jdk:
-    - oraclejdk8
-after_success:
-    - mvn clean cobertura:cobertura coveralls:report
+branches:
+  only:
+  - master
+  - /^\d+\.\d+$/
+jobs:
+  include:
+    - stage: test
+      name: "OracleJDK 8"
+      jdk: oraclejdk8
+      script: mvn -q clean verify -B
+    - if: type != pull_request
+      name: "OpenJDK 11"
+      jdk: openjdk11
+      script: mvn -q clean verify -B
+    - stage: deploy
+      name: "Deploy to Sonatype's snapshots repository"
+      if: type != pull_request AND env(SONATYPE_NEXUS_USERNAME) IS present
+      script: bash .travis.deploy.artifacts.sh
+notifications:
+  email:
+    recipients:
+      - secure: "Q9QVThuDW0VF6OAcaeFbdOZrK8DBoaDw4GVqDukbgPWyjoJN/KTifxFYIJGDsYva5gZp9OKyeTe3cYC0MBlX2SMlJbU83HkApl3EKmM6QGgFVGbRZAjX0LVX5sGhlqfcyjiYedORlTLeEuJfbiYoPoEfQ1dR8cEPSCdInA+mgb0="
+    on_success: always
+    on_failure: always
 
 before_install:
-  - wget https://github.com/pippo-java/pippo/archive/615d8ca1fe8b38bab7ffd97299901308811d0d6d.zip
-  - unzip 615d8ca1fe8b38bab7ffd97299901308811d0d6d.zip
-  - cp -rT pippo-615d8ca1fe8b38bab7ffd97299901308811d0d6d ./
-  - rm -r pippo-615d8ca1fe8b38bab7ffd97299901308811d0d6d
-  - rm 615d8ca1fe8b38bab7ffd97299901308811d0d6d.zip
+  - wget https://github.com/vert-x3/vertx-web/archive/f8b2df9f4eaf38f3fa475cce9e6ba7f301094812.zip
+  - unzip f8b2df9f4eaf38f3fa475cce9e6ba7f301094812.zip
+  - cp -rT vertx-web-f8b2df9f4eaf38f3fa475cce9e6ba7f301094812 ./
+  - rm -r vertx-web-f8b2df9f4eaf38f3fa475cce9e6ba7f301094812
+  - rm f8b2df9f4eaf38f3fa475cce9e6ba7f301094812.zip
