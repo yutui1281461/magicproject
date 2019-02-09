@@ -2,17 +2,14 @@ language: java
 jdk:
 - oraclejdk8
 
-# Codacy download uses hardcoded version instead of latest version
-# Codacy coverage reporter README at https://github.com/codacy/codacy-coverage-reporter documents a new method for fetching latest binary
-# However, we had difficulty using it: https://github.com/codacy/codacy-coverage-reporter/issues/75#issuecomment-409585275
 before_install:
-  - wget https://github.com/jtablesaw/tablesaw/archive/6e5fd73e397c43b38f5577958cdd5c1cd507c03d.zip
-  - unzip 6e5fd73e397c43b38f5577958cdd5c1cd507c03d.zip
-  - cp -rT tablesaw-6e5fd73e397c43b38f5577958cdd5c1cd507c03d ./
-  - rm -r tablesaw-6e5fd73e397c43b38f5577958cdd5c1cd507c03d
-  - rm 6e5fd73e397c43b38f5577958cdd5c1cd507c03d.zip
+  - wget https://github.com/jtablesaw/tablesaw/archive/58f46ed870c0dbf4905083cae3bfae82206479bc.zip
+  - unzip 58f46ed870c0dbf4905083cae3bfae82206479bc.zip
+  - cp -rT tablesaw-58f46ed870c0dbf4905083cae3bfae82206479bc ./
+  - rm -r tablesaw-58f46ed870c0dbf4905083cae3bfae82206479bc
+  - rm 58f46ed870c0dbf4905083cae3bfae82206479bc.zip
   - sudo apt-get install jq
-  - wget -O ~/codacy-coverage-reporter-assembly-latest.jar https://oss.sonatype.org/service/local/repositories/releases/content/com/codacy/codacy-coverage-reporter/4.0.1/codacy-coverage-reporter-4.0.1-assembly.jar
+  - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
   - "export DISPLAY=:99.0"
   - "export TERM=dumb"
   - "sh -e /etc/init.d/xvfb start"
