@@ -5,8 +5,8 @@ after_success:
     - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/pippo-java/pippo/archive/f97889da988ce59eb35c82dceba75ebfb7986daf.zip
-  - unzip f97889da988ce59eb35c82dceba75ebfb7986daf.zip
-  - cp -rT pippo-f97889da988ce59eb35c82dceba75ebfb7986daf ./
-  - rm -r pippo-f97889da988ce59eb35c82dceba75ebfb7986daf
-  - rm f97889da988ce59eb35c82dceba75ebfb7986daf.zip
+  - wget https://github.com/pippo-java/pippo/archive/615d8ca1fe8b38bab7ffd97299901308811d0d6d.zip
+  - unzip 615d8ca1fe8b38bab7ffd97299901308811d0d6d.zip
+  - cp -rT pippo-615d8ca1fe8b38bab7ffd97299901308811d0d6d ./
+  - rm -r pippo-615d8ca1fe8b38bab7ffd97299901308811d0d6d
+  - rm 615d8ca1fe8b38bab7ffd97299901308811d0d6d.zip
