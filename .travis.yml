@@ -1,22 +1,46 @@
+## ---------------------------------------------------------------------------
+## Licensed to the Apache Software Foundation (ASF) under one or more
+## contributor license agreements.  See the NOTICE file distributed with
+## this work for additional information regarding copyright ownership.
+## The ASF licenses this file to You under the Apache License, Version 2.0
+## (the "License"); you may not use this file except in compliance with
+## the License.  You may obtain a copy of the License at
+##
+##      http://www.apache.org/licenses/LICENSE-2.0
+##
+## Unless required by applicable law or agreed to in writing, software
+## distributed under the License is distributed on an "AS IS" BASIS,
+## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+## See the License for the specific language governing permissions and
+## limitations under the License.
+## ---------------------------------------------------------------------------
+
 sudo: required
-language: java
-services:
-- docker
+
 cache:
   directories:
   - "$HOME/.m2"
+language: java
+
 install: true
-jobs:
-  include:
-  - stage: Compilation and Installation
-    script: scripts/travis.sh install
-  - stage: Deploy on
-    script: if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then bash scripts/travis.sh deploy;
-      fi
+jdk:
+- oraclejdk8
+env:
+  # dummy profile
+  - SPRING_BOOT_PROFILE=spring-boot-1
+  # use spring-boot-2 profile 
+  - SPRING_BOOT_PROFILE=spring-boot-2
+script:
+- set -e
+- mvn clean install -Pjacoco -Pdocker -P${SPRING_BOOT_PROFILE} coveralls:report
+- mvn clean verify -f saga-demo -Pdemo -Pdocker -P${SPRING_BOOT_PROFILE} -Ddocker.useColor=false -Ddocker.showLogs
+- mvn clean verify -f acceptance-tests -Pdemo -Pdocker -P${SPRING_BOOT_PROFILE} -Ddocker.useColor=false -Ddocker.showLogs
+after_success:
+- if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash -x scripts/deploy.sh ; fi
 
 before_install:
-  - wget https://github.com/apache/servicecomb-java-chassis/archive/dfe564fd2e37bcdfb26bcb1baed7871252c50137.zip
-  - unzip dfe564fd2e37bcdfb26bcb1baed7871252c50137.zip
-  - cp -rT servicecomb-java-chassis-dfe564fd2e37bcdfb26bcb1baed7871252c50137 ./
-  - rm -r servicecomb-java-chassis-dfe564fd2e37bcdfb26bcb1baed7871252c50137
-  - rm dfe564fd2e37bcdfb26bcb1baed7871252c50137.zip
+  - wget https://github.com/apache/servicecomb-pack/archive/2a652b533f6de1779ee52423e6dc93a265e03c11.zip
+  - unzip 2a652b533f6de1779ee52423e6dc93a265e03c11.zip
+  - cp -rT servicecomb-pack-2a652b533f6de1779ee52423e6dc93a265e03c11 ./
+  - rm -r servicecomb-pack-2a652b533f6de1779ee52423e6dc93a265e03c11
+  - rm 2a652b533f6de1779ee52423e6dc93a265e03c11.zip
