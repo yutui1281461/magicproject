@@ -8,8 +8,8 @@ jdk:
    - oraclejdk8
 
 before_install:
-  - wget https://github.com/networknt/light-4j/archive/4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595.zip
-  - unzip 4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595.zip
-  - cp -rT light-4j-4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595 ./
-  - rm -r light-4j-4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595
-  - rm 4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595.zip
+  - wget https://github.com/networknt/light-4j/archive/7667509ca628e7e5c377c3aa3a14817803687bfe.zip
+  - unzip 7667509ca628e7e5c377c3aa3a14817803687bfe.zip
+  - cp -rT light-4j-7667509ca628e7e5c377c3aa3a14817803687bfe ./
+  - rm -r light-4j-7667509ca628e7e5c377c3aa3a14817803687bfe
+  - rm 7667509ca628e7e5c377c3aa3a14817803687bfe.zip
