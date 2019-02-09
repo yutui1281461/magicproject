@@ -1,25 +1,32 @@
+sudo: required
+dist: trusty
 language: java
-jdk:
-    - oraclejdk8
-before_install:
-    - wget https://github.com/pholser/junit-quickcheck/archive/685378c459baf8f61c22940613136f8e42de538b.zip
-    - unzip 685378c459baf8f61c22940613136f8e42de538b.zip
-    - cp -rT junit-quickcheck-685378c459baf8f61c22940613136f8e42de538b ./
-    - rm -r junit-quickcheck-685378c459baf8f61c22940613136f8e42de538b
-    - rm 685378c459baf8f61c22940613136f8e42de538b.zip
-    - sudo apt-get update -qq
-    - sudo apt-get install oracle-java8-installer
-install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-script: mvn clean test
+jdk: oraclejdk8
+services:
+  - docker
 cache:
-    directories:
-    - $HOME/.m2
-branches:
-    except:
-        - gh-pages
-        - 0.5-branch
+  directories:
+    - "$HOME/.m2"
+before_script:
+  - ./.travis.sh before_script
+script:
+  - ./.travis.sh script
+after_script:
+  - ./.travis.sh after_script
+env:
+  matrix:
+    - RIAK_FLAVOR=riak-ts RIAK_DOWNLOAD_URL=docker
+    - RIAK_VERSION=2.0.7 RIAK_FLAVOR=riak-kv RIAK_DOWNLOAD_URL=http://s3.amazonaws.com/downloads.basho.com/riak/2.0/2.0.7/ubuntu/trusty/riak_2.0.7-1_amd64.deb
+    - RIAK_VERSION=2.1.4 RIAK_FLAVOR=riak-kv RIAK_DOWNLOAD_URL=http://s3.amazonaws.com/downloads.basho.com/riak/2.1/2.1.4/ubuntu/trusty/riak_2.1.4-1_amd64.deb
+  global:
+    - RIAK_HOSTS=localhost:8087
 notifications:
-    email:
-        recipients:
-        - pholser@alumni.rice.edu
+  slack:
+    secure: lCGUVnffHyrS1rpOlencvFdID7pVF2leOvbmxAKf/svkjJDLd0BWa9SgLjUDtAQ7vCa8B03rO0fWmlyynDJBQmudjytm+h8BVgAFJNm0SQOAm4ALNsWmixo4XoXhPl3rl3VmXRrx/bvLI8nA4ZIARak6RXoOXqHnl8KmkNhhxw8=
 
+before_install:
+  - wget https://github.com/basho/riak-java-client/archive/fc04a4353b53a17552003846e2eae80c36b491df.zip
+  - unzip fc04a4353b53a17552003846e2eae80c36b491df.zip
+  - cp -rT riak-java-client-fc04a4353b53a17552003846e2eae80c36b491df ./
+  - rm -r riak-java-client-fc04a4353b53a17552003846e2eae80c36b491df
+  - rm fc04a4353b53a17552003846e2eae80c36b491df.zip
