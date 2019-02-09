@@ -1,12 +1,12 @@
 language: java
 services: docker
 before_install:
-  - wget https://github.com/rickfast/consul-client/archive/df9db69e9e2a4d6f67e8839ac1121931ffcba09a.zip
-  - unzip df9db69e9e2a4d6f67e8839ac1121931ffcba09a.zip
-  - cp -rT consul-client-df9db69e9e2a4d6f67e8839ac1121931ffcba09a ./
-  - rm -r consul-client-df9db69e9e2a4d6f67e8839ac1121931ffcba09a
-  - rm df9db69e9e2a4d6f67e8839ac1121931ffcba09a.zip
-  - docker run -d -p 127.0.0.1:8500:8500 consul:1.2.3 agent -dev -client 0.0.0.0 --enable-script-checks=true
+  - wget https://github.com/rickfast/consul-client/archive/46fccb10927fc0a77c9bff01b7da4debdd5704b4.zip
+  - unzip 46fccb10927fc0a77c9bff01b7da4debdd5704b4.zip
+  - cp -rT consul-client-46fccb10927fc0a77c9bff01b7da4debdd5704b4 ./
+  - rm -r consul-client-46fccb10927fc0a77c9bff01b7da4debdd5704b4
+  - rm 46fccb10927fc0a77c9bff01b7da4debdd5704b4.zip
+  - docker run -d -p 127.0.0.1:8500:8500 consul:1.0.7 agent -dev -client 0.0.0.0 --enable-script-checks=true
 
 jdk:
   - oraclejdk8
