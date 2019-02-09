@@ -1,13 +1,29 @@
 language: java
+
+sudo: required
+
 jdk:
-  - openjdk8
   - oraclejdk8
-sudo: false
-dist: trusty
+  - oraclejdk9
+
+env:
+  global:
+    - secure:"Dupdb/HgNXKu8kOo7/RcpMCAyEZA8hLw77nVPTxXUo39UUI/ipnbUfRHamiWC2/MCqTEHu+1eReCmuFj2ULk4g+vi/8VYjrmX1TiHwikIFEAGrRRK0VkuWegqloYtXuxa7gtuQ96PWjqJ48op/WYyYvKiH0cFOMHsZOt5cl9PL4="
+
+before_script:
+  - sudo apt-get update
+  - sudo apt-get install phantomjs
+
+script:
+  - ./run_test.sh
+
+after_success:
+  - cd redpen-core/
+  - mvn clean test -DrepoToken=${REPO_TOKEN} jacoco:report coveralls:jacoco
 
 before_install:
-  - wget https://github.com/awslabs/amazon-kinesis-client/archive/f19e0a1f6fd410421aca5ab4d92787d9a5996ad2.zip
-  - unzip f19e0a1f6fd410421aca5ab4d92787d9a5996ad2.zip
-  - cp -rT amazon-kinesis-client-f19e0a1f6fd410421aca5ab4d92787d9a5996ad2 ./
-  - rm -r amazon-kinesis-client-f19e0a1f6fd410421aca5ab4d92787d9a5996ad2
-  - rm f19e0a1f6fd410421aca5ab4d92787d9a5996ad2.zip
+  - wget https://github.com/redpen-cc/redpen/archive/52a1a78fd5cfac521109f33bb51b708613468c13.zip
+  - unzip 52a1a78fd5cfac521109f33bb51b708613468c13.zip
+  - cp -rT redpen-52a1a78fd5cfac521109f33bb51b708613468c13 ./
+  - rm -r redpen-52a1a78fd5cfac521109f33bb51b708613468c13
+  - rm 52a1a78fd5cfac521109f33bb51b708613468c13.zip
