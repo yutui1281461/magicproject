@@ -1,14 +1,12 @@
 language: java
 script: "mvn verify"
 jdk:
-  - openjdk8
-cache:
-  directories:
-    - "$HOME/.m2"
+  - oraclejdk7
+  - oraclejdk8
 
 before_install:
-  - wget https://github.com/joelittlejohn/jsonschema2pojo/archive/5e036c0497ee62295fcfd2d6ba97c0bb3b125c73.zip
-  - unzip 5e036c0497ee62295fcfd2d6ba97c0bb3b125c73.zip
-  - cp -rT jsonschema2pojo-5e036c0497ee62295fcfd2d6ba97c0bb3b125c73 ./
-  - rm -r jsonschema2pojo-5e036c0497ee62295fcfd2d6ba97c0bb3b125c73
-  - rm 5e036c0497ee62295fcfd2d6ba97c0bb3b125c73.zip
+  - wget https://github.com/joelittlejohn/jsonschema2pojo/archive/27054cca6b2e38db61e64baa27208c1a145a2737.zip
+  - unzip 27054cca6b2e38db61e64baa27208c1a145a2737.zip
+  - cp -rT jsonschema2pojo-27054cca6b2e38db61e64baa27208c1a145a2737 ./
+  - rm -r jsonschema2pojo-27054cca6b2e38db61e64baa27208c1a145a2737
+  - rm 27054cca6b2e38db61e64baa27208c1a145a2737.zip
