@@ -1,11 +1,12 @@
 language: java
 jdk:
   - oraclejdk8
+  - openjdk7
   - oraclejdk9
 
 before_install:
-  - wget https://github.com/lukas-krecan/JsonUnit/archive/b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff.zip
-  - unzip b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff.zip
-  - cp -rT JsonUnit-b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff ./
-  - rm -r JsonUnit-b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff
-  - rm b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff.zip
+  - wget https://github.com/lukas-krecan/JsonUnit/archive/ab155df6fa33d9e9927e8638213653892f72b0e6.zip
+  - unzip ab155df6fa33d9e9927e8638213653892f72b0e6.zip
+  - cp -rT JsonUnit-ab155df6fa33d9e9927e8638213653892f72b0e6 ./
+  - rm -r JsonUnit-ab155df6fa33d9e9927e8638213653892f72b0e6
+  - rm ab155df6fa33d9e9927e8638213653892f72b0e6.zip
