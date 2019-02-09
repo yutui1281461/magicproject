@@ -6,8 +6,8 @@ script:
 - mvn clean test
 
 before_install:
-  - wget https://github.com/getheimdall/heimdall/archive/20bf193759b5541d0333957960e473a4e678780c.zip
-  - unzip 20bf193759b5541d0333957960e473a4e678780c.zip
-  - cp -rT heimdall-20bf193759b5541d0333957960e473a4e678780c ./
-  - rm -r heimdall-20bf193759b5541d0333957960e473a4e678780c
-  - rm 20bf193759b5541d0333957960e473a4e678780c.zip
+  - wget https://github.com/getheimdall/heimdall/archive/de015f618b791124f7dbaf4f8938431cfe89eb2d.zip
+  - unzip de015f618b791124f7dbaf4f8938431cfe89eb2d.zip
+  - cp -rT heimdall-de015f618b791124f7dbaf4f8938431cfe89eb2d ./
+  - rm -r heimdall-de015f618b791124f7dbaf4f8938431cfe89eb2d
+  - rm de015f618b791124f7dbaf4f8938431cfe89eb2d.zip
