@@ -1,24 +1,20 @@
 language: java
-
-cache:
-  directories:
-  - $HOME/.m2
-
 jdk:
   - oraclejdk8
+script: "mvn clean install -Pgwttest"
 
-after_success:
-  - codecov
-  - mvn package -pl ugs-core assembly:assembly
-  - mvn install
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/21541a510dc29899ac85
 
-before_script:
-  - pip install --user codecov
 
+    on_success: always
+    on_failure: always
 
 before_install:
-  - wget https://github.com/winder/Universal-G-Code-Sender/archive/4309feebd0461f91fd3813cd8d744ca05feb6909.zip
-  - unzip 4309feebd0461f91fd3813cd8d744ca05feb6909.zip
-  - cp -rT Universal-G-Code-Sender-4309feebd0461f91fd3813cd8d744ca05feb6909 ./
-  - rm -r Universal-G-Code-Sender-4309feebd0461f91fd3813cd8d744ca05feb6909
-  - rm 4309feebd0461f91fd3813cd8d744ca05feb6909.zip
+  - wget https://github.com/junkdog/artemis-odb/archive/7ca5a8119537034414028175a5eec6ec7628dd44.zip
+  - unzip 7ca5a8119537034414028175a5eec6ec7628dd44.zip
+  - cp -rT artemis-odb-7ca5a8119537034414028175a5eec6ec7628dd44 ./
+  - rm -r artemis-odb-7ca5a8119537034414028175a5eec6ec7628dd44
+  - rm 7ca5a8119537034414028175a5eec6ec7628dd44.zip
