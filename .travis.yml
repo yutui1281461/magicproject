@@ -1,16 +1,51 @@
+dist: trusty
+sudo: required
 language: java
 jdk:
-    - oraclejdk7
-    - oraclejdk8
-    - openjdk7
+  - oraclejdk8
 
-after_success:
-  - mvn clean cobertura:cobertura coveralls:report
-  
+git:
+  depth: 3
+
+addons:
+  postgresql: "9.6"
+#  apt:
+#    packages:
+#    - mysql-server-5.7
+#    - mysql-client-core-5.7
+#    - mysql-client-5.7
+
+services:
+  - docker
+  - postgresql
+  - mysql
+
+before_script:
+  - ./.travis/setup_database
+  - mysql -u root -e 'CREATE DATABASE test_ebean;'
+  - mysql -u root -e "CREATE USER 'test_ebean'@'localhost' IDENTIFIED BY 'test';"
+  - mysql -u root -e "GRANT ALL ON test_ebean.* TO 'test_ebean'@'localhost';"
+
+env:
+  - EBEAN_DB=h2
+  - EBEAN_DB=pg
+#  - EBEAN_DB=mysql
+
+install: true
+
+script:
+  - mvn clean test
+
+after_failure:
+  - ./.travis/print_surefire_reports
+
+cache:
+  directories:
+  - $HOME/.m2
 
 before_install:
-  - wget https://github.com/pf4j/pf4j/archive/ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf.zip
-  - unzip ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf.zip
-  - cp -rT pf4j-ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf ./
-  - rm -r pf4j-ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf
-  - rm ed58e7a8b6eb3892d5020ade8dfb0e699ec6dfcf.zip
+  - wget https://github.com/ebean-orm/ebean/archive/448ffd9afac8f8ba640f5f60e1301354443dbc06.zip
+  - unzip 448ffd9afac8f8ba640f5f60e1301354443dbc06.zip
+  - cp -rT ebean-448ffd9afac8f8ba640f5f60e1301354443dbc06 ./
+  - rm -r ebean-448ffd9afac8f8ba640f5f60e1301354443dbc06
+  - rm 448ffd9afac8f8ba640f5f60e1301354443dbc06.zip
