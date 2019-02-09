@@ -20,8 +20,8 @@ env:
     - secure: "Y8sVrrCYoKN/P8kfOQ7AFjjLq95ZRZtkDPbQQGXuKd8HFujTpqXeCLbm/eFXo3gNewQ5zWNgpOFN2N5gaGdV3Ku+m6dRsnBoQbHYAuR3MhotEjSZymHp1aVTGGWMJsGmiM+saCXtC+sUQcE6qUJjYsrhiyAfyU+6wWFGr5G9k8dUO7YyOgJryzSx70swLeoxiYhEZq2hQ66mifaaBuQxBbNXSLpsY9g8XxkwLNBycoTzhwhldvDDfeEeK4bvkb4lBSSvGlHUZCvG9K4gT/NunNVAoyjo1pumP9cuvWglRVodiT1k8yhTbFGfeB3KwWgN8J+mt93z8XcL1iMzZ8LcaTzhtNBT6zNOeE48JKhOyqAJOWH1sASh+SfiAG0UuuLXDkg56c+bJO426/gIeLxrXZMX6hkN6wII6L52shGgadfypn0frw2Rw6oEEk7oGHhAv3NtOYnlGt5meZpNNAEdwlVzbUXaFXh8XgaHsApg1X0kPK2yYdImEWq3pa7iQyB1GZPjctNzbhk2Vgjwk91kPj2RYaBd86BkIQGUfwdb0zIMCCjDXhALhbomei7fVXHSg5XcF4ZWg/2Z7s2A1C/5zgcDzdQWB/I0JQB+dMuTIm090bJ/mva8GORz/Mq8XVxoBMziic/UM6gtjmA8ft0+Prpm43NoHVjAKdX4vncJL0w="
 
 before_install:
-  - wget https://github.com/bootique/bootique/archive/f6ae5db66455b6d650ae9742a4c4fee57fd6f862.zip
-  - unzip f6ae5db66455b6d650ae9742a4c4fee57fd6f862.zip
-  - cp -rT bootique-f6ae5db66455b6d650ae9742a4c4fee57fd6f862 ./
-  - rm -r bootique-f6ae5db66455b6d650ae9742a4c4fee57fd6f862
-  - rm f6ae5db66455b6d650ae9742a4c4fee57fd6f862.zip
+  - wget https://github.com/bootique/bootique/archive/5c54c6946f895c5ac20ae414e756eb52b470b109.zip
+  - unzip 5c54c6946f895c5ac20ae414e756eb52b470b109.zip
+  - cp -rT bootique-5c54c6946f895c5ac20ae414e756eb52b470b109 ./
+  - rm -r bootique-5c54c6946f895c5ac20ae414e756eb52b470b109
+  - rm 5c54c6946f895c5ac20ae414e756eb52b470b109.zip
