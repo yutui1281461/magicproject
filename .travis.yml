@@ -15,8 +15,8 @@ jobs:
       fi
 
 before_install:
-  - wget https://github.com/apache/servicecomb-java-chassis/archive/9f89162835fe61303e6c55901e9d46bf5bd4defe.zip
-  - unzip 9f89162835fe61303e6c55901e9d46bf5bd4defe.zip
-  - cp -rT servicecomb-java-chassis-9f89162835fe61303e6c55901e9d46bf5bd4defe ./
-  - rm -r servicecomb-java-chassis-9f89162835fe61303e6c55901e9d46bf5bd4defe
-  - rm 9f89162835fe61303e6c55901e9d46bf5bd4defe.zip
+  - wget https://github.com/apache/servicecomb-java-chassis/archive/dfe564fd2e37bcdfb26bcb1baed7871252c50137.zip
+  - unzip dfe564fd2e37bcdfb26bcb1baed7871252c50137.zip
+  - cp -rT servicecomb-java-chassis-dfe564fd2e37bcdfb26bcb1baed7871252c50137 ./
+  - rm -r servicecomb-java-chassis-dfe564fd2e37bcdfb26bcb1baed7871252c50137
+  - rm dfe564fd2e37bcdfb26bcb1baed7871252c50137.zip
