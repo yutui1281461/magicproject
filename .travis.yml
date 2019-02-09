@@ -6,7 +6,6 @@ cache:
 env:
   - MAVEN_CLI: '"clean install -pl debezium-connector-mysql -am -Passembly"'
   - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly -Dversion.postgres.server=9.6-devel"'
-  - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly,postgres-10"'
   - MAVEN_CLI: '"clean install -pl debezium-connector-mongodb -am -Passembly"'
   - MAVEN_CLI: '"clean install -pl debezium-connector-mysql -am -Passembly,parser-antlr"'
   - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly,wal2json-decoder -Dversion.postgres.server=9.6-devel"'
@@ -23,11 +22,11 @@ services:
 # First stop MySQL and PostgreSQL that run by default (see DBZ-163). Then check Docker status. Finally,
 # install Maven 3.3.9, since the Jolokia Maven plugin requires 3.2.1 or later but Travis current runs 3.1.x
 before_install:
-  - wget https://github.com/debezium/debezium/archive/85d01535b98d10d9016f6e80c17055ddc4166101.zip
-  - unzip 85d01535b98d10d9016f6e80c17055ddc4166101.zip
-  - cp -rT debezium-85d01535b98d10d9016f6e80c17055ddc4166101 ./
-  - rm -r debezium-85d01535b98d10d9016f6e80c17055ddc4166101
-  - rm 85d01535b98d10d9016f6e80c17055ddc4166101.zip
+  - wget https://github.com/debezium/debezium/archive/45b4ca366f3529ad2d8fddd59756ea490004ac10.zip
+  - unzip 45b4ca366f3529ad2d8fddd59756ea490004ac10.zip
+  - cp -rT debezium-45b4ca366f3529ad2d8fddd59756ea490004ac10 ./
+  - rm -r debezium-45b4ca366f3529ad2d8fddd59756ea490004ac10
+  - rm 45b4ca366f3529ad2d8fddd59756ea490004ac10.zip
   - sudo service mysql-5.6 stop || sudo service mysql stop
   - sudo /etc/init.d/postgresql stop
   - docker -v
