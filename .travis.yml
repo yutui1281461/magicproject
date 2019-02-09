@@ -1,14 +1,21 @@
+# Floodlight build and test via Travis-CI
+
 language: java
-script:
-  - mvn test
+
 jdk:
-  - oraclejdk8
-  - openjdk8
-  - openjdk7
+ - oraclejdk8
+# - openjdk8 does not appear to be an option as of 04/29/16
+
+group: deprecated-2017Q4  # Use the previous image version before the update(12/12/17) to avoid build issues on pull request tests.
+
+notifications:
+  email:
+    recipients:
+      - ryan.izard@bigswitch.com
 
 before_install:
-  - wget https://github.com/killme2008/aviator/archive/02618e0a7554589ff4f70d6ae7d0dc5540e42704.zip
-  - unzip 02618e0a7554589ff4f70d6ae7d0dc5540e42704.zip
-  - cp -rT aviator-02618e0a7554589ff4f70d6ae7d0dc5540e42704 ./
-  - rm -r aviator-02618e0a7554589ff4f70d6ae7d0dc5540e42704
-  - rm 02618e0a7554589ff4f70d6ae7d0dc5540e42704.zip
+  - wget https://github.com/floodlight/floodlight/archive/e51b9563ad773e4ace8dd988252f9a977c961c4e.zip
+  - unzip e51b9563ad773e4ace8dd988252f9a977c961c4e.zip
+  - cp -rT floodlight-e51b9563ad773e4ace8dd988252f9a977c961c4e ./
+  - rm -r floodlight-e51b9563ad773e4ace8dd988252f9a977c961c4e
+  - rm e51b9563ad773e4ace8dd988252f9a977c961c4e.zip
