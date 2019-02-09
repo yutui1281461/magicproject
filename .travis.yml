@@ -1,14 +1,27 @@
+sudo: false
 language: java
-services: docker
-before_install:
-  - wget https://github.com/rickfast/consul-client/archive/46fccb10927fc0a77c9bff01b7da4debdd5704b4.zip
-  - unzip 46fccb10927fc0a77c9bff01b7da4debdd5704b4.zip
-  - cp -rT consul-client-46fccb10927fc0a77c9bff01b7da4debdd5704b4 ./
-  - rm -r consul-client-46fccb10927fc0a77c9bff01b7da4debdd5704b4
-  - rm 46fccb10927fc0a77c9bff01b7da4debdd5704b4.zip
-  - docker run -d -p 127.0.0.1:8500:8500 consul:1.0.7 agent -dev -client 0.0.0.0 --enable-script-checks=true
-
 jdk:
   - oraclejdk8
-script: mvn clean test
+
+cache:
+  directories:
+    - $HOME/.m2
+
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/13ca3dd0f0bbc821ff55
+    on_success: change  # options: [always|never|change] default: always
+    on_failure: always  # options: [always|never|change] default: always
+    on_start: never     # options: [always|never|change] default: always
+
+before_install:
+  - wget https://github.com/HubSpot/jinjava/archive/36d32580562b9a616918ecb3544538fcf9c2c470.zip
+  - unzip 36d32580562b9a616918ecb3544538fcf9c2c470.zip
+  - cp -rT jinjava-36d32580562b9a616918ecb3544538fcf9c2c470 ./
+  - rm -r jinjava-36d32580562b9a616918ecb3544538fcf9c2c470
+  - rm 36d32580562b9a616918ecb3544538fcf9c2c470.zip
+  - pip install --user codecov
+after_success:
+  - codecov
 
