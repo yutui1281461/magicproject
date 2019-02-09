@@ -6,8 +6,8 @@ sudo: false
 dist: trusty
 
 before_install:
-  - wget https://github.com/awslabs/amazon-kinesis-client/archive/e793c3d5f467bef49e96a9d67986d68f759484de.zip
-  - unzip e793c3d5f467bef49e96a9d67986d68f759484de.zip
-  - cp -rT amazon-kinesis-client-e793c3d5f467bef49e96a9d67986d68f759484de ./
-  - rm -r amazon-kinesis-client-e793c3d5f467bef49e96a9d67986d68f759484de
-  - rm e793c3d5f467bef49e96a9d67986d68f759484de.zip
+  - wget https://github.com/awslabs/amazon-kinesis-client/archive/15cc11bee3cf364535c779b674342bb76d5b6d6c.zip
+  - unzip 15cc11bee3cf364535c779b674342bb76d5b6d6c.zip
+  - cp -rT amazon-kinesis-client-15cc11bee3cf364535c779b674342bb76d5b6d6c ./
+  - rm -r amazon-kinesis-client-15cc11bee3cf364535c779b674342bb76d5b6d6c
+  - rm 15cc11bee3cf364535c779b674342bb76d5b6d6c.zip
