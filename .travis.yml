@@ -1,18 +1,15 @@
 language: java
+
+cache:
+ directories:
+   - $HOME/.m2
+
 jdk:
-- oraclejdk8
+   - oraclejdk8
 
 before_install:
-  - wget https://github.com/jtablesaw/tablesaw/archive/4b59381dd345f4cb648f385f6bfca03c8088871c.zip
-  - unzip 4b59381dd345f4cb648f385f6bfca03c8088871c.zip
-  - cp -rT tablesaw-4b59381dd345f4cb648f385f6bfca03c8088871c ./
-  - rm -r tablesaw-4b59381dd345f4cb648f385f6bfca03c8088871c
-  - rm 4b59381dd345f4cb648f385f6bfca03c8088871c.zip
-  - sudo apt-get install jq
-  - wget -O ~/codacy-coverage-reporter-assembly-latest.jar $(curl https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r .assets[0].browser_download_url)
-  - "export DISPLAY=:99.0"
-  - "export TERM=dumb"
-  - "sh -e /etc/init.d/xvfb start"
-install: mvn install -DskipTests -Dgpg.skip
-script: mvn -B verify
-after_success: java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter --language Java --coverageReport aggregate/target/site/jacoco-aggregate/jacoco.xml
+  - wget https://github.com/networknt/light-4j/archive/4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595.zip
+  - unzip 4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595.zip
+  - cp -rT light-4j-4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595 ./
+  - rm -r light-4j-4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595
+  - rm 4ad7abe7fd21d3a272a663fc5c9ef07bd2c44595.zip
