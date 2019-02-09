@@ -12,7 +12,6 @@ notifications:
             - diego+travisnfe@devmonsters.com
         on_success: change
         on_failure: always
-    slack: wmixvideo:vJxjFfWkhyQG1iAilejFF72u
 
 sudo: false
 
@@ -29,8 +28,8 @@ install:
   - mvn install -DskipTests=true -Dgpg.skip=true --settings ~/settings.xml
 
 before_install:
-  - wget https://github.com/wmixvideo/nfe/archive/c2e10c7746a0b55482919b3ee96d1714e8b7e156.zip
-  - unzip c2e10c7746a0b55482919b3ee96d1714e8b7e156.zip
-  - cp -rT nfe-c2e10c7746a0b55482919b3ee96d1714e8b7e156 ./
-  - rm -r nfe-c2e10c7746a0b55482919b3ee96d1714e8b7e156
-  - rm c2e10c7746a0b55482919b3ee96d1714e8b7e156.zip
+  - wget https://github.com/wmixvideo/nfe/archive/6ea8195152f3750624bdea359f91b03597a758f8.zip
+  - unzip 6ea8195152f3750624bdea359f91b03597a758f8.zip
+  - cp -rT nfe-6ea8195152f3750624bdea359f91b03597a758f8 ./
+  - rm -r nfe-6ea8195152f3750624bdea359f91b03597a758f8
+  - rm 6ea8195152f3750624bdea359f91b03597a758f8.zip
