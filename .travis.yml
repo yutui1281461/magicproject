@@ -1,15 +1,13 @@
 language: java
-
 jdk:
+  - openjdk8
   - oraclejdk8
-
-script:
-- ./mvnw test
-- ./mvnw javadoc:aggregate
+sudo: false
+dist: trusty
 
 before_install:
-  - wget https://github.com/prometheus/client_java/archive/e0cd72b55ccaa27673abb93f8957b0fad4fbf703.zip
-  - unzip e0cd72b55ccaa27673abb93f8957b0fad4fbf703.zip
-  - cp -rT client_java-e0cd72b55ccaa27673abb93f8957b0fad4fbf703 ./
-  - rm -r client_java-e0cd72b55ccaa27673abb93f8957b0fad4fbf703
-  - rm e0cd72b55ccaa27673abb93f8957b0fad4fbf703.zip
+  - wget https://github.com/awslabs/amazon-kinesis-client/archive/e793c3d5f467bef49e96a9d67986d68f759484de.zip
+  - unzip e793c3d5f467bef49e96a9d67986d68f759484de.zip
+  - cp -rT amazon-kinesis-client-e793c3d5f467bef49e96a9d67986d68f759484de ./
+  - rm -r amazon-kinesis-client-e793c3d5f467bef49e96a9d67986d68f759484de
+  - rm e793c3d5f467bef49e96a9d67986d68f759484de.zip
