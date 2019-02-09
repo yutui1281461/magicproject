@@ -1,34 +1,12 @@
 language: java
 jdk:
-  - oraclejdk8
-  - openjdk8
-cache:
-  directories:
-    - $HOME/.m2
-env:
-  global:
-    - MAVEN_OPTS="-Xmx4g"
-    - JAVA_OPTS="-Xmx4g"
-install:
-  - set -e
-  - travis_retry sudo apt-get install -y --fix-missing libmagic1 libmagic-dev
-  - gem install --no-ri --no-rdoc pdd
-  - gem install --no-ri --no-rdoc est
-  - gem install --no-ri --no-rdoc xcop
-  - mvn install -DskipTests -Dinvoker.skip
-  - mvn clean
-  - set +e
-script:
-  - set -e
-  - pdd --file=/dev/null --exclude=qulice-maven-plugin/src/it/**/*.java,qulice-checkstyle/src/test/resources/com/qulice/checkstyle/AtClauseOrder.java,qulice-checkstyle/src/main/resources/com/qulice/checkstyle/checks.xml,qulice-checkstyle/src/test/resources/**/*
-  - est --dir=est --file=/dev/null
-  - ./years.sh
-  - mvn clean install -Pqulice --errors
-  - set +e
+    - oraclejdk8
+after_success:
+    - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/teamed/qulice/archive/137bbc9cf6a50d93272be1f5dd196fbacd5119c6.zip
-  - unzip 137bbc9cf6a50d93272be1f5dd196fbacd5119c6.zip
-  - cp -rT qulice-137bbc9cf6a50d93272be1f5dd196fbacd5119c6 ./
-  - rm -r qulice-137bbc9cf6a50d93272be1f5dd196fbacd5119c6
-  - rm 137bbc9cf6a50d93272be1f5dd196fbacd5119c6.zip
+  - wget https://github.com/pippo-java/pippo/archive/7fd0f9828a4b0e7f64c193ce82565cc9b294ad8f.zip
+  - unzip 7fd0f9828a4b0e7f64c193ce82565cc9b294ad8f.zip
+  - cp -rT pippo-7fd0f9828a4b0e7f64c193ce82565cc9b294ad8f ./
+  - rm -r pippo-7fd0f9828a4b0e7f64c193ce82565cc9b294ad8f
+  - rm 7fd0f9828a4b0e7f64c193ce82565cc9b294ad8f.zip
