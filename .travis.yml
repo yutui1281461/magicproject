@@ -12,8 +12,8 @@ notifications:
       - ryan.izard@bigswitch.com
 
 before_install:
-  - wget https://github.com/floodlight/floodlight/archive/543e323e1a6408c7f2d5d6441051d3fc2279d895.zip
-  - unzip 543e323e1a6408c7f2d5d6441051d3fc2279d895.zip
-  - cp -rT floodlight-543e323e1a6408c7f2d5d6441051d3fc2279d895 ./
-  - rm -r floodlight-543e323e1a6408c7f2d5d6441051d3fc2279d895
-  - rm 543e323e1a6408c7f2d5d6441051d3fc2279d895.zip
+  - wget https://github.com/floodlight/floodlight/archive/5c5ab4a6538ab0fedf2f17c97a6396f8db583f67.zip
+  - unzip 5c5ab4a6538ab0fedf2f17c97a6396f8db583f67.zip
+  - cp -rT floodlight-5c5ab4a6538ab0fedf2f17c97a6396f8db583f67 ./
+  - rm -r floodlight-5c5ab4a6538ab0fedf2f17c97a6396f8db583f67
+  - rm 5c5ab4a6538ab0fedf2f17c97a6396f8db583f67.zip
