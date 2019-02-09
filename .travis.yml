@@ -25,8 +25,8 @@ notifications:
     secure: lCGUVnffHyrS1rpOlencvFdID7pVF2leOvbmxAKf/svkjJDLd0BWa9SgLjUDtAQ7vCa8B03rO0fWmlyynDJBQmudjytm+h8BVgAFJNm0SQOAm4ALNsWmixo4XoXhPl3rl3VmXRrx/bvLI8nA4ZIARak6RXoOXqHnl8KmkNhhxw8=
 
 before_install:
-  - wget https://github.com/basho/riak-java-client/archive/fc04a4353b53a17552003846e2eae80c36b491df.zip
-  - unzip fc04a4353b53a17552003846e2eae80c36b491df.zip
-  - cp -rT riak-java-client-fc04a4353b53a17552003846e2eae80c36b491df ./
-  - rm -r riak-java-client-fc04a4353b53a17552003846e2eae80c36b491df
-  - rm fc04a4353b53a17552003846e2eae80c36b491df.zip
+  - wget https://github.com/basho/riak-java-client/archive/47617fbcc82d20ba4e91c0e30254063f49bac4b5.zip
+  - unzip 47617fbcc82d20ba4e91c0e30254063f49bac4b5.zip
+  - cp -rT riak-java-client-47617fbcc82d20ba4e91c0e30254063f49bac4b5 ./
+  - rm -r riak-java-client-47617fbcc82d20ba4e91c0e30254063f49bac4b5
+  - rm 47617fbcc82d20ba4e91c0e30254063f49bac4b5.zip
