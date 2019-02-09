@@ -1,12 +1,27 @@
 language: java
+
+# Cache maven downloads
+sudo: false
+cache:
+  directories:
+    - $HOME/.m2
+
 jdk:
   - oraclejdk8
-  - openjdk7
-  - oraclejdk9
+  - oraclejdk7
+
+# Do this in install, as the normal way to do it, would
+# do a `mvn install` here. we want to do it all at once.
+install:
+  - export JAVA8_HOME=`jdk_switcher home oraclejdk8`
+  - echo $JAVA8_HOME
+
+script:
+  - mvn clean install -B -V
 
 before_install:
-  - wget https://github.com/lukas-krecan/JsonUnit/archive/bdeed8ae127627f3c92034e0d49acc3a488f09ab.zip
-  - unzip bdeed8ae127627f3c92034e0d49acc3a488f09ab.zip
-  - cp -rT JsonUnit-bdeed8ae127627f3c92034e0d49acc3a488f09ab ./
-  - rm -r JsonUnit-bdeed8ae127627f3c92034e0d49acc3a488f09ab
-  - rm bdeed8ae127627f3c92034e0d49acc3a488f09ab.zip
+  - wget https://github.com/st-js/st-js/archive/21ac9ef60f882ea9e9377c31f6458ac49ddf49f2.zip
+  - unzip 21ac9ef60f882ea9e9377c31f6458ac49ddf49f2.zip
+  - cp -rT st-js-21ac9ef60f882ea9e9377c31f6458ac49ddf49f2 ./
+  - rm -r st-js-21ac9ef60f882ea9e9377c31f6458ac49ddf49f2
+  - rm 21ac9ef60f882ea9e9377c31f6458ac49ddf49f2.zip
