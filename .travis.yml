@@ -3,8 +3,6 @@ dist: trusty
 jdk:
 - oraclejdk8
 - openjdk7
-- oraclejdk10
-- oraclejdk11
 script: "mvn verify failsafe:integration-test failsafe:verify"
 branches:
   except:
@@ -14,10 +12,9 @@ notifications:
 after_success:
 - mvn clean cobertura:cobertura coveralls:cobertura
 
-
 before_install:
-  - wget https://github.com/DiUS/java-faker/archive/5bab09250782b0f4f10d310e2fbaa635044e7eb4.zip
-  - unzip 5bab09250782b0f4f10d310e2fbaa635044e7eb4.zip
-  - cp -rT java-faker-5bab09250782b0f4f10d310e2fbaa635044e7eb4 ./
-  - rm -r java-faker-5bab09250782b0f4f10d310e2fbaa635044e7eb4
-  - rm 5bab09250782b0f4f10d310e2fbaa635044e7eb4.zip
+  - wget https://github.com/DiUS/java-faker/archive/162b848a72d1339c1036d84bcea3475d6b947830.zip
+  - unzip 162b848a72d1339c1036d84bcea3475d6b947830.zip
+  - cp -rT java-faker-162b848a72d1339c1036d84bcea3475d6b947830 ./
+  - rm -r java-faker-162b848a72d1339c1036d84bcea3475d6b947830
+  - rm 162b848a72d1339c1036d84bcea3475d6b947830.zip
