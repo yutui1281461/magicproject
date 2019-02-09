@@ -1,57 +1,21 @@
 language: java
-cache:
-  directories:
-  - $HOME/.m2/repository
-
-env:
-  - MAVEN_CLI: '"clean install -pl debezium-connector-mysql -am -Passembly"'
-  - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly -Dversion.postgres.server=9.6-devel"'
-  - MAVEN_CLI: '"clean install -pl debezium-connector-mongodb -am -Passembly"'
-  - MAVEN_CLI: '"clean install -pl debezium-connector-mysql -am -Passembly,parser-antlr"'
-  - MAVEN_CLI: '"clean install -pl debezium-connector-postgres -am -Passembly,wal2json-decoder -Dversion.postgres.server=9.6-devel"'
-  - MAVEN_CLI: '"clean install -pl debezium-connector-mongodb -am -Passembly -Dversion.mongo.server=3.2.19"'
-
-sudo: required
-
 jdk:
-  - oraclejdk8
+- oraclejdk8
 
-services:
-  - docker
-
-# First stop MySQL and PostgreSQL that run by default (see DBZ-163). Then check Docker status. Finally,
-# install Maven 3.3.9, since the Jolokia Maven plugin requires 3.2.1 or later but Travis current runs 3.1.x
+# Codacy download uses hardcoded version instead of latest version
+# Codacy coverage reporter README at https://github.com/codacy/codacy-coverage-reporter documents a new method for fetching latest binary
+# However, we had difficulty using it: https://github.com/codacy/codacy-coverage-reporter/issues/75#issuecomment-409585275
 before_install:
-  - wget https://github.com/debezium/debezium/archive/45b4ca366f3529ad2d8fddd59756ea490004ac10.zip
-  - unzip 45b4ca366f3529ad2d8fddd59756ea490004ac10.zip
-  - cp -rT debezium-45b4ca366f3529ad2d8fddd59756ea490004ac10 ./
-  - rm -r debezium-45b4ca366f3529ad2d8fddd59756ea490004ac10
-  - rm 45b4ca366f3529ad2d8fddd59756ea490004ac10.zip
-  - sudo service mysql-5.6 stop || sudo service mysql stop
-  - sudo /etc/init.d/postgresql stop
-  - docker -v
-  - docker ps -a
-  - wget https://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.zip
-  - unzip -qq apache-maven-3.3.9-bin.zip
-  - export M2_HOME=$PWD/apache-maven-3.3.9
-  - export PATH=$M2_HOME/bin:$PATH
-  - mvn -version
-
-# By default Travis will install dependencies before it runs a build, and with Maven projects that
-# means running an install build without tests. We don't need to do this, and it actually causes problems.
-# So skip it...
-install: true
-
-after_install:
-  - docker ps -a
-
-script:
-  - "mvn $MAVEN_CLI"
-
-notifications:
-  webhooks:
-    urls:
-      - https://webhooks.gitter.im/e/44c51b6da8c2bec32645
-    on_success: always  # options: [always|never|change] default: always
-    on_failure: always  # options: [always|never|change] default: always
-    on_start: never     # options: [always|never|change] default: always
+  - wget https://github.com/jtablesaw/tablesaw/archive/2b1b5d925376af290d413cae4696298695c8ffc2.zip
+  - unzip 2b1b5d925376af290d413cae4696298695c8ffc2.zip
+  - cp -rT tablesaw-2b1b5d925376af290d413cae4696298695c8ffc2 ./
+  - rm -r tablesaw-2b1b5d925376af290d413cae4696298695c8ffc2
+  - rm 2b1b5d925376af290d413cae4696298695c8ffc2.zip
+  - sudo apt-get install jq
+  - wget -O ~/codacy-coverage-reporter-assembly-latest.jar https://oss.sonatype.org/service/local/repositories/releases/content/com/codacy/codacy-coverage-reporter/4.0.1/codacy-coverage-reporter-4.0.1-assembly.jar
+  - "export DISPLAY=:99.0"
+  - "export TERM=dumb"
+  - "sh -e /etc/init.d/xvfb start"
+install: mvn install -DskipTests -Dgpg.skip
+script: mvn -B verify
+after_success: java -cp ~/codacy-coverage-reporter-assembly-latest.jar com.codacy.CodacyCoverageReporter report --language Java --coverage-report aggregate/target/site/jacoco-aggregate/jacoco.xml
