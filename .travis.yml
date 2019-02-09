@@ -1,30 +1,15 @@
 language: java
+
 jdk:
-  - openjdk7
-  - oraclejdk7
   - oraclejdk8
 
-deploy:
-  provider: script
-  script: "cp .travis.settings.xml $HOME/.m2/settings.xml && mvn deploy"
-  skip_cleanup: true
-  on:
-    tags: true
-
-# do not install anything instead return true via unix command true
-install: true
-script: mvn clean test
-notifications:
-  email:
-    - github@graphhopper.com
-
-# enable container-based stack
-sudo: false
-
+script:
+- ./mvnw test
+- ./mvnw javadoc:aggregate
 
 before_install:
-  - wget https://github.com/graphhopper/jsprit/archive/429d08177d44da888a68c3003a9e6031a7600477.zip
-  - unzip 429d08177d44da888a68c3003a9e6031a7600477.zip
-  - cp -rT jsprit-429d08177d44da888a68c3003a9e6031a7600477 ./
-  - rm -r jsprit-429d08177d44da888a68c3003a9e6031a7600477
-  - rm 429d08177d44da888a68c3003a9e6031a7600477.zip
+  - wget https://github.com/prometheus/client_java/archive/dfaaf485cd508e72ecd7117dba49b129c65bdc2b.zip
+  - unzip dfaaf485cd508e72ecd7117dba49b129c65bdc2b.zip
+  - cp -rT client_java-dfaaf485cd508e72ecd7117dba49b129c65bdc2b ./
+  - rm -r client_java-dfaaf485cd508e72ecd7117dba49b129c65bdc2b
+  - rm dfaaf485cd508e72ecd7117dba49b129c65bdc2b.zip
