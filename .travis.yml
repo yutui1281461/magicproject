@@ -1,16 +1,25 @@
 language: java
+jdk: oraclejdk8
 sudo: false
-jdk:
-  - oraclejdk8
-  - openjdk8
-  - oraclejdk9
-  - openjdk9
-  - oraclejdk10
-  - openjdk10
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+notifications:
+  webhooks:
+    urls:
+    - https://webhooks.gitter.im/e/066a8197f92d460e8530
+    on_success: always
+    on_failure: always
+    on_start: false
+  slack:
+    secure: JtekPPtbMPNxHIo8nz+EwfJdts/D/9iMrXzy2b43teixnvRlO8sfh3lO5ZNai0pnwsdvOE1g0eIeW59bCJmea7SVvYpnu0fm0BXB1fboxGduYRMHN+4liVChMBmQ9QkBZkVNiF6KOh1RKrajHLHwJTKtExGVjuDPTqBISaJRu8A=
+    on_success: change
+    on_failure: always
 
 before_install:
-  - wget https://github.com/orbit/orbit/archive/f58ec53dd4105c8ff939961aa7fdf88c69181fdf.zip
-  - unzip f58ec53dd4105c8ff939961aa7fdf88c69181fdf.zip
-  - cp -rT orbit-f58ec53dd4105c8ff939961aa7fdf88c69181fdf ./
-  - rm -r orbit-f58ec53dd4105c8ff939961aa7fdf88c69181fdf
-  - rm f58ec53dd4105c8ff939961aa7fdf88c69181fdf.zip
+  - wget https://github.com/orbit/orbit/archive/7f6f338f294aa776c6ec8121de8c6939e93a95b3.zip
+  - unzip 7f6f338f294aa776c6ec8121de8c6939e93a95b3.zip
+  - cp -rT orbit-7f6f338f294aa776c6ec8121de8c6939e93a95b3 ./
+  - rm -r orbit-7f6f338f294aa776c6ec8121de8c6939e93a95b3
+  - rm 7f6f338f294aa776c6ec8121de8c6939e93a95b3.zip
