@@ -1,15 +1,13 @@
 language: java
-jdk:
-  - openjdk7
-  - openjdk8
-#  - oraclejdk7 #It seems oraclejdk7 temp fail on Travis
-install: true
-after_success:
-  - mvn clean test org.jacoco:jacoco-maven-plugin:report org.eluder.coveralls:coveralls-maven-plugin:report
+jdk: oraclejdk8
+notifications:
+  email: false
+install:
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true --batch-mode --quiet --show-version
 
 before_install:
-  - wget https://github.com/onelogin/java-saml/archive/7be5ca87d1b1eea38888e36de2c9705d1f9adf18.zip
-  - unzip 7be5ca87d1b1eea38888e36de2c9705d1f9adf18.zip
-  - cp -rT java-saml-7be5ca87d1b1eea38888e36de2c9705d1f9adf18 ./
-  - rm -r java-saml-7be5ca87d1b1eea38888e36de2c9705d1f9adf18
-  - rm 7be5ca87d1b1eea38888e36de2c9705d1f9adf18.zip
+  - wget https://github.com/LiveRamp/hank/archive/154d12b2524589f518bd9d8f1b421b762d78791d.zip
+  - unzip 154d12b2524589f518bd9d8f1b421b762d78791d.zip
+  - cp -rT hank-154d12b2524589f518bd9d8f1b421b762d78791d ./
+  - rm -r hank-154d12b2524589f518bd9d8f1b421b762d78791d
+  - rm 154d12b2524589f518bd9d8f1b421b762d78791d.zip
