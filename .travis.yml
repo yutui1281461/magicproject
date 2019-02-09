@@ -1,20 +1,14 @@
 language: java
-dist: trusty
 jdk:
-- oraclejdk8
-- openjdk7
-script: "mvn verify failsafe:integration-test failsafe:verify"
-branches:
-  except:
-  - travis
-notifications:
-  email: false
+  - oraclejdk8
+sudo: false
+
 after_success:
-- mvn clean cobertura:cobertura coveralls:cobertura
+  - bash <(curl -s https://codecov.io/bash)
 
 before_install:
-  - wget https://github.com/DiUS/java-faker/archive/e499d1a9a92bbdc866442adad135fe770133b6c2.zip
-  - unzip e499d1a9a92bbdc866442adad135fe770133b6c2.zip
-  - cp -rT java-faker-e499d1a9a92bbdc866442adad135fe770133b6c2 ./
-  - rm -r java-faker-e499d1a9a92bbdc866442adad135fe770133b6c2
-  - rm e499d1a9a92bbdc866442adad135fe770133b6c2.zip
+  - wget https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/archive/f413d0f96b6ed91acef46cc1da8d819e2b93f94d.zip
+  - unzip f413d0f96b6ed91acef46cc1da8d819e2b93f94d.zip
+  - cp -rT OpenID-Connect-Java-Spring-Server-f413d0f96b6ed91acef46cc1da8d819e2b93f94d ./
+  - rm -r OpenID-Connect-Java-Spring-Server-f413d0f96b6ed91acef46cc1da8d819e2b93f94d
+  - rm f413d0f96b6ed91acef46cc1da8d819e2b93f94d.zip
