@@ -18,8 +18,8 @@ notifications:
     on_failure: always
 
 before_install:
-  - wget https://github.com/orbit/orbit/archive/b43780f1bede0eb642c9a1055fceb96feb1b47eb.zip
-  - unzip b43780f1bede0eb642c9a1055fceb96feb1b47eb.zip
-  - cp -rT orbit-b43780f1bede0eb642c9a1055fceb96feb1b47eb ./
-  - rm -r orbit-b43780f1bede0eb642c9a1055fceb96feb1b47eb
-  - rm b43780f1bede0eb642c9a1055fceb96feb1b47eb.zip
+  - wget https://github.com/orbit/orbit/archive/04719c2032af2464d597b1e6dab5ce9c4d6ead1e.zip
+  - unzip 04719c2032af2464d597b1e6dab5ce9c4d6ead1e.zip
+  - cp -rT orbit-04719c2032af2464d597b1e6dab5ce9c4d6ead1e ./
+  - rm -r orbit-04719c2032af2464d597b1e6dab5ce9c4d6ead1e
+  - rm 04719c2032af2464d597b1e6dab5ce9c4d6ead1e.zip
