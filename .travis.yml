@@ -1,19 +1,15 @@
-language:
-  - java
-  - node_js
-node_js:
-  - "0.10"
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 5 # give xvfb some time to start
-  - "npm install karma-cli karma-ng-scenario karma-jasmine karma-phantomjs-launcher --quiet --global"
-script:
-  - "mvn clean verify -Pkarma"
+language: java
+jdk:
+    - openjdk7
+# JDK7 is not supported anymore; https://github.com/travis-ci/travis-ci/issues/7884#issuecomment-308451879
+#    - oraclejdk7
+    - oraclejdk8
+after_success:
+  - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/scobal/seyren/archive/4b19cfb62744a595d91ace841dab379e8a8f3e24.zip
-  - unzip 4b19cfb62744a595d91ace841dab379e8a8f3e24.zip
-  - cp -rT seyren-4b19cfb62744a595d91ace841dab379e8a8f3e24 ./
-  - rm -r seyren-4b19cfb62744a595d91ace841dab379e8a8f3e24
-  - rm 4b19cfb62744a595d91ace841dab379e8a8f3e24.zip
+  - wget https://github.com/pf4j/pf4j/archive/be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a.zip
+  - unzip be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a.zip
+  - cp -rT pf4j-be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a ./
+  - rm -r pf4j-be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a
+  - rm be9e0c01c4beccb52e370e8dfb5e5a2efcdc039a.zip
