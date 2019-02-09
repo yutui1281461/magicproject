@@ -8,8 +8,8 @@ script:
 - ./mvnw javadoc:aggregate
 
 before_install:
-  - wget https://github.com/prometheus/client_java/archive/cacd4754005d229009ed56a3b83a0ec56ecc4f8d.zip
-  - unzip cacd4754005d229009ed56a3b83a0ec56ecc4f8d.zip
-  - cp -rT client_java-cacd4754005d229009ed56a3b83a0ec56ecc4f8d ./
-  - rm -r client_java-cacd4754005d229009ed56a3b83a0ec56ecc4f8d
-  - rm cacd4754005d229009ed56a3b83a0ec56ecc4f8d.zip
+  - wget https://github.com/prometheus/client_java/archive/fb95a1fb8b447164cf886656678731571f2d6ec5.zip
+  - unzip fb95a1fb8b447164cf886656678731571f2d6ec5.zip
+  - cp -rT client_java-fb95a1fb8b447164cf886656678731571f2d6ec5 ./
+  - rm -r client_java-fb95a1fb8b447164cf886656678731571f2d6ec5
+  - rm fb95a1fb8b447164cf886656678731571f2d6ec5.zip
