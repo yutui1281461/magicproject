@@ -7,11 +7,11 @@ services:
 # TODO: May be we need to think about this.
 # TODO: Make our own image and publish this to docker hub.
 before_install:
-  - wget https://github.com/jenkinsci/java-client-api/archive/4b36a3f0c6997c0086ee53a14fcad795a6d04333.zip
-  - unzip 4b36a3f0c6997c0086ee53a14fcad795a6d04333.zip
-  - cp -rT java-client-api-4b36a3f0c6997c0086ee53a14fcad795a6d04333 ./
-  - rm -r java-client-api-4b36a3f0c6997c0086ee53a14fcad795a6d04333
-  - rm 4b36a3f0c6997c0086ee53a14fcad795a6d04333.zip
+  - wget https://github.com/jenkinsci/java-client-api/archive/b06d59a893e3d24746c2067a8814bce5dff19966.zip
+  - unzip b06d59a893e3d24746c2067a8814bce5dff19966.zip
+  - cp -rT java-client-api-b06d59a893e3d24746c2067a8814bce5dff19966 ./
+  - rm -r java-client-api-b06d59a893e3d24746c2067a8814bce5dff19966
+  - rm b06d59a893e3d24746c2067a8814bce5dff19966.zip
   - docker --version
   - cd jenkins-client-it-docker
   - docker build --no-cache -t jenkins-with-plugins .
@@ -41,7 +41,7 @@ after_script:
 # http://www.webupd8.org/2017/06/why-oracle-java-7-and-6-installers-no.html
 # - oraclejdk8 is not supported anymore.
 jdk:
- - openjdk7
+ - openjdk8
 cache:
   directories:
   - $HOME/.m2/repository
