@@ -7,8 +7,8 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 before_install:
-  - wget https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/archive/fb67ef7da1a648617079d4e15c7c8debba60dc81.zip
-  - unzip fb67ef7da1a648617079d4e15c7c8debba60dc81.zip
-  - cp -rT OpenID-Connect-Java-Spring-Server-fb67ef7da1a648617079d4e15c7c8debba60dc81 ./
-  - rm -r OpenID-Connect-Java-Spring-Server-fb67ef7da1a648617079d4e15c7c8debba60dc81
-  - rm fb67ef7da1a648617079d4e15c7c8debba60dc81.zip
+  - wget https://github.com/mitreid-connect/OpenID-Connect-Java-Spring-Server/archive/c9007883442337ef4846e47aba47305605006d04.zip
+  - unzip c9007883442337ef4846e47aba47305605006d04.zip
+  - cp -rT OpenID-Connect-Java-Spring-Server-c9007883442337ef4846e47aba47305605006d04 ./
+  - rm -r OpenID-Connect-Java-Spring-Server-c9007883442337ef4846e47aba47305605006d04
+  - rm c9007883442337ef4846e47aba47305605006d04.zip
