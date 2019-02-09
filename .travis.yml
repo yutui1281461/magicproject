@@ -13,8 +13,8 @@ notifications:
     on_failure: always
 
 before_install:
-  - wget https://github.com/junkdog/artemis-odb/archive/652d65205e0ae5522f6da16fcfeea91259c25fcf.zip
-  - unzip 652d65205e0ae5522f6da16fcfeea91259c25fcf.zip
-  - cp -rT artemis-odb-652d65205e0ae5522f6da16fcfeea91259c25fcf ./
-  - rm -r artemis-odb-652d65205e0ae5522f6da16fcfeea91259c25fcf
-  - rm 652d65205e0ae5522f6da16fcfeea91259c25fcf.zip
+  - wget https://github.com/junkdog/artemis-odb/archive/80d0b659cf229dbbde923ed8734263e170b33c3a.zip
+  - unzip 80d0b659cf229dbbde923ed8734263e170b33c3a.zip
+  - cp -rT artemis-odb-80d0b659cf229dbbde923ed8734263e170b33c3a ./
+  - rm -r artemis-odb-80d0b659cf229dbbde923ed8734263e170b33c3a
+  - rm 80d0b659cf229dbbde923ed8734263e170b33c3a.zip
