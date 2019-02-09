@@ -1,18 +1,25 @@
 language: java
 jdk:
-  - oraclejdk8
-
+    - oraclejdk8
 before_install:
-  - wget https://github.com/tcurdt/jdeb/archive/90efde37d876792d0b5ae94e43e924d029602322.zip
-  - unzip 90efde37d876792d0b5ae94e43e924d029602322.zip
-  - cp -rT jdeb-90efde37d876792d0b5ae94e43e924d029602322 ./
-  - rm -r jdeb-90efde37d876792d0b5ae94e43e924d029602322
-  - rm 90efde37d876792d0b5ae94e43e924d029602322.zip
-  - sudo hostname "$(hostname | cut -c1-63)"
-  - sed -e "s/^\\(127\\.0\\.0\\.1.*\\)/\\1 $(hostname | cut -c1-63)/" /etc/hosts | sudo tee /etc/hosts
-  - cat /etc/hosts
-  - pip install --user codecov
+    - wget https://github.com/pholser/junit-quickcheck/archive/220513748589bdc36a54c6e21c84669bcff00b14.zip
+    - unzip 220513748589bdc36a54c6e21c84669bcff00b14.zip
+    - cp -rT junit-quickcheck-220513748589bdc36a54c6e21c84669bcff00b14 ./
+    - rm -r junit-quickcheck-220513748589bdc36a54c6e21c84669bcff00b14
+    - rm 220513748589bdc36a54c6e21c84669bcff00b14.zip
+    - sudo apt-get update -qq
+    - sudo apt-get install oracle-java8-installer
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script: mvn clean test
+cache:
+    directories:
+    - $HOME/.m2
+branches:
+    except:
+        - gh-pages
+        - 0.5-branch
+notifications:
+    email:
+        recipients:
+        - pholser@alumni.rice.edu
 
-after_success:
-  - mvn clean test jacoco:report coveralls:report
-  - codecov
