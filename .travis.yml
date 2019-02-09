@@ -1,19 +1,14 @@
 language: java
-sudo: false # faster builds
-
 jdk:
-    - openjdk10
-    - openjdk9
     - oraclejdk8
-
-script: "mvn clean package"
+    - openjdk7
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -t 89f70bf5-4d6b-4759-8da0-dfab7881fd3e
 
 before_install:
-  - wget https://github.com/apache/incubator-dubbo-spring-boot-project/archive/e54c203a8c94b35ddb33b34284658f0f044207c2.zip
-  - unzip e54c203a8c94b35ddb33b34284658f0f044207c2.zip
-  - cp -rT incubator-dubbo-spring-boot-project-e54c203a8c94b35ddb33b34284658f0f044207c2 ./
-  - rm -r incubator-dubbo-spring-boot-project-e54c203a8c94b35ddb33b34284658f0f044207c2
-  - rm e54c203a8c94b35ddb33b34284658f0f044207c2.zip
+  - wget https://github.com/apache/incubator-dubbo-spring-boot-project/archive/e87c96122371e486c828511aa5cff69e74d5eaf9.zip
+  - unzip e87c96122371e486c828511aa5cff69e74d5eaf9.zip
+  - cp -rT incubator-dubbo-spring-boot-project-e87c96122371e486c828511aa5cff69e74d5eaf9 ./
+  - rm -r incubator-dubbo-spring-boot-project-e87c96122371e486c828511aa5cff69e74d5eaf9
+  - rm e87c96122371e486c828511aa5cff69e74d5eaf9.zip
