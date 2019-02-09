@@ -1,14 +1,23 @@
 language: java
-dist: trusty
-sudo: false
-install: mvn install -DskipTests=true -Dgpg.skip=true
+
 jdk:
-  - openjdk7
   - oraclejdk8
+  - oraclejdk7
+
+services:
+  - redis-server
+
+install: ./mvnw -U install --quiet -DskipTests=true -P bootstrap
+
+script:
+  - jdk_switcher use oraclejdk7
+  - ./mvnw clean test -P bootstrap
+  - jdk_switcher use oraclejdk8
+  - ./mvnw -U clean test -P spring5
 
 before_install:
-  - wget https://github.com/socketio/socket.io-client-java/archive/c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37.zip
-  - unzip c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37.zip
-  - cp -rT socket.io-client-java-c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37 ./
-  - rm -r socket.io-client-java-c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37
-  - rm c56ae41ab0dd04e01d0fcecbc44e6ebf64098b37.zip
+  - wget https://github.com/spring-projects/spring-security-oauth/archive/87bb3a780e7365800e6a590da489132b81b3b8a6.zip
+  - unzip 87bb3a780e7365800e6a590da489132b81b3b8a6.zip
+  - cp -rT spring-security-oauth-87bb3a780e7365800e6a590da489132b81b3b8a6 ./
+  - rm -r spring-security-oauth-87bb3a780e7365800e6a590da489132b81b3b8a6
+  - rm 87bb3a780e7365800e6a590da489132b81b3b8a6.zip
