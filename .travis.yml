@@ -1,36 +1,20 @@
-# Licensed to the Apache Software Foundation (ASF) under one or more
-# contributor license agreements.  See the NOTICE file distributed with
-# this work for additional information regarding copyright ownership.
-# The ASF licenses this file to You under the Apache License, Version 2.0
-# (the "License"); you may not use this file except in compliance with
-# the License.  You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 language: java
 sudo: false
-
-jdk:
-  - openjdk7
-  - oraclejdk7
-  - oraclejdk8
-
-cache:
-  directories:
-    - $HOME/.m2
-
-after_success:
-  - mvn clean apache-rat:check test jacoco:report coveralls:report -Ptravis-jacoco
+env:
+  global:
+  - SONATYPE_USERNAME=searchboxadmin
+  - secure: BBvuAZE4hahFMuOnxpyHtU3CETtXAj0KJ5vbN2WeiJXpnLt0Ct/IbwN2SFMc6iTEmJSzG6Zkk8zTrRajGNM+rPv74rAuYBXDmiBVwJVLX11kLr4Y+S+LNkik1wrUCZjEO6t1kcVq6syYv7rL9Tb+28enIDI+3qvTRNnrNTo86k8=
+  - secure: jE0ozTLvEvzCaul7opCQAoE8ttNiK+buxeOnsLrVGd1rC1QqfufQoj+pC5RBwgY1w/nN8fQRbi3EgxVZeZwZojQJH7lJIUkH/1iBYO2dqYF3coJQCGF2IQ7KyoRBsLJuO6vZgMR978itNfyBkhKupYzQwA+skrCkQynS6lqhGME=
+  - secure: kufSuaczK1N07iLL+9NmKAMHKYjtshbqPMbJLqZdAZOPgfKAaEat3dDq/EnryOCvIDZrlQeudn7G3fmIUY76hMdM2pc6vtrA15vSZ4o8RaG9zPPMhmQIQlnq4tdzvpNMlNVB3gFsXXSlBKy6D6jx7hkuffk0akOHp1Q++weP3fo=
 
 before_install:
-  - wget https://github.com/apache/commons-compress/archive/3de2041d54225c82d55bd63109b082aba7c48a9a.zip
-  - unzip 3de2041d54225c82d55bd63109b082aba7c48a9a.zip
-  - cp -rT commons-compress-3de2041d54225c82d55bd63109b082aba7c48a9a ./
-  - rm -r commons-compress-3de2041d54225c82d55bd63109b082aba7c48a9a
-  - rm 3de2041d54225c82d55bd63109b082aba7c48a9a.zip
+- wget https://github.com/searchbox-io/Jest/archive/1a16cad15e067efbfa59c2d33819c207f13d1d6d.zip
+- unzip 1a16cad15e067efbfa59c2d33819c207f13d1d6d.zip
+- cp -rT Jest-1a16cad15e067efbfa59c2d33819c207f13d1d6d ./
+- rm -r Jest-1a16cad15e067efbfa59c2d33819c207f13d1d6d
+- rm 1a16cad15e067efbfa59c2d33819c207f13d1d6d.zip
+- if [ -z "$TRAVIS_SECURE_ENV_VARS" -o "$TRAVIS_SECURE_ENV_VARS" == "false" ]; then echo "Skipping decryption because secure environment variables are not present."; else openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in secring.gpg.enc -out local.secring.gpg -d; openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in pubring.gpg.enc -out local.pubring.gpg -d; fi;
+
+after_success:
+- mvn clean cobertura:cobertura coveralls:report
+- if [ -z "$TRAVIS_SECURE_ENV_VARS" -o "$TRAVIS_SECURE_ENV_VARS" == "false" ]; then echo "Skipping deployment because secure environment variables are not present."; else mvn clean deploy --settings settings.xml -DskipTests=true -B -Psign-artifacts; fi;
