@@ -8,8 +8,8 @@ after_success:
   - mvn cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/gresrun/jesque/archive/636a7108de550283316761f3b1e12b9cbc02c33a.zip
-  - unzip 636a7108de550283316761f3b1e12b9cbc02c33a.zip
-  - cp -rT jesque-636a7108de550283316761f3b1e12b9cbc02c33a ./
-  - rm -r jesque-636a7108de550283316761f3b1e12b9cbc02c33a
-  - rm 636a7108de550283316761f3b1e12b9cbc02c33a.zip
+  - wget https://github.com/gresrun/jesque/archive/2b7d7a52e37a05c0ae515cc95e1c4ff439910816.zip
+  - unzip 2b7d7a52e37a05c0ae515cc95e1c4ff439910816.zip
+  - cp -rT jesque-2b7d7a52e37a05c0ae515cc95e1c4ff439910816 ./
+  - rm -r jesque-2b7d7a52e37a05c0ae515cc95e1c4ff439910816
+  - rm 2b7d7a52e37a05c0ae515cc95e1c4ff439910816.zip
