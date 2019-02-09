@@ -1,15 +1,33 @@
 language: java
+
+sudo: required
+
+services:
+  - docker
+  - mysql
+
 jdk:
-  - openjdk7
-  - oraclejdk7
   - oraclejdk8
-  
-after_success:
-  - mvn clean cobertura:cobertura coveralls:report
 
 before_install:
-  - wget https://github.com/JSQLParser/JSqlParser/archive/6fc6908bc660a145108970727af16922728c97dd.zip
-  - unzip 6fc6908bc660a145108970727af16922728c97dd.zip
-  - cp -rT JSqlParser-6fc6908bc660a145108970727af16922728c97dd ./
-  - rm -r JSqlParser-6fc6908bc660a145108970727af16922728c97dd
-  - rm 6fc6908bc660a145108970727af16922728c97dd.zip
+  - wget https://github.com/AxonFramework/AxonFramework/archive/f7e2324e1551797a461f0d53165dd490c274ccaa.zip
+  - unzip f7e2324e1551797a461f0d53165dd490c274ccaa.zip
+  - cp -rT AxonFramework-f7e2324e1551797a461f0d53165dd490c274ccaa ./
+  - rm -r AxonFramework-f7e2324e1551797a461f0d53165dd490c274ccaa
+  - rm f7e2324e1551797a461f0d53165dd490c274ccaa.zip
+  - docker run -d --shm-size=1g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-xe-11g
+  - docker ps
+  - mysql -e 'CREATE DATABASE axon;'
+
+install: true
+
+cache:
+  directories:
+  - $HOME/.m2
+
+script:
+  - mvn clean verify -B
+
+notifications:
+  slack:
+    secure: d1HN9GBeH0e6EsHjNkPVXgBaFCYqbvjkZv9GUkpWnyjNYP5V1snSk6sO4X6ONttydgzfbElZTOfrgDzRTgWJ76iDMxAPccFPY7dmGcpw8/2TOjwP6H6yEitiiZcWR9fssTM2Li2WQtuGkwaVBhw15JNABzEsexxqXC+Cu48yUfA=
