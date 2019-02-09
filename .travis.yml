@@ -2,11 +2,11 @@ language: java
 jdk:
     - oraclejdk8
 before_install:
-    - wget https://github.com/dooApp/FXForm2/archive/063418227b37a83ac381afc6cc90c966231196f7.zip
-    - unzip 063418227b37a83ac381afc6cc90c966231196f7.zip
-    - cp -rT FXForm2-063418227b37a83ac381afc6cc90c966231196f7 ./
-    - rm -r FXForm2-063418227b37a83ac381afc6cc90c966231196f7
-    - rm 063418227b37a83ac381afc6cc90c966231196f7.zip
+    - wget https://github.com/dooApp/FXForm2/archive/87d4b109ac0bbc447e62840661f7a8384c9063d2.zip
+    - unzip 87d4b109ac0bbc447e62840661f7a8384c9063d2.zip
+    - cp -rT FXForm2-87d4b109ac0bbc447e62840661f7a8384c9063d2 ./
+    - rm -r FXForm2-87d4b109ac0bbc447e62840661f7a8384c9063d2
+    - rm 87d4b109ac0bbc447e62840661f7a8384c9063d2.zip
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
 sudo: false
