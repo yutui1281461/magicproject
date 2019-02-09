@@ -1,32 +1,14 @@
 language: java
-branches:
-  only:
-  - master
-  - /^\d+\.\d+$/
-jobs:
-  include:
-    - stage: test
-      name: "OracleJDK 8"
-      jdk: oraclejdk8
-      script: mvn -q clean verify -B
-    - if: type != pull_request
-      name: "OpenJDK 11"
-      jdk: openjdk11
-      script: mvn -q clean verify -B
-    - stage: deploy
-      name: "Deploy to Sonatype's snapshots repository"
-      if: type != pull_request
-      script: bash .travis.deploy.artifacts.sh
-notifications:
-  email:
-    recipients:
-      - vertx3-ci@googlegroups.com
-    on_success: always
-    on_failure: always
-
+services: docker
 before_install:
-  - wget https://github.com/vert-x3/vertx-web/archive/b565bfacaea83d6bb96678ab77767e616d47b53e.zip
-  - unzip b565bfacaea83d6bb96678ab77767e616d47b53e.zip
-  - cp -rT vertx-web-b565bfacaea83d6bb96678ab77767e616d47b53e ./
-  - rm -r vertx-web-b565bfacaea83d6bb96678ab77767e616d47b53e
-  - rm b565bfacaea83d6bb96678ab77767e616d47b53e.zip
+  - wget https://github.com/rickfast/consul-client/archive/df9db69e9e2a4d6f67e8839ac1121931ffcba09a.zip
+  - unzip df9db69e9e2a4d6f67e8839ac1121931ffcba09a.zip
+  - cp -rT consul-client-df9db69e9e2a4d6f67e8839ac1121931ffcba09a ./
+  - rm -r consul-client-df9db69e9e2a4d6f67e8839ac1121931ffcba09a
+  - rm df9db69e9e2a4d6f67e8839ac1121931ffcba09a.zip
+  - docker run -d -p 127.0.0.1:8500:8500 consul:1.2.3 agent -dev -client 0.0.0.0 --enable-script-checks=true
+
+jdk:
+  - oraclejdk8
+script: mvn clean test
+
