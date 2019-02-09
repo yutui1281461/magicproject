@@ -4,13 +4,11 @@ cache:
     - $HOME/.m2
 jdk:
   - oraclejdk8
-  - openjdk9
-  - openjdk10
-  - openjdk11
+  - oraclejdk9
 
 before_install:
-  - wget https://github.com/lukas-krecan/JsonUnit/archive/773a861a7cd16b5a42b0976a7956c1be473844d2.zip
-  - unzip 773a861a7cd16b5a42b0976a7956c1be473844d2.zip
-  - cp -rT JsonUnit-773a861a7cd16b5a42b0976a7956c1be473844d2 ./
-  - rm -r JsonUnit-773a861a7cd16b5a42b0976a7956c1be473844d2
-  - rm 773a861a7cd16b5a42b0976a7956c1be473844d2.zip
+  - wget https://github.com/lukas-krecan/JsonUnit/archive/99626c61d7d8e696dc9ffced3d3516fb285f837e.zip
+  - unzip 99626c61d7d8e696dc9ffced3d3516fb285f837e.zip
+  - cp -rT JsonUnit-99626c61d7d8e696dc9ffced3d3516fb285f837e ./
+  - rm -r JsonUnit-99626c61d7d8e696dc9ffced3d3516fb285f837e
+  - rm 99626c61d7d8e696dc9ffced3d3516fb285f837e.zip
