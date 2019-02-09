@@ -27,8 +27,8 @@ script:
   - set +e
 
 before_install:
-  - wget https://github.com/teamed/qulice/archive/eea3a2d1138ea5f1f068d62b8d32e087111d73a7.zip
-  - unzip eea3a2d1138ea5f1f068d62b8d32e087111d73a7.zip
-  - cp -rT qulice-eea3a2d1138ea5f1f068d62b8d32e087111d73a7 ./
-  - rm -r qulice-eea3a2d1138ea5f1f068d62b8d32e087111d73a7
-  - rm eea3a2d1138ea5f1f068d62b8d32e087111d73a7.zip
+  - wget https://github.com/teamed/qulice/archive/a7434e5fb3da0adc8e5f3164245bde9b3465baa8.zip
+  - unzip a7434e5fb3da0adc8e5f3164245bde9b3465baa8.zip
+  - cp -rT qulice-a7434e5fb3da0adc8e5f3164245bde9b3465baa8 ./
+  - rm -r qulice-a7434e5fb3da0adc8e5f3164245bde9b3465baa8
+  - rm a7434e5fb3da0adc8e5f3164245bde9b3465baa8.zip
