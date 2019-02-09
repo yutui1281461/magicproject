@@ -12,8 +12,8 @@ script:
   - "mvn clean verify -Pkarma"
 
 before_install:
-  - wget https://github.com/scobal/seyren/archive/80325c71f140db94e70b365751c2bb02698d2801.zip
-  - unzip 80325c71f140db94e70b365751c2bb02698d2801.zip
-  - cp -rT seyren-80325c71f140db94e70b365751c2bb02698d2801 ./
-  - rm -r seyren-80325c71f140db94e70b365751c2bb02698d2801
-  - rm 80325c71f140db94e70b365751c2bb02698d2801.zip
+  - wget https://github.com/scobal/seyren/archive/d89ade00fe8cbbd6e5928a3b70de4e308383e8a4.zip
+  - unzip d89ade00fe8cbbd6e5928a3b70de4e308383e8a4.zip
+  - cp -rT seyren-d89ade00fe8cbbd6e5928a3b70de4e308383e8a4 ./
+  - rm -r seyren-d89ade00fe8cbbd6e5928a3b70de4e308383e8a4
+  - rm d89ade00fe8cbbd6e5928a3b70de4e308383e8a4.zip
