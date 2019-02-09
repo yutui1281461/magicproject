@@ -1,14 +1,11 @@
 language: java
-cache:
-  directories:
-    - $HOME/.m2
 jdk:
   - oraclejdk8
   - oraclejdk9
 
 before_install:
-  - wget https://github.com/lukas-krecan/JsonUnit/archive/b1574475fdd50a4b12fe522c872e0fc5706bca0e.zip
-  - unzip b1574475fdd50a4b12fe522c872e0fc5706bca0e.zip
-  - cp -rT JsonUnit-b1574475fdd50a4b12fe522c872e0fc5706bca0e ./
-  - rm -r JsonUnit-b1574475fdd50a4b12fe522c872e0fc5706bca0e
-  - rm b1574475fdd50a4b12fe522c872e0fc5706bca0e.zip
+  - wget https://github.com/lukas-krecan/JsonUnit/archive/b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff.zip
+  - unzip b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff.zip
+  - cp -rT JsonUnit-b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff ./
+  - rm -r JsonUnit-b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff
+  - rm b1499ef0827c03a4ca5183880d8f10cc2b4aa0ff.zip
