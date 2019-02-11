@@ -1,13 +1,25 @@
 language: java
-jdk: oraclejdk8
-install:
-- mvn clean install  -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+sudo: false # faster builds
+
+jdk:
+  - oraclejdk11
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2
+
+install: true
+
 script:
-- mvn clean test
+  - travis_wait 30 ./mvnw clean install -DskipTests=false -Dcheckstyle.skip=false -Drat.skip=false -Dmaven.javadoc.skip=true
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
 before_install:
-  - wget https://github.com/getheimdall/heimdall/archive/de015f618b791124f7dbaf4f8938431cfe89eb2d.zip
-  - unzip de015f618b791124f7dbaf4f8938431cfe89eb2d.zip
-  - cp -rT heimdall-de015f618b791124f7dbaf4f8938431cfe89eb2d ./
-  - rm -r heimdall-de015f618b791124f7dbaf4f8938431cfe89eb2d
-  - rm de015f618b791124f7dbaf4f8938431cfe89eb2d.zip
+  - wget https://github.com/apache/incubator-dubbo/archive/0721544fed8fca1304cc8f06f2481f48e105ac22.zip
+  - unzip 0721544fed8fca1304cc8f06f2481f48e105ac22.zip
+  - cp -rT incubator-dubbo-0721544fed8fca1304cc8f06f2481f48e105ac22 ./
+  - rm -r incubator-dubbo-0721544fed8fca1304cc8f06f2481f48e105ac22
+  - rm 0721544fed8fca1304cc8f06f2481f48e105ac22.zip
