@@ -1,36 +1,35 @@
-sudo: false
+notifications:
+  email:
+    recipients:
+      - dev@rocketmq.apache.org
+  on_success: change
+  on_failure: always
 
 language: java
 
-install:
-  - mvn -B -U -f build-pom.xml dependency:go-offline test clean --quiet --fail-never -DskipTests=true
-
-script:
-  - mvn -B -U -f build-pom.xml verify --fail-at-end -Dsource.skip=true -Dmaven.javadoc.skip=true
-
-jdk:
-  - oraclejdk7
-  - openjdk7
-  - oraclejdk8
-
-env:
-  global:
-  - secure: "bWNSSMURwYC0oZWIMZRd7dy5+JdoyZ060d427TAqFRJmOkYtlR+dBbBggjeJmM0PEkQDzeBrWwln/Vq3lnRPv8czA7hSg/R33r3GzTyi1GZhjCYN2mPW8qp4qgqlloh78aaOODUNSJsOtQqPDJPmhLLfD6UCY0eq9zHhweIjYdw="
-  - secure: "s5V9d8MKl7ZHqCxuYLljLSD4sp9KLtYkk9hVxEPqCLAi4zA70WkX9h+GZI1gAOpcavomfrWcgSDT2ZReiuNpwx7OtczdS4zB+s6mo4F598iRs4bhSLiPT+Hzvx6BSwf1ZKZTYEhrUPGmKOp2T29AxMV7D0Q+P7n574ubvpUuZmA="
-  - secure: "T24JAd60zthkeLBmenvZn6+qI43uvfuLwVb70Ljhbc19XDYEZV4Zm/kaafsisP5+F6kV4GjFaT+NCq2sJlwvPSMMRvU1JJgmNVh8TmtswkC/PHKonkMkOsj2KmFP0RRSPdvQv2NrSguZUq8mg+2pvnPO0qoPg4VeIODPGtAxNb8="
-
-after_success:
-  - util/generate-latest-docs.sh
-  - util/publish-snapshot-on-commit.sh
-
-branches:
-  only:
-    - master
-    - /^release.*$/
+matrix:
+  include:
+  # On OSX, run with default JDK only.
+  # - os: osx
+  # On Linux, run with specific JDKs only.
+  - os: linux
+    env: CUSTOM_JDK="oraclejdk8"
 
 before_install:
-  - wget https://github.com/google/auto/archive/cfb7fd93a9b1aba5fd1af1f9d435f7d1a07b466c.zip
-  - unzip cfb7fd93a9b1aba5fd1af1f9d435f7d1a07b466c.zip
-  - cp -rT auto-cfb7fd93a9b1aba5fd1af1f9d435f7d1a07b466c ./
-  - rm -r auto-cfb7fd93a9b1aba5fd1af1f9d435f7d1a07b466c
-  - rm cfb7fd93a9b1aba5fd1af1f9d435f7d1a07b466c.zip
+  - wget https://github.com/apache/rocketmq/archive/7b544acd781a68c2f63a0ed9e8834cee2e5a69de.zip
+  - unzip 7b544acd781a68c2f63a0ed9e8834cee2e5a69de.zip
+  - cp -rT rocketmq-7b544acd781a68c2f63a0ed9e8834cee2e5a69de ./
+  - rm -r rocketmq-7b544acd781a68c2f63a0ed9e8834cee2e5a69de
+  - rm 7b544acd781a68c2f63a0ed9e8834cee2e5a69de.zip
+  - echo 'MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=512m -XX:+BytecodeVerificationLocal"' >> ~/.mavenrc
+  - cat ~/.mavenrc
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export JAVA_HOME=$(/usr/libexec/java_home); fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then jdk_switcher use "$CUSTOM_JDK"; fi
+
+script:
+  - travis_retry mvn -B clean apache-rat:check
+  - travis_retry mvn -B package jacoco:report coveralls:report
+
+after_success:
+  - mvn clean install -Pit-test
+  - mvn sonar:sonar -Psonar-apache
