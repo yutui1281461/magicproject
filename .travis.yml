@@ -1,25 +1,23 @@
+dist: trusty
+sudo: required
 language: java
-sudo: false # faster builds
-
 jdk:
-    - oraclejdk8
-    - openjdk7
-
+  - openjdk7
+  - oraclejdk8
+before_install:
+    - wget https://github.com/xetorthio/jedis/archive/16411fd6f81800d3c225529579d11b3d43e3a75c.zip
+    - unzip 16411fd6f81800d3c225529579d11b3d43e3a75c.zip
+    - cp -rT jedis-16411fd6f81800d3c225529579d11b3d43e3a75c ./
+    - rm -r jedis-16411fd6f81800d3c225529579d11b3d43e3a75c
+    - rm 16411fd6f81800d3c225529579d11b3d43e3a75c.zip
+    - wget -O stunnel.tar.gz ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.29.tar.gz
+    - tar -xvzf stunnel.tar.gz
+    - cd ./stunnel-5.29 && ./configure && make && sudo make install && cd ..
+install:
+  - make travis-install
+script: TEST="\!ModuleTest" make test
 cache:
   directories:
     - $HOME/.m2
-
-install: true
-
-script:
-  - travis_wait 30 ./mvnw clean install -DskipTests=false -Dcheckstyle.skip=false -Drat.skip=false -Dmaven.javadoc.skip=true
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
-before_install:
-  - wget https://github.com/apache/incubator-dubbo/archive/7381255f115e0b2db9935ee761b27ff59f2805d0.zip
-  - unzip 7381255f115e0b2db9935ee761b27ff59f2805d0.zip
-  - cp -rT incubator-dubbo-7381255f115e0b2db9935ee761b27ff59f2805d0 ./
-  - rm -r incubator-dubbo-7381255f115e0b2db9935ee761b27ff59f2805d0
-  - rm 7381255f115e0b2db9935ee761b27ff59f2805d0.zip
+addons:
+  hostname: jedis
