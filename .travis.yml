@@ -2,8 +2,8 @@ language: java
 sudo: false # faster builds
 
 jdk:
-  - oraclejdk11
-  - oraclejdk8
+    - oraclejdk8
+    - openjdk7
 
 cache:
   directories:
@@ -18,8 +18,8 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 
 before_install:
-  - wget https://github.com/apache/incubator-dubbo/archive/0721544fed8fca1304cc8f06f2481f48e105ac22.zip
-  - unzip 0721544fed8fca1304cc8f06f2481f48e105ac22.zip
-  - cp -rT incubator-dubbo-0721544fed8fca1304cc8f06f2481f48e105ac22 ./
-  - rm -r incubator-dubbo-0721544fed8fca1304cc8f06f2481f48e105ac22
-  - rm 0721544fed8fca1304cc8f06f2481f48e105ac22.zip
+  - wget https://github.com/apache/incubator-dubbo/archive/fc50b6335ec8c48dcc765ef963bcf9f76d6b033b.zip
+  - unzip fc50b6335ec8c48dcc765ef963bcf9f76d6b033b.zip
+  - cp -rT incubator-dubbo-fc50b6335ec8c48dcc765ef963bcf9f76d6b033b ./
+  - rm -r incubator-dubbo-fc50b6335ec8c48dcc765ef963bcf9f76d6b033b
+  - rm fc50b6335ec8c48dcc765ef963bcf9f76d6b033b.zip
