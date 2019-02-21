@@ -1,12 +1,8 @@
 language: java
-jdk: oraclejdk8
-sudo: false
-install: false
-script: mvn test
 
 before_install:
-  - wget https://github.com/hs-web/hsweb-framework/archive/2215bf9db453ba9b283b54b4c2acc573743c6d8e.zip
-  - unzip 2215bf9db453ba9b283b54b4c2acc573743c6d8e.zip
-  - cp -rT hsweb-framework-2215bf9db453ba9b283b54b4c2acc573743c6d8e ./
-  - rm -r hsweb-framework-2215bf9db453ba9b283b54b4c2acc573743c6d8e
-  - rm 2215bf9db453ba9b283b54b4c2acc573743c6d8e.zip
+  - wget https://github.com/weibocom/motan/archive/444dc2515418fd2b9dc5a8eee9089b1b13f90c69.zip
+  - unzip 444dc2515418fd2b9dc5a8eee9089b1b13f90c69.zip
+  - cp -rT motan-444dc2515418fd2b9dc5a8eee9089b1b13f90c69 ./
+  - rm -r motan-444dc2515418fd2b9dc5a8eee9089b1b13f90c69
+  - rm 444dc2515418fd2b9dc5a8eee9089b1b13f90c69.zip
