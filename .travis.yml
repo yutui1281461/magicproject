@@ -1,7 +1,7 @@
 notifications:
   email:
     recipients:
-      - dev@rocketmq.apache.org
+      - dev@rocketmq.incubator.apache.org
   on_success: change
   on_failure: always
 
@@ -14,17 +14,30 @@ matrix:
   # On Linux, run with specific JDKs only.
   - os: linux
     env: CUSTOM_JDK="oraclejdk8"
+  - os: linux
+    env: CUSTOM_JDK="oraclejdk7"
+  - os: linux
+    env: CUSTOM_JDK="openjdk7"
 
 before_install:
-  - wget https://github.com/apache/rocketmq/archive/7df5021b13107a3b16f192f1eab3232b1ce6fecb.zip
-  - unzip 7df5021b13107a3b16f192f1eab3232b1ce6fecb.zip
-  - cp -rT rocketmq-7df5021b13107a3b16f192f1eab3232b1ce6fecb ./
-  - rm -r rocketmq-7df5021b13107a3b16f192f1eab3232b1ce6fecb
-  - rm 7df5021b13107a3b16f192f1eab3232b1ce6fecb.zip
+  - wget https://github.com/apache/rocketmq/archive/feb73483c083ae6e289b2ec84196c129ba644ecb.zip
+  - unzip feb73483c083ae6e289b2ec84196c129ba644ecb.zip
+  - cp -rT rocketmq-feb73483c083ae6e289b2ec84196c129ba644ecb ./
+  - rm -r rocketmq-feb73483c083ae6e289b2ec84196c129ba644ecb
+  - rm feb73483c083ae6e289b2ec84196c129ba644ecb.zip
   - echo 'MAVEN_OPTS="$MAVEN_OPTS -Xmx1024m -XX:MaxPermSize=512m -XX:+BytecodeVerificationLocal"' >> ~/.mavenrc
   - cat ~/.mavenrc
   - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export JAVA_HOME=$(/usr/libexec/java_home); fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then jdk_switcher use "$CUSTOM_JDK"; fi
+
+#os:
+#  - linux
+#  - osx
+#jdk:
+#  - oraclejdk8
+#  - oraclejdk7
+#  - openjdk7
+
 
 script:
   - travis_retry mvn -B clean apache-rat:check
